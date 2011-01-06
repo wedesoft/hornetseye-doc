@@ -1,1 +1,15 @@
-lib/**/*.rb
+../malloc/lib/**/*.rb
+../multiarray/lib/**/*.rb
+../hornetseye-alsa/lib/**/*.rb
+../hornetseye-dc1394/lib/**/*.rb
+../hornetseye-ffmpeg/lib/**/*.rb
+../hornetseye-frame/lib/**/*.rb
+../hornetseye-narray/lib/**/*.rb
+../hornetseye-opencv/lib/**/*.rb
+../hornetseye-openexr/lib/**/*.rb
+../hornetseye-qt4/lib/**/*.rb
+../hornetseye-rmagick/lib/**/*.rb
+../hornetseye-v4l/lib/**/*.rb
+../hornetseye-v4l2/lib/**/*.rb
+../hornetseye-xorg/lib/**/*.rb
+
