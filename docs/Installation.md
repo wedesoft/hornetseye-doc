@@ -16,21 +16,11 @@ First you need to install the build tools and Ruby 1.8 (or Ruby 1.9) with develo
 
     sudo gem install malloc
 
-Alternatively you can build the Ruby extension from source as follows:
-
-    rake
-    sudo rake install
-
 ### multiarray
 
 **multiarray** provides the array operations of *HornetsEye*. The following command will download and install this Ruby extension:
 
     sudo gem install multiarray
-
-Alternatively you can build the Ruby extension from source as follows:
-
-    rake
-    sudo rake install
 
 ### hornetseye-alsa
 
@@ -42,11 +32,6 @@ To install the Ruby extension, use the following command:
 
     sudo gem install hornetseye-alsa
 
-Alternatively you can build the Ruby extension from source as follows:
-
-    rake
-    sudo rake install
-
 ### hornetseye-dc1394
 
 **hornetseye-dc1394** allows capturing video frames using a DC1394-compatible firewire camera. This Ruby extension requires the DC1394 development headers. You can install them as follows:
@@ -57,12 +42,15 @@ To install the Ruby extension, use the following command:
 
     sudo gem install hornetseye-dc1394
 
-Alternatively you can build the Ruby extension from source as follows:
-
-    rake
-    sudo rake install
-
 ### hornetseye-ffmpeg
+
+**hornetseye-ffmpeg** is useful for reading and writing video files with optional audio data. This Ruby extension requires the FFMpeg development headers. You can install them as follows:
+
+    sudo aptitude install libavformat-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-ffmpeg
 
 ### hornetseye-frame
 
