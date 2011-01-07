@@ -18,9 +18,19 @@ First you need to install the build tools and Ruby 1.8 (or Ruby 1.9) with develo
 
 ### multiarray
 
-**multiarray** provides the array operations of *HornetsEye*. The following command will download and install this Ruby extension:
+**multiarray** is part of the basis of *HornetsEye*. It provides the array operations of *HornetsEye*. The following command will download and install this Ruby extension:
 
     sudo gem install multiarray
+
+### hornetseye-frame
+
+**hornetseye-frame** is part of the basis of *HornetsEye*. It provides the necessary colourspace conversions for doing image I/O. This Ruby extension requires the software scaling library. You can install it like this:
+
+    sudo aptitude install libswscale-dev
+
+To install the Ruby extension, use the following command:
+
+    sudo gem install hornetseye-frame  
 
 ### hornetseye-alsa
 
@@ -51,8 +61,6 @@ To install the Ruby extension, use the following command:
 To install this Ruby extension, use the following command:
 
     sudo gem install hornetseye-ffmpeg
-
-### hornetseye-frame
 
 ### hornetseye-narray
 
