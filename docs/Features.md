@@ -19,7 +19,7 @@ After installation you can use **HornetsEye** without having to compile or link 
 
 ### I/O and Array Operation
 
-![HornetsEye demo](images/demo2.png)
+![I/O and array operations demo](images/demo2.png)
 
 HornetsEye provides generic array operations and it offers a comprehensive set of I/O interfaces.
 
