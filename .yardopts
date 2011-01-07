@@ -1,3 +1,4 @@
 --no-private
---asset docs/images:images
 --title "Hornetseye - Ruby-extension for Computer Vision"
+--files docs/*.md
+

@@ -20,6 +20,14 @@ YARD::Rake::YardocTask.new :yard do |y|
   y.files << RB_FILES
 end
 
+IMG_FILES.each do |f|
+  task :yard => "doc/#{f[ 5 .. -1 ]}"
+  file "doc/#{f[ 5 .. -1 ]}" => f do |t|
+    FileUtils.mkdir_p 'doc/images'
+    FileUtils.cp f, t.name
+  end
+end
+
 Rake::PackageTask.new PKG_NAME, PKG_VERSION do |p|
   p.need_tar = true
   p.package_files = PKG_FILES
