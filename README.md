@@ -5,17 +5,16 @@ HornetsEye - Computer Vision for the Robotic Age
 
 ![Hornetseye logo](images/hornetseye.png)
 
-HornetsEye is free software. Researchers and developers are not degraded to mere consumers but are given the full freedom to study the source code, run, modify, and redistribute the software as they wish.
+HornetsEye is free software. Developers and users are given the full freedom to study the source code, run, modify, and redistribute the software as they wish.
 
 The logo shows a honeycomb structure as you would find on an insect's compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes.
 
-**Short URLs for this page**
+Example Programs
+----------------
 
-The short URLs for this page are
+### Basic I/O
 
-* [http://www.wedesoft.demon.co.uk/hornetseye-api/](http://www.wedesoft.demon.co.uk/hornetseye-api/ "HornetsEye")
-* [http://hornetseye.rubyforge.org/](http://hornetseye.rubyforge.org/ "HornetsEye")
-* [http://hornetseye.sourceforge.net/](http://hornetseye.sourceforge.net/ "HornetsEye")
+* {file:docs/LoadUBYTE.md Read grey scale image}
 
 See also
 --------
