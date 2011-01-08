@@ -152,9 +152,9 @@ To install this Ruby extension, use the following command:
 
 ### hornetseye-xorg
 
-**hornetseye-xorg** facilitates display of videos and images under X.Org. It requires the X.Org development headers. You can install them as follows:
+**hornetseye-xorg** facilitates display of videos and images under X.Org. It requires the X.Org and Mesa development headers. You can install them as follows:
 
-    sudo aptitude install xserver-xorg-dev
+    sudo aptitude install xserver-xorg-dev libgl1-mesa-dev libglu1-mesa-dev
 
 To install this Ruby extension, use the following command:
 
