@@ -6,9 +6,13 @@ Installation
 GNU/Linux
 ---------
 
-First you need to install the build tools and Ruby 1.8 (or Ruby 1.9) with development headers. Under [Kubuntu](http://www.kubuntu.org/) or [Debian](http://www.debian.org/) you can do this using the following command:
+First you need to install the *build tools* and *Ruby 1.8* (or *Ruby 1.9*) with development headers. It is also recommended to install *libswscale-dev*. Under [Kubuntu](http://www.kubuntu.org/) or [Debian](http://www.debian.org/) you can do this using the following command:
 
-    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8
+    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 libswscale-dev
+
+If you want to retrieve sources, it is recommended to install the *Git* version control system:
+
+    sudo aptitude install git-core
 
 ### malloc
 
@@ -34,7 +38,7 @@ To install the Ruby extension, use the following command:
 
 ### hornetseye-alsa
 
-**hornetseye-alsa** provides an interface for playing audio data using the Advanced Linux Sound Architecture (ALSA). This Ruby extension requires the ALSA library. You can install it like this:
+**hornetseye-alsa** provides an interface for playing and recording audio data using the Advanced Linux Sound Architecture (ALSA). This Ruby extension requires the ALSA library. You can install it like this:
 
     sudo aptitude install libasound2-dev
 
@@ -54,9 +58,9 @@ To install the Ruby extension, use the following command:
 
 ### hornetseye-ffmpeg
 
-**hornetseye-ffmpeg** is useful for reading and writing video files with optional audio data. This Ruby extension requires the FFMpeg development headers. You can install them as follows:
+**hornetseye-ffmpeg** is useful for reading and writing video files with optional audio data. This Ruby extension requires the development headers for FFMpeg and the software scaling library. You can install them as follows:
 
-    sudo aptitude install libavformat-dev
+    sudo aptitude install libavformat-dev libswscale-dev
 
 To install this Ruby extension, use the following command:
 
@@ -64,19 +68,97 @@ To install this Ruby extension, use the following command:
 
 ### hornetseye-narray
 
+**hornetseye-narray** provides conversions between {NArray} (provided by *narray*) and {Hornetseye::MultiArray}. You can install it as follows:
+
+    sudo gem install hornetseye-narray
+
+If you have not used *RubyGems* to install *NArray*, you may have to install *hornetseye-narray* from source:
+
+    git clone git://github.com/wedesoft/hornetseye-narray.git
+    cd hornetseye-narray
+    rake
+    sudo rake install
+    cd ..
+
 ### hornetseye-opencv
+
+**hornetseye-opencv** provides conversions between {OpenCV::CvMat} (provided by *opencv*) and {Hornetseye::MultiArray}. You can install it as follows:
+
+    sudo gem install hornetseye-opencv
+
+If you are unable to use *RubyGems* to install *opencv*, you may have to install *hornetseye-opencv* from source:
+
+    git clone git://github.com/wedesoft/hornetseye-opencv.git
+    cd hornetseye-opencv
+    rake
+    sudo rake install
+    cd ..
+
+See [https://github.com/wedesoft/ruby-opencv](https://github.com/wedesoft/ruby-opencv) for more information on how to install *opencv* for Ruby.
 
 ### hornetseye-openexr
 
+**hornetseye-openexr** is useful for reading and writing EXR image files. EXR is a file format for high dynamic range images. This Ruby extension requires the OpenEXR development headers. You can install them as follows:
+
+    sudo aptitude install libopenexr-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-openexr
+
 ### hornetseye-qt4
+
+**hornetseye-qt4** implements a Qt4 widget (compatible with *qtruby4*) for hardware accelerated video output. This Ruby extension requires Qt4, QtRuby4 and the software scaling library. You can install them as follows:
+
+    sudo aptitude install libqt4-ruby1.8 qt4-dev-tools libswscale-dev
+
+You need to install *hornetseye-qt4* from source:
+
+    git clone git://github.com/wedesoft/hornetseye-qt4.git
+    cd hornetseye-qt4
+    rake
+    sudo rake install
+    cd ..
 
 ### hornetseye-rmagick
 
+**hornetseye-rmagick** provides file-I/O using the *RMagick* Ruby extension. *RMagick* requires the ImageMagick development headers. You can install them as follows:
+
+    sudo aptitude install libmagickwand-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-rmagick 
+
 ### hornetseye-v4l
+
+**hornetseye-v4l** is deprecated. It requires the Video for Linux development headers. You can install them as follows:
+
+    sudo aptitude install linux-libc-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-v4l
 
 ### hornetseye-v4l2
 
+**hornetseye-v4l2** is a wrapper for accessing webcams and frame grabbers. It requires the Video for Linux development headers. You can install them as follows:
+
+    sudo aptitude install linux-libc-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-v4l2
+
 ### hornetseye-xorg
+
+**hornetseye-xorg** facilitates display of videos and images under X.Org. It requires the X.Org development headers. You can install them as follows:
+
+    sudo aptitude install xserver-xorg-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-xorg
 
 Microsoft Windows
 -----------------
