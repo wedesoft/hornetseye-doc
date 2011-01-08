@@ -14,8 +14,8 @@ Example Programs
 
 ### Basic I/O
 
-* {file:docs/LoadUBYTE.md Read grey scale image}
-* {file:docs/LoadUBYTERGB.md Read colour image}
+* {file:docs/RMagick.md Loading and saving image files}
+* {file:docs/FFMpeg.md Reading and writing video files}
 
 See also
 --------
