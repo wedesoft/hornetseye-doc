@@ -15,6 +15,7 @@ Example Programs
 ### Basic I/O
 
 * {file:docs/LoadUBYTE.md Read grey scale image}
+* {file:docs/LoadUBYTERGB.md Read colour image}
 
 See also
 --------

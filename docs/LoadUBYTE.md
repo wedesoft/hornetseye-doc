@@ -9,6 +9,6 @@ This example shows how to load and display a grey scale image.  HornetsEye makes
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'test.jpg'
+    img = MultiArray.load_ubyte 'grey.png'
     img.show
 
