@@ -163,7 +163,7 @@ To install this Ruby extension, use the following command:
 Microsoft Windows
 -----------------
 
-HornetsEye for Microsoft Windows is not supported at the moment.
+HornetsEye for Microsoft Windows is not supported at the moment. The GDI and DirectShow support of the old (monolithic) version needs to be ported.
 
 Mac OS
 ------

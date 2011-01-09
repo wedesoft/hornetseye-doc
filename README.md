@@ -14,6 +14,7 @@ Example Programs
 
 ### Basic I/O
 
+* {file:docs/XOrg.md Displaying images}
 * {file:docs/RMagick.md Loading and saving image files}
 * {file:docs/FFMpeg.md Reading and writing video files}
 * {file:docs/Camera.md Capturing frames from a camera}
