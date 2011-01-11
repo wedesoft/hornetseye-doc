@@ -8,7 +8,7 @@ GNU/Linux
 
 First you need to install the *build tools* and *Ruby 1.8* (or *Ruby 1.9*) with development headers. It is also recommended to install *libswscale-dev*. Under [Kubuntu](http://www.kubuntu.org/) or [Debian](http://www.debian.org/) you can do this using the following command:
 
-    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 libswscale-dev
+    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 rubygems1.8 rake libswscale-dev
 
 If you want to retrieve sources, it is recommended to install the *Git* version control system:
 
