@@ -60,17 +60,19 @@ The simple API shown above is not sufficient for handling multiple windows. If m
     display = X11Display.new
     output = (0 ... 4).collect { XImageOutput.new }
     window = output.collect { |o| X11Window.new display, o, width, height }
+    window.zip( [ 'Video', 'Red', 'Green', 'Blue' ] ).collect { |w,title| w.title = title }
     window.each { |w| w.show }
     t = Time.new.to_f
     while display.status?
       img = input.read.to_ubytergb
       output[0].write img
-      output[1].write img * RGB( 1, 0, 0 )
-      output[2].write img * RGB( 0, 1, 0 )
-      output[3].write img * RGB( 0, 0, 1 )
+      output[1].write img.r
+      output[2].write img.g
+      output[3].write img.b
       display.event_loop [ t + dt - Time.new.to_f, 0 ].max
       t += dt
     end
+    window.each { |w| w.close }
 
 See Also
 --------

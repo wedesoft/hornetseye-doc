@@ -33,6 +33,20 @@ This example shows how to load, display, and save a colour image. If the image i
     img.show
     img.save_ubytergb '/tmp/colour.png'
 
+Swapping Colour Channels
+------------------------
+
+![Swapping colour channels](images/swap_rgb.png)
+
+The following example shows how one can swap the colour channels of an image using the method {Hornetseye::RGB#swap_rgb}.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img.swap_rgb.show
+
 See Also
 --------
 
