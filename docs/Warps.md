@@ -68,7 +68,7 @@ Compute Average
 
 ![Average](images/average.jpg)
 
-This example shows how to compute the average of a series of frames. You can use a program like this to reduce the noise in a picture by taking a large number of frames and computing the average.
+This example shows how to compute the average of a series of frames. You can use a program like this to reduce noise by averaging a large number of frames.
 
     require 'rubygems'
     require 'hornetseye_v4l2'
@@ -85,12 +85,32 @@ This example shows how to compute the average of a series of frames. You can use
     end
     img.show
 
+Bounding Box
+------------
+
+![Bounding box](images/bbox.jpg)
+
+A mask which specifies pixel locations of interest is created. The mask then is applied to an x-ramp and a y-ramp to find the bounding box. The area outside the bounding box finally is highlighted.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/viking.jpg'
+    mask = img <= 50
+    x = lazy( *img.shape ) { |i,j| i }
+    y = lazy( *img.shape ) { |i,j| j }
+    box = [ x.mask( mask ).range, y.mask( mask ).range ]
+    img[ *box ] = img[ *box ] / 2 + 0x7F
+    img.show
+
 See Also
 --------
 
 * {Hornetseye::Operations#lut}
 * {Hornetseye::Operations#histogram}
 * {Hornetseye::Operations#integral}
+* {Hornetseye::Operations#mask}
 
 External Links
 --------------
