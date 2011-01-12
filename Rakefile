@@ -7,10 +7,10 @@ require 'yard'
 
 PKG_NAME = 'hornetseye-doc'
 PKG_VERSION = '0.1.0'
-RB_FILES = FileList[ 'samples/**/*.rb' ]
+MD_FILES = FileList[ 'docs/*.md' ]
 IMG_FILES = FileList[ 'docs/images/*' ]
-PKG_FILES = [ 'Rakefile', 'README.md', 'COPYING', '.document' ] +
-            RB_FILES + IMG_FILES
+PKG_FILES = [ 'Rakefile', 'README.md', 'COPYING', '.document', '.yardopts' ] +
+            MD_FILES + IMG_FILES
 MODS = %w{malloc multiarray hornetseye-alsa hornetseye-dc1394 hornetseye-ffmpeg
           hornetseye-frame hornetseye-narray hornetseye-opencv hornetseye-openexr
           hornetseye-qt4 hornetseye-rmagick hornetseye-v4l hornetseye-v4l2
@@ -21,7 +21,6 @@ $SITELIBDIR = RbConfig::CONFIG[ 'sitelibdir' ]
 task :default => :yard
 
 YARD::Rake::YardocTask.new :yard do |y|
-  y.files << RB_FILES
 end
 
 MODS.each do |f|

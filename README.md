@@ -14,12 +14,18 @@ Example Programs
 
 ### Basic I/O
 
-* {file:docs/IRB.md Interactive Ruby Session}
+* {file:docs/IRB.md Interactive Ruby session}
 * {file:docs/XOrg.md Displaying images}
 * {file:docs/RMagick.md Loading and saving image files}
 * {file:docs/FFMpeg.md Reading and writing video files}
 * {file:docs/Camera.md Capturing frames from a camera}
 * {file:docs/ALSA.md Recording and playing audio}
+
+### Manipulating images
+
+* {file:docs/Pixel.md Element-wise operations}
+* {file:docs/Warps.md Histograms and Warps}
+
 
 See also
 --------
