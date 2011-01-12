@@ -90,7 +90,7 @@ The element-wise logarithm can be used to display images with a large contrast r
 Pseudo Colours
 --------------
 
-![Pseudo colours](images/pseudo.png)
+![Pseudo colours](images/pseudo.jpg)
 
 You can create pseudo-colour images in real-time. The example program loads a single greyscale image and converts it to pseudo colour. Pseudo colour are often used to display IR images.
 
@@ -111,7 +111,7 @@ You can create pseudo-colour images in real-time. The example program loads a si
              ( 120 - ( hue - 120 ).abs ).clip( 0...60 ) * 0xFF / 60.0,
              ( 120 - ( hue - 240 ).abs ).clip( 0...60 ) * 0xFF / 60.0 )
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
     img.lut( colours ).show
 
 See Also

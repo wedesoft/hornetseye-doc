@@ -104,6 +104,46 @@ A mask which specifies pixel locations of interest is created. The mask then is 
     img[ *box ] = img[ *box ] / 2 + 0x7F
     img.show
 
+Warps
+-----
+
+![Image Warp](images/polar.jpg)
+
+Images can be warped using vector fields. The warp vectors are indicating the location of the source pixel. The example warps an equirectangular projection to an azimuthal projection.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
+    w, h = *img.shape
+    c = 0.5 * h
+    x, y = lazy( h, h ) { |i,j| i - c }, lazy( h, h ) { |i,j| j - c }
+    angle = ( Math.atan2( x, y ) / Math::PI + 1 ) * w / 2
+    radius = Math.hypot( x, y )
+    img.warp( angle.to_int, radius.to_int ).show
+
+Colour Circle
+-------------
+
+![Colour circle](images/ccircle.jpg)
+
+You can create images yourself.  In this example an image with different colours is generated and the result is mapped to a circle using a vector-field.
+
+    require 'rubygems'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.ubytergb( 360, 128 ).fill!
+    x, y = lazy( *img.shape ) { |i,j| i }, lazy( *img.shape ) { |i,j| j }
+    img.r = ( ( ( x - 180 ).abs -  60 ).clip( 0..60 ) * y ).normalise
+    img.g = ( ( 120 - ( x - 120 ).abs ).clip( 0..60 ) * y ).normalise
+    img.b = ( ( 120 - ( x - 240 ).abs ).clip( 0..60 ) * y ).normalise
+    w, h = 256, 256
+    x, y = lazy( w, h ) { |i,j| i - 127.5 }, lazy( w, h ) { |i,j| j - 127.5 }
+    angle = Math.atan2( y, x ) * 180.0 / Math::PI + 179.5
+    radius = Math.hypot( y, x )
+    img.warp( angle.to_int, radius.to_int ).show
+
 See Also
 --------
 
@@ -111,6 +151,7 @@ See Also
 * {Hornetseye::Operations#histogram}
 * {Hornetseye::Operations#integral}
 * {Hornetseye::Operations#mask}
+* {Hornetseye::Operations#warp}
 
 External Links
 --------------
