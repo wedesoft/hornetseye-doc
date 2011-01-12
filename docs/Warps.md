@@ -33,6 +33,36 @@ Using integral arrays and element-wise lookup (map) one can implement histogram 
     img = MultiArray.load_sfloatrgb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
     img.equalise.show
 
+Otsu Thresholding
+-----------------
+
+![Otsu thresholding](images/otsu.png)
+
+The Otsu algorithm is an algorithm for automatic thresholding. The algorithm assumes that the image to be thresholded contains two classes of pixels and then chooses the threshold which minimizes the intra-class variance of the two classes defined by the resulting binary image. Otsu has reformulated this problem so that it can be computed efficiently with histograms.
+
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def otsu( hist_size = 256 )
+        h = histogram hist_size
+        idx = lazy( hist_size ) { |i| i }
+        w1 = h.integral
+        w2 = w1[ w1.size - 1 ] - w1
+        s1 = ( h * idx ).integral
+        s2 = sum - s1
+        m1 = w1 > 0
+        u1 = ( s1.mask( m1 ).to_sfloat / w1.mask( m1 ) ).unmask m1
+        m2 = w2 > 0
+        u2 = ( s2.mask( m2 ).to_sfloat / w2.mask( m2 ) ).unmask m2
+        between_variance = ( u1 - u2 ) ** 2 * w1 * w2
+        max_between_variance = between_variance.max
+        self > idx.mask( between_variance >= max_between_variance )[0]
+      end
+    end
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    ( img.otsu.to_ubyte * 255 ).show
+
 See Also
 --------
 
