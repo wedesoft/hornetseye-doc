@@ -63,9 +63,33 @@ The Otsu algorithm is an algorithm for automatic thresholding. The algorithm ass
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
     ( img.otsu.to_ubyte * 255 ).show
 
+Compute Average
+---------------
+
+![Average](images/average.jpg)
+
+This example shows how to compute the average of a series of frames. You can use a program like this to reduce the noise in a picture by taking a large number of frames and computing the average.
+
+    require 'rubygems'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    input = V4L2Input.new
+    average = nil
+    c = 0
+    img = X11Display.show do
+      img = input.read.to_ubytergb
+      average = average.nil? ? img.to_uintrgb : average + img
+      c += 1
+      average / c
+    end
+    img.show
+
 See Also
 --------
 
+* {Hornetseye::Operations#lut}
+* {Hornetseye::Operations#histogram}
 * {Hornetseye::Operations#integral}
 
 External Links
