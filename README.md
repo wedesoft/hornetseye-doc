@@ -26,7 +26,6 @@ Example Programs
 * {file:docs/Pixel.md Element-wise operations}
 * {file:docs/Warps.md Histograms and Warps}
 
-
 See also
 --------
 
