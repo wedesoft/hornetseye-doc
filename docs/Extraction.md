@@ -41,6 +41,24 @@ Roberts cross edge detector consists of two small filters. The image is correlat
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
     img.roberts.normalise( 0xFF .. 0 ).show
 
+Difference of Gaussian
+----------------------
+
+Laplacian of Gaussian
+---------------------
+
+Corner Strength by Yang et al.
+------------------------------
+
+Harris-Stephens Corner- and Edge-Detector
+-----------------------------------------
+
+Shi-Tomasi Corner-Detector
+--------------------------
+
+Feature Locations
+-----------------
+
 See Also
 --------
 

@@ -30,6 +30,28 @@ This is an example on how to compute the Sobel y-gradient. A correlation of the 
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
     img.sobel( 1 ).normalise.show
 
+Gaussian Blur
+-------------
+
+Van Cittert Deconvolution
+-------------------------
+
+Wiener Filter
+-------------
+
+Gauss Gradient
+--------------
+
+### X-Gradient
+
+### Y-Gradient
+
+Custom Filters
+--------------
+
+Connected Components Labeling
+-----------------------------
+
 See Also
 --------
 

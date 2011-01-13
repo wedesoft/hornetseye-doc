@@ -27,6 +27,7 @@ Example Programs
 * {file:docs/Warps.md Histograms and warps}
 * {file:docs/Filters.md Filters}
 * {file:docs/Extraction.md Feature extraction}
+* {file:docs/Applications.md Applications}
 
 See also
 --------
