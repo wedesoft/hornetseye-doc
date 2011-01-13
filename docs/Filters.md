@@ -56,8 +56,8 @@ Van Cittert deconvolution is an iterative algorithm for reversing a convolution 
     require 'hornetseye_xorg'
     include Hornetseye
     SIGMA = 3.0
-    N = 10
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/gaussblur.jpg'
+    N = 20
+    img = MultiArray.load_ubytergb( 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
     g = img.to_sfloatrgb
     N.times { g = img + g - g.gauss_blur( SIGMA ) }
     g.clip.show
