@@ -33,6 +33,17 @@ This is an example on how to compute the Sobel y-gradient. A correlation of the 
 Gaussian Blur
 -------------
 
+![Gaussian blur](images/gaussblur.jpg)
+
+This is an example on how to apply a Gauss blur filter.  The filter can be applied to colour images as well.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img.gauss_blur( 3.0 ).show
+
 Van Cittert Deconvolution
 -------------------------
 
