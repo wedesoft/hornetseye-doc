@@ -24,7 +24,9 @@ Example Programs
 ### Manipulating images
 
 * {file:docs/Pixel.md Element-wise operations}
-* {file:docs/Warps.md Histograms and Warps}
+* {file:docs/Warps.md Histograms and warps}
+* {file:docs/Filters.md Filters}
+* {file:docs/Extraction.md Feature extraction}
 
 See also
 --------
