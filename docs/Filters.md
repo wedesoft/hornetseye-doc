@@ -35,7 +35,7 @@ Gaussian Blur
 
 ![Gaussian blur](images/gaussblur.jpg)
 
-This is an example on how to apply a Gauss blur filter.  The filter can be applied to colour images as well.
+This is an example on how to apply a Gauss blur filter. The filter can be applied to colour images as well.
 
     require 'rubygems'
     require 'hornetseye_rmagick'
@@ -46,6 +46,21 @@ This is an example on how to apply a Gauss blur filter.  The filter can be appli
 
 Van Cittert Deconvolution
 -------------------------
+
+![Van Cittert deconvolution](images/vancittert.jpg)
+
+Van Cittert deconvolution is an iterative algorithm for reversing a convolution with a known point spread function. To demonstrate the algorithm, the result of the Gaussian blur is used. The Van Cittert algorithm then is applied to this image to estimate the original input image. The first iteration of the algorithm uses the blurred image as an estimate.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    SIGMA = 3.0
+    N = 10
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/gaussblur.jpg'
+    g = img.to_sfloatrgb
+    N.times { g = img + g - g.gauss_blur( SIGMA ) }
+    g.clip.show
 
 Wiener Filter
 -------------
