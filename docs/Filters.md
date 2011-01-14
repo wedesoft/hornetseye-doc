@@ -70,10 +70,54 @@ Gauss Gradient
 
 ### X-Gradient
 
+![Gauss x-gradient](images/gaussgradx.jpg)
+
+This is an example on how to compute the Gaussian x-gradient.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img.gauss_gradient( 3.0, 0 ).normalise.show
+
 ### Y-Gradient
+
+![Gauss y-gradient](images/gaussgrady.jpg)
+
+This is an example on how to compute the Gaussian y-gradient.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img.gauss_gradient( 3.0, 1 ).normalise.show
 
 Custom Filters
 --------------
+
+![Custom filter](images/sharpen.jpg)
+
+    +------+------+------+
+    |  -k  |  -k  |  -k  |
+    +------+------+------+
+    |  -k  | 8k+1 |  -k  |
+    +------+------+------+
+    |  -k  |  -k  |  -k  |
+    +------+------+------+
+
+HornetsEye supports fast convolution with custom filters. In this example a 3x3 sharpness filter is created and used to sharpen the input image (here k=0.4). Note that the filter in this example is not separable. If your filter is separable you should exploit this to improve the speed of the filtering operation.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    K = 0.4
+    filter = MultiArray[ [ -K, -K, -K ], [ -K,  8 * K + 1, -K ], [ -K, -K, -K ] ]
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    result = img.convolve filter
+    result.clip.show
 
 Connected Components Labeling
 -----------------------------
@@ -88,4 +132,5 @@ External Links
 --------------
 
 * [Sobel operator](http://en.wikipedia.org/wiki/Sobel_operator)
+* [Unsharp masking](http://en.wikipedia.org/wiki/Unsharp_masking)
 

@@ -44,6 +44,18 @@ Roberts cross edge detector consists of two small filters. The image is correlat
 Difference of Gaussian
 ----------------------
 
+![Difference of Gaussian](images/dog.jpg)
+
+The difference of Gaussian is simply the difference of two Gaussian filters of different size.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    dog = img.gauss_blur( 1.5 ) - img.gauss_blur( 3.0 )
+    dog.normalise.show
+
 Laplacian of Gaussian
 ---------------------
 
@@ -67,4 +79,5 @@ External Links
 
 * [Sobel operator](http://en.wikipedia.org/wiki/Sobel_operator)
 * [Roberts cross edge detector](http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm)
+* [Difference of Gaussian](http://en.wikipedia.org/wiki/Difference_of_Gaussians)
 
