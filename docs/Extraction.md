@@ -109,14 +109,43 @@ This program implements the Harris-Stephens corner- and edge-detector. In the re
     r = det - tr * tr * K
     r.normalise.show
 
-Shi-Tomasi Corner-Detector
+Shi-Tomasi Corner Detector
 --------------------------
+
+![Shi-Tomasi corner detector](images/shi.png)
+
+Here is an implementation of the Shi-Tomasi corner-detector.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    GRAD_SIGMA = 1
+    COV_SIGMA = 1
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    x = img.gauss_gradient GRAD_SIGMA, 0
+    y = img.gauss_gradient GRAD_SIGMA, 1
+    a = ( x ** 2 ).gauss_blur COV_SIGMA
+    b = ( y ** 2 ).gauss_blur COV_SIGMA
+    c = ( x * y  ).gauss_blur COV_SIGMA
+    tr = a + b
+    det = a * b - c * c
+    # "major" is needed to deal with numerical errors.
+    dissqrt = Math.sqrt( ( tr * tr - det * 4 ).major( 0.0 ) )
+    # Take smallest eigenvalue. Eigenvalues are "0.5 * ( tr +- dissqrt)"
+    result = 0.5 * ( tr - dissqrt )
+    result.normalise( 0xFF .. 0 ).show
 
 Feature Locations
 -----------------
 
 See Also
 --------
+
+* {Hornetseye::Operations#convolve}
+* {Hornetseye::Operations#sobel}
+* {Hornetseye::Operations#gauss_blur}
+* {Hornetseye::Operations#gauss_gradient}
 
 External Links
 --------------
@@ -127,4 +156,5 @@ External Links
 * [Difference of Gaussian](http://en.wikipedia.org/wiki/Difference_of_Gaussians)
 * [Corner strength by Yang et al.](http://pubs.doc.ic.ac.uk/structure-anisotropic-image/)
 * [Harris-Stephens corner- and edge detector](www.bmva.org/bmvc/1988/avc-88-023.pdf)
+* [Kanade-Lucas-Tomasi feature tracker](http://www.ces.clemson.edu/~stb/klt/)
 
