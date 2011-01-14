@@ -62,8 +62,52 @@ Laplacian of Gaussian
 Corner Strength by Yang et al.
 ------------------------------
 
+![Corner strength by Yang et al.](images/yang.png)
+
+The following program computes the corner strength measure by Yang, Burger, Firmin, and Underwood.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    GRAD_SIGMA = 2.0
+    COV_SIGMA = 1.0
+    NOISE = 1.0
+    EXP = 0.5
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    x = img.gauss_gradient GRAD_SIGMA, 0
+    y = img.gauss_gradient GRAD_SIGMA, 1
+    a = ( x ** 2 ).gauss_blur COV_SIGMA
+    b = ( y ** 2 ).gauss_blur COV_SIGMA
+    c = ( x * y  ).gauss_blur COV_SIGMA
+    g = ( ( a - b ) ** 2 + ( 2 * c ) ** 2 ) / ( a + b + NOISE ** 2 ) ** 2
+    result = g.normalise( 1.0 .. 0.0 ) ** EXP * ( x ** 2 + y ** 2 )
+    result.normalise( 0xFF .. 0 ).show
+
 Harris-Stephens Corner- and Edge-Detector
 -----------------------------------------
+
+![Harris-Stephens corner- and edge-detector](images/harris.png)
+
+This program implements the Harris-Stephens corner- and edge-detector. In the resulting image corners will appear white while edges will become black.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    GRAD_SIGMA = 1
+    COV_SIGMA = 1
+    K = 0.05
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    x = img.gauss_gradient GRAD_SIGMA, 0
+    y = img.gauss_gradient GRAD_SIGMA, 1
+    a = ( x ** 2 ).gauss_blur COV_SIGMA
+    b = ( y ** 2 ).gauss_blur COV_SIGMA
+    c = ( x * y  ).gauss_blur COV_SIGMA
+    tr = a + b
+    det = a * b - c * c
+    r = det - tr * tr * K
+    r.normalise.show
 
 Shi-Tomasi Corner-Detector
 --------------------------
@@ -79,5 +123,8 @@ External Links
 
 * [Sobel operator](http://en.wikipedia.org/wiki/Sobel_operator)
 * [Roberts cross edge detector](http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm)
+* [Corner detection](http://en.wikipedia.org/wiki/Corner_detection)
 * [Difference of Gaussian](http://en.wikipedia.org/wiki/Difference_of_Gaussians)
+* [Corner strength by Yang et al.](http://pubs.doc.ic.ac.uk/structure-anisotropic-image/)
+* [Harris-Stephens corner- and edge detector](www.bmva.org/bmvc/1988/avc-88-023.pdf)
 
