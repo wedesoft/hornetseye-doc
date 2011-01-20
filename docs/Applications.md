@@ -367,6 +367,98 @@ This example shows how you can use Gnuplot to make a 3D plot of a two-dimensiona
 Depth from Focus
 ----------------
 
+![Depth from focus](images/stack.png)
+
+This is an implementation of depth of focus. The Sobel gradient magnitude of the focus stack is used as a sharpness measure. An image with extended depth of field is created (deep view). Furthermore a height field is generated. With POVRay the height field and the deep view can be used to generate a 3D rendering.
+
+Note that the [trollop](http://trollop.rubyforge.org/) Ruby-extension is required for parsing the command line.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    require 'trollop'
+    include Hornetseye
+    opts = Trollop::options do
+      banner <<EOS
+    Generate height field and deep view from focus stack.
+    
+    Usage:
+           ./depthfromfocus.rb [options] <file names>+
+    
+    where [options] are:
+    EOS
+      opt :sigma, 'Sigma for Gaussian blur (1/pixelsize)', :default => 2.5
+      opt :field, 'Output PGM file name for height field', :type => String
+      opt :view, 'Output PPM file name for deep view', :type => String
+      opt :alternative, 'Threat later half of filenames as alternative focus ' +
+          'stack to generate deep view'
+    end
+    sigma = opts[ :sigma ]
+    Trollop::die :sigma, 'must be greater than zero' unless sigma > 0
+    field_file = opts[ :field ]
+    Trollop::die :field, 'is required' unless field_file
+    view_file = opts[ :view ]
+    Trollop::die :view, 'is required' unless view_file
+    alternative = opts[ :alternative ]
+    if alternative
+      if ARGV.size % 2 != 0
+        Trollop::die 'Even number of file names required when using alternative ' +
+          'focus stack'
+      end
+      n = ARGV.size / 2
+      stack_file = ARGV.slice! 0, n
+      alternative_file = ARGV.slice! 0, n
+    else
+      stack_file = ARGV
+      alternative_file = nil
+    end
+    Trollop::die 'Cannot handle more than 255 files' if stack_file.size > 255
+    display = X11Display.new
+    field_output = XImageOutput.new
+    view_output = XImageOutput.new
+    field_window = X11Window.new display, field_output, 320, 240
+    view_window = X11Window.new display, view_output, 320, 240
+    field, view, max_sharpness = nil, nil, nil
+    stack_file.each_with_index do |f_name,i|
+      img = MultiArray.load_ubytergb f_name
+      if field
+        if img.shape != field.shape
+          raise "Image '#{f_name}' must be of size #{field.shape[0]}x" +
+            "#{field.shape[1]} (but was #{img.shape[0]}x#{img.shape[1]})"
+        end
+      else
+        field = MultiArray.ubyte( *img.shape ).fill!
+        view = MultiArray.ubytergb( *img.shape ).fill!
+        max_sharpness = MultiArray.dfloat( *img.shape ).fill!
+        field_window.resize *img.shape
+        view_window.resize *img.shape
+        field_window.show
+        view_window.show
+      end
+      sharpness = ( img.sobel( 0 ) ** 2 +
+                    img.sobel( 1 ) ** 2 ).to_dfloat.gauss_blur sigma
+      mask = sharpness > max_sharpness
+      field = mask.conditional i, field
+      if alternative
+        alternative_img = MultiArray.load_ubytergb alternative_file[ i ]
+        view = mask.conditional alternative_img, view
+      else
+        view = mask.conditional img, view
+      end
+      max_sharpness = mask.conditional sharpness, max_sharpness
+      progress = "#{ "%3d" % i }/#{ "%3d" % stack_file.size }"
+      field_window.title = "Height field (#{progress})"
+      view_window.title = "Deep view (#{progress})"
+      field_output.write field * ( 255.0 / stack_file.size )
+      view_output.write view
+      display.process_events
+    end
+    field.save_ubyte field_file
+    view.save_ubytergb view_file
+    field_window.title = 'Height field'
+    view_window.title = 'Deep view'
+    display.event_loop
+
 Line Fit
 --------
 
@@ -401,4 +493,5 @@ External Links
 
 * [Gnuplot](http://www.gnuplot.info/)
 * [Ruby Gnuplot](http://rgplot.rubyforge.org/)
+* [trollop](http://trollop.rubyforge.org/)
 
