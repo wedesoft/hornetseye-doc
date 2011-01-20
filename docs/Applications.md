@@ -286,8 +286,83 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
 2D Plot
 -------
 
+![2D plot](images/plot2d.png)
+
+With Gordon James Miller's [rgplot](http://rgplot.rubyforge.org/) package you can use [Gnuplot](http://www.gnuplot.info/) from within Ruby. This example shows how you can plot the histogram of an image.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'gnuplot'
+    include Hornetseye
+    def plot( *arrs )
+      options = arrs.last.is_a?( Hash ) ? arrs.pop : {}
+      { :title => [ nil ] * arrs.size }.merge options
+      title = options[ :title ]
+      title = [ title ] unless title.is_a? Array
+      Gnuplot.open do |gp|
+        Gnuplot::Plot.new( gp ) do |plot|
+          arrs.zip( title ).each do |arr,t|
+            x = (0...arr.size).collect { |v| v.to_f }
+            plot.data << Gnuplot::DataSet.new( [ x, arr ] ) do |ds|
+              ds.with = "linespoints"
+              if t
+                ds.title = t
+              else
+                ds.notitle
+              end
+            end
+          end
+        end
+      end
+      nil
+    end
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    plot img.histogram( 256 ), :title => [ 'Histogram' ]
+
 3D Plot
 -------
+
+![3D plot](images/plot3d.png)
+
+This example shows how you can use Gnuplot to make a 3D plot of a two-dimensional array.
+
+    require 'rubygems'
+    require 'multiarray'
+    require 'gnuplot'
+    include  Hornetseye
+    class Node
+      def to_gsplot
+        retval = ""
+        for j in 0...shape[1]
+          for i in 0...shape[0]
+            retval += " #{self[i,j]}"
+          end
+          retval += "\n"
+        end
+        retval += "\n"
+        retval
+      end
+      def plot
+        Gnuplot.open do |gp|
+          Gnuplot::SPlot.new( gp ) do |plot|
+            plot.pm3d
+            plot.hidden3d
+            plot.palette 'defined (   0 "black", 51 "blue", 102 "green", ' +
+                                   '153 "yellow", 204 "red", 255 "white" )'
+            plot.data << Gnuplot::DataSet.new( self ) do |ds|
+              ds.with = 'lines'
+              ds.matrix = true
+            end
+          end
+        end
+      end
+    end
+    s = lazy( 60 ) { |i| ( i + 0.5 - 60 / 2 ) / Math::PI }
+    sinc = finalise do |i,j|
+      r = Math.hypot s[i], s[j]
+      Math.sin( r ) / r
+    end
+    sinc.plot
 
 Depth from Focus
 ----------------
@@ -324,4 +399,6 @@ See Also
 External Links
 --------------
 
+* [Gnuplot](http://www.gnuplot.info/)
+* [Ruby Gnuplot](http://rgplot.rubyforge.org/)
 
