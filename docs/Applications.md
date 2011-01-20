@@ -477,6 +477,9 @@ Mean Shift Tracking
 Camshift Tracking
 -----------------
 
+This is an implementation of the Camshift algorithm for real-time tracking.  The algorithm tracks the object by maximising the similarity of a hue reference histogram and a hue scene histogram.
+
+
 Lucas-Kanade Tracker
 --------------------
 
@@ -494,4 +497,6 @@ External Links
 * [Gnuplot](http://www.gnuplot.info/)
 * [Ruby Gnuplot](http://rgplot.rubyforge.org/)
 * [trollop](http://trollop.rubyforge.org/)
+* [Camshift publication](ftp://download.intel.com/technology/itj/q21998/pdf/camshift.pdf)
+* [Camshift video](http://vision.eng.shu.ac.uk/jan/camshift.avi) ([Youtube](http://www.youtube.com/watch?v=LBXgXqtt1F8))
 
