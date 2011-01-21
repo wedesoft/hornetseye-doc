@@ -581,4 +581,6 @@ External Links
 * [Gnuplot](http://www.gnuplot.info/)
 * [Ruby Gnuplot](http://rgplot.rubyforge.org/)
 * [trollop](http://trollop.rubyforge.org/)
+* [Camshift publication](ftp://download.intel.com/technology/itj/q21998/pdf/camshift.pdf)
+* [Camshift video](http://vision.eng.shu.ac.uk/jan/camshift.avi) ([Youtube](http://www.youtube.com/watch?v=LBXgXqtt1F8))
 
