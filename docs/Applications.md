@@ -477,6 +477,93 @@ Mean Shift Tracking
 Camshift Tracking
 -----------------
 
+![Camshift](images/camshift.jpg)
+
+This is an implementation of the Camshift algorithm for real-time tracking. The algorithm tracks the object by maximising the similarity of a hue reference histogram and a hue scene histogram.
+
+    require 'rubygems'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    WIDTH = 320
+    BOX_SIZE = 64
+    SHIFT = 3
+    N = 0x100 >> SHIFT
+    RANGE = 0x30 .. 0xD0
+    MAX_ITER = 5
+    RATIO = 1.2
+    HUE = finalise N, N, N do |x,y,z|
+      r, g, b = ( x + 0.5 ) / N, ( y + 0.5 ) / N, ( z + 0.5 ) / N
+      min = r.minor( g ).minor b
+      max = r.major( g ).major b
+      max.eq( min ).
+        conditional( 0,
+          max.eq( r ).and( g >= b ).
+          conditional( 60 * ( g - b ) / ( max - min ),
+             max.eq( r ).and( g < b ).
+             conditional( 60 * ( g - b ) / ( max - min ) + 360,
+               max.eq( g ).
+               conditional( 60 * ( b - r ) / ( max - min ) + 120,
+                            60 * ( r - g ) / ( max - min ) + 240 ) ) ) )
+    end
+    SAT = finalise N, N, N do |x,y,z|
+      r, g, b = ( x + 0.5 ) / N, ( y + 0.5 ) / N, ( z + 0.5 ) / N
+      min = r.minor( g ).minor b
+      max = r.major( g ).major b
+      max.eq( 0 ).conditional 0, 255 * ( max - min ) / max
+    end
+    MIN = finalise N, N, N do |x,y,z|
+      r, g, b = ( x + 0.5 ) / N, ( y + 0.5 ) / N, ( z + 0.5 ) / N
+      r.minor( g ).minor b
+    end
+    MAX = finalise N, N, N do |x,y,z|
+      r, g, b = ( x + 0.5 ) / N, ( y + 0.5 ) / N, ( z + 0.5 ) / N
+      r.major( g ).major b
+    end
+    input = V4L2Input.new do |modes|
+      modes.select { |mode| mode.rgb? }.sort_by { |mode| ( mode.width - WIDTH ).abs }.first
+    end
+    box = [ ( input.width  - BOX_SIZE ) / 2 ... ( input.width  + BOX_SIZE ) / 2,
+            ( input.height - BOX_SIZE ) / 2 ... ( input.height + BOX_SIZE ) / 2 ]
+    reference = nil
+    X11Display.show :title => 'Capture Reference Histogram' do
+      img = input.read.to_ubytergb.flip 0
+      reference = img[ *box ].dup
+      img[ *box ] = 0x80 + ( reference >> 1 )
+      img
+    end
+    histogram = ( reference >> SHIFT ).lut( HUE.to_usint ).histogram 360
+    flesh_map = ( MIN >= RANGE.begin / 256.0 ).and( MAX <= RANGE.end / 256.0 ).
+      conditional( HUE.to_usint.lut( histogram ), 0 )
+    cx, cy = input.width / 2, input.height / 2
+    w, h = BOX_SIZE, ( BOX_SIZE * RATIO ).to_i
+    X11Display.show :title => 'Camshift' do
+      image = input.read.to_ubytergb.flip 0
+      n = 0
+      sum = 0
+      begin
+        region = image[ cx - w / 2 ... cx - w / 2 + w, cy - h / 2 ... cy - h / 2 + h ]
+        weight = ( region >> SHIFT ).lut flesh_map
+        old_sum = sum
+        sum = weight.sum
+        if sum > 0
+          dx = sum { |i,j| weight[ i, j ] * i } / sum
+          dy = sum { |i,j| weight[ i, j ] * j } / sum
+          cx = cx + dx - w / 2
+          cy = cy + dy - h / 2
+          s = 2 * Math.sqrt( sum / flesh_map.max.to_f / RATIO )
+          w, h = s.to_i, ( s * RATIO ).to_i
+          w = [ [ w, 3 ].max, input.width ].min
+          h = [ [ h, 3 ].max, input.height ].min
+          cx = [ [ cx, w / 2 ].max, input.width  - w + w / 2 ].min.to_i
+          cy = [ [ cy, h / 2 ].max, input.height - h + h / 2 ].min.to_i
+        end
+        n += 1
+      end while old_sum < sum and n < MAX_ITER 
+      image[ cx - w / 2 ... cx - w / 2 + w, cy - h / 2 ... cy - h / 2 + h ] /= 2
+      image
+    end
+
 Lucas-Kanade Tracker
 --------------------
 
