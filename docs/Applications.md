@@ -570,6 +570,164 @@ Lucas-Kanade Tracker
 EAN-13 Barcode Reader
 ---------------------
 
+![EAN-13 Barcode reader](images/barcode.png)
+
+The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image.  However the application can read barcodes forwards as well as backwards.
+
+    require 'rubygems'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_xorg'
+    require 'hornetseye_rmagick'
+    include Hornetseye
+    class Integer
+      def checksum
+        x = self / 10
+        retval = 0
+        while x > 0
+          retval += ( x % 10 ) * 3
+          x /= 10
+          retval += x
+          x /= 10
+        end
+        retval = retval % 10
+        retval = 10 - retval unless retval == 0
+        retval
+      end
+      def check?
+        checksum == self % 10
+      end
+    end
+    input = V4L2Input.new { |modes| modes.sort_by { |mode| ( mode.width - 640 ).abs }.first }
+    SIGMA = 20.0
+    NOISE = 10.0
+    ERR_THRESH = 0.25
+    WIDTH, HEIGHT = input.width, input.height
+    result = MultiArray.ubytergb WIDTH, HEIGHT + 100
+    result[ HEIGHT ... HEIGHT + 100 ] = 128
+    segment = Sequence[ *( [ 0 ] * 3 +
+                           ( 1 .. 6 ).collect { |i| [ i ] * 4 }.flatten +
+                           [ 7 ] * 5 +
+                           ( 8 .. 13 ).collect { |i| [ i ] * 4 }.flatten +
+                           [ 14 ] * 3 ) ]
+    digits = MultiArray[ [ [ 0, 0, 0, 1, 1, 0, 1 ],
+                           [ 0, 0, 1, 1, 0, 0, 1 ],
+                           [ 0, 0, 1, 0, 0, 1, 1 ],
+                           [ 0, 1, 1, 1, 1, 0, 1 ],
+                           [ 0, 1, 0, 0, 0, 1, 1 ],
+                           [ 0, 1, 1, 0, 0, 0, 1 ],
+                           [ 0, 1, 0, 1, 1, 1, 1 ],
+                           [ 0, 1, 1, 1, 0, 1, 1 ],
+                           [ 0, 1, 1, 0, 1, 1, 1 ],
+                           [ 0, 0, 0, 1, 0, 1, 1 ] ],
+                         [ [ 0, 1, 0, 0, 1, 1, 1 ],
+                           [ 0, 1, 1, 0, 0, 1, 1 ],
+                           [ 0, 0, 1, 1, 0, 1, 1 ],
+                           [ 0, 1, 0, 0, 0, 0, 1 ],
+                           [ 0, 0, 1, 1, 1, 0, 1 ],
+                           [ 0, 1, 1, 1, 0, 0, 1 ],
+                           [ 0, 0, 0, 0, 1, 0, 1 ],
+                           [ 0, 0, 1, 0, 0, 0, 1 ],
+                           [ 0, 0, 0, 1, 0, 0, 1 ],
+                           [ 0, 0, 1, 0, 1, 1, 1 ] ],
+                         [ [ 1, 1, 1, 0, 0, 1, 0 ],
+                           [ 1, 1, 0, 0, 1, 1, 0 ],
+                           [ 1, 1, 0, 1, 1, 0, 0 ],
+                           [ 1, 0, 0, 0, 0, 1, 0 ],
+                           [ 1, 0, 1, 1, 1, 0, 0 ],
+                           [ 1, 0, 0, 1, 1, 1, 0 ],
+                           [ 1, 0, 1, 0, 0, 0, 0 ],
+                           [ 1, 0, 0, 0, 1, 0, 0 ],
+                           [ 1, 0, 0, 1, 0, 0, 0 ],
+                           [ 1, 1, 1, 0, 1, 0, 0 ] ] ].to_byte
+    patterns = MultiArray[ [ 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 0, 1, 0, 1, 1, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 0, 1, 1, 0, 1, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 0, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 0, 0, 1, 1, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 1, 0, 0, 1, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 0, 1, 0, 1, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 2 ],
+                           [ 0, 1, 1, 0, 1, 0, 2, 2, 2, 2, 2, 2 ] ].to_byte
+    X11Display.show do
+      img = input.read.to_ubyte
+      avg = img[ HEIGHT / 2 ]
+      mean = avg.gauss_blur SIGMA
+      var = Math.sqrt( ( ( avg - mean ) ** 2 ).gauss_blur( SIGMA ) )
+      binary = ( avg < mean ).and( var >= NOISE )
+      up = binary.to_ubyte.convolve( Sequence[ 1, -1 ] ).major 0
+      down = binary.to_ubyte.convolve( Sequence[ -1, 1 ] ).major 0
+      stripe = ( up + down ).integral
+      n = up.sum
+      views = Sequence.int( avg.size ).fill! 128
+      zebra = Sequence.ubyte( avg.size ).fill! 128
+      for o in 0 .. n - 30
+        msk = ( stripe >= 2 * o + 1 ).and stripe <= 2 * o + 59
+        range = lazy( WIDTH ) { |i| i }.mask( msk ).range
+        views += msk.to_ubyte
+        code = ( stripe[ range ] - 2 * o - 1 ).lut segment
+        sequence = binary[ range ]
+        s = sequence.mask( code.eq( 0 ) ).to_byte
+        m = sequence.mask( code.eq( 7 ) ).to_byte
+        e = sequence.mask( code.eq( 14 ) ).to_byte
+        c = Sequence[ 0, *( [ 1 ] * 6 + [ 0 ] + [ 1 ] * 6 + [0] ) ].to_bool
+        skew = code.histogram( 15 ).mask( c ).range
+        if skew.max < skew.min * 1.3
+          s_ = Sequence[ 1, 0, 1 ].warp lazy( s.size ) { |i| i * 3 / s.size }
+          m_ = Sequence[ 0, 1, 0, 1, 0 ].warp lazy( m.size ) { |i| i * 5 / m.size }
+          e_ = Sequence[ 1, 0, 1 ].warp lazy( e.size ) { |i| i * 3 / e.size }
+          if ( s - s_ ).abs.sum < s.size * ERR_THRESH and
+             ( m - m_ ).abs.sum < m.size * ERR_THRESH and
+             ( e - e_ ).abs.sum < m.size * ERR_THRESH
+            zebra = ( ( code % 2 ) * 255 ).unmask msk, :default => 128
+            number = Hash.new 0
+            max_err = Hash.new 0.0
+            exp = { :forward => 11, :backward => 0 }
+            ( ( 1 .. 6 ).to_a + ( 8 .. 13 ).to_a ).each do |k|
+              cut = sequence.mask code.eq( k )
+              d = { :forward => cut, :backward => cut.flip( 0 ) }
+              span = lazy( cut.size ) { |i| i * 7 / cut.size }
+              d_ = digits.roll.warp( span ).unroll
+              [ :forward, :backward ].each do |dir|
+                err = ( 0 ... 3 ).collect do |lgr|
+                  sum { |i| lazy { |j| ( d[ dir ].to_byte[ i ] - d_[ lgr ][ j ][ i ] ).abs } }
+                end
+                for i in 0 .. 9
+                  lgr = patterns[ i ][ 11 - exp[ dir ] ]
+                  match = lazy( err[ lgr ].size ) { |i| i }.mask( err[ lgr ] <= err[ lgr ].min )[0]
+                  max_err[ [ dir, i ] ] = [ max_err[ [ dir, i ] ], err[ lgr ][ match ].to_f / cut.size ].max
+                  number[ [ dir, i ] ] += match * 10 ** exp[ dir ]
+                end
+              end
+              exp[ :forward ] -= 1
+              exp[ :backward ] += 1
+            end
+            opt = max_err.min { |x,y| x[1] <=> y[1] }.first
+            number, max_err = number[ opt ] + opt[1] * 10 ** 12, max_err[ opt ]
+            if max_err < ERR_THRESH and number.check?
+              text = Magick::Image.new 100, 20
+              draw = Magick::Draw.new
+              draw.gravity Magick::CenterGravity
+              draw.text 0, 0, "%013d" % number
+              draw.draw text
+              result[ 0 ... WIDTH - text.columns, HEIGHT + 80 ... HEIGHT + 100 ] =
+                result[ text.columns ... WIDTH, HEIGHT + 80 ... HEIGHT + 100 ]
+              result[ WIDTH - text.columns ... WIDTH, HEIGHT + 80 ... HEIGHT + 100 ] =
+                text.to_multiarray
+              break
+            end
+          end
+        end
+      end
+      result[ 0 ... WIDTH, 0 ... HEIGHT ] = img
+      result[ HEIGHT / 2 ] = ~img[ HEIGHT / 2 ]
+      result[ 0 ... WIDTH, HEIGHT ... HEIGHT + 20 ].roll[] = avg
+      result[ 0 ... WIDTH, HEIGHT + 20 ... HEIGHT + 40 ].roll[] = binary.not.to_ubyte * 255
+      result[ 0 ... WIDTH, HEIGHT + 40 ... HEIGHT + 60 ].roll[] = views.normalise
+      result[ 0 ... WIDTH, HEIGHT + 60 ... HEIGHT + 80 ].roll[] = zebra
+      result
+    end
+
 See Also
 --------
 
@@ -583,4 +741,8 @@ External Links
 * [trollop](http://trollop.rubyforge.org/)
 * [Camshift publication](ftp://download.intel.com/technology/itj/q21998/pdf/camshift.pdf)
 * [Camshift video](http://vision.eng.shu.ac.uk/jan/camshift.avi) ([Youtube](http://www.youtube.com/watch?v=LBXgXqtt1F8))
+* [European Article Number](http://en.wikipedia.org/wiki/European_Article_Number)
+* [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
+* [UPC database](http://www.upcdatabase.com/)
+* [EAN-13 reader video](http://vision.eng.shu.ac.uk/jan/barcode6.avi) ([Youtube](http://www.youtube.com/watch?v=Sv28MUMM_EA))
 
