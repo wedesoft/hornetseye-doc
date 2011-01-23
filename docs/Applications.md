@@ -465,6 +465,115 @@ Line Fit
 PCA Recognition
 ---------------
 
+![PCA recognition](images/pca.jpg)
+
+The example program performs two-dimensional object recognition with three degrees of freedom. This is a customised algorithm which only works on images showing a single object which can be detected using colour-segmentation. In a controlled environment however this algorithm can be very useful as it is easy to implement. This algorithm has become popular recently in the context of touchless interfaces.
+
+    require 'rubygems'
+    require 'matrix'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_qt4'
+    include Hornetseye
+    class Node
+      def rgbabs
+        r.abs + g.abs + b.abs
+      end
+    end
+    class PCAWindow < Qt::Widget
+      SIZE2 = 20
+      def initialize
+        super
+        self.windowTitle = "PCA Recognition"
+        @xvideo = Hornetseye::XvWidget.new self
+        @slider = Qt::Slider.new Qt::Horizontal
+        @checkbox = Qt::CheckBox.new '&Freeze Reference', self
+        @slider.minimum = 0
+        @slider.value = 32
+        @slider.maximum = 128
+        layout = Qt::VBoxLayout.new self
+        layout.addWidget @xvideo
+        hlayout = Qt::HBoxLayout.new
+        hlayout.addWidget @slider
+        hlayout.addWidget @checkbox
+        layout.addLayout hlayout
+        @input = V4L2Input.new # DC1394Input.new
+        @w, @h = @input.width, @input.height
+        resize @w, @h
+        @reference = RGB 128, 128, 128
+        @x, @y = lazy( @w, @h ) { |i,j| i }, lazy( @w, @h ) { |i,j| j }
+        @xx, @yy, @xy = @x ** 2, @y ** 2, @x * @y
+        @old_eigenvector = Vector[ 1, 0 ]
+        startTimer 0
+      end
+      def timerEvent( e )
+        img = @input.read.to_ubytergb
+        if not @checkbox.checked?
+          box = [ ( @w / 2 - SIZE2 )...( @w / 2 + SIZE2 ),
+                  ( @h / 2 - SIZE2 )...( @h / 2 + SIZE2 ) ]
+          area = img[ *box ]
+          @reference = area.sum / area.size
+        else
+        end
+        mask = ( img.to_sintrgb - @reference ).rgbabs < @slider.value
+        img = mask.conditional @reference / 2 + RGB( 128, 128, 128 ), img
+        if not @checkbox.checked?
+          img[ *box ] = 255 - area
+        else
+          n = mask.to_ubyte.sum
+          if n > 0
+            sum = Vector[ @x.mask( mask ).sum, @y.mask( mask ).sum ]
+            center = sum * ( 1.0 / n )
+            xx = @xx.mask( mask ).sum
+            yy = @yy.mask( mask ).sum
+            xy = @xy.mask( mask ).sum
+            squares = Matrix[ [ xx, xy ], [ xy, yy ] ]
+            covariance = ( n * squares - sum.covector.transpose * sum.covector ) /
+              ( n ** 2 ).to_f
+            discriminant = ( covariance.trace ** 2 - 4 * covariance.determinant )
+            discriminant = 0.0 if discriminant < 0.0
+            # Take smallest eigenvalue. Eigenvalues are
+            # "0.5 * ( covariance.trace +- Math.sqrt( discriminant ) )"
+            lambda1 = 0.5 * ( covariance.trace - Math.sqrt( discriminant ) )
+            eigenspace = covariance - lambda1 * Matrix.unit( 2 )
+            # Compute eigenvector by projecting basis-vectors.
+            vector1 = eigenspace * Vector[ 1, 0 ] - Vector[ 1, 0 ]
+            vector2 = eigenspace * Vector[ 0, 1 ] - Vector[ 0, 1 ]
+            if vector1.r >= vector2.r
+              eigenvector = vector1 * ( 1.0 / vector1.r )
+            else
+              eigenvector = vector2 * ( 1.0 / vector2.r )
+            end
+            # Resolve ambiguity by comparing with previous eigenvector.
+            if @old_eigenvector.inner_product( eigenvector ) < 0
+              eigenvector = eigenvector.collect { |x| -x }
+            end
+            @old_eigenvector = eigenvector
+            gc = Magick::Draw.new
+            pointer = center + eigenvector * 30
+            gc.fill_opacity( 0 ).stroke( 'blue' ).stroke_width( 3 )
+            gc.circle( center[0], center[1], pointer[0], pointer[1] )
+            gc.line( center[0], center[1], pointer[0], pointer[1] )
+            img = img.to_ubytergb.to_magick
+            gc.draw img
+            img = img.to_multiarray
+          end
+        end
+        @xvideo.write img
+      end
+      def keyPressEvent( event )
+        case event.key
+        when Qt::Key_Escape
+          close
+        else
+          super event
+        end
+      end
+    end
+    app = Qt::Application.new ARGV
+    PCAWindow.new.show
+    app.exec
+
 Phase Correlation
 -----------------
 
@@ -745,4 +854,6 @@ External Links
 * [Universal Product Code](http://en.wikipedia.org/wiki/Universal_Product_Code)
 * [UPC database](http://www.upcdatabase.com/)
 * [EAN-13 reader video](http://vision.eng.shu.ac.uk/jan/barcode6.avi) ([Youtube](http://www.youtube.com/watch?v=Sv28MUMM_EA))
+* [PCA recognition video](http://video.google.com/videoplay?docid=8157280827402899141)
+* [Camspace (play games with your webcam)](http://www.camspace.com/)
 
