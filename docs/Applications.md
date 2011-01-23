@@ -459,8 +459,53 @@ Note that the [trollop](http://trollop.rubyforge.org/) Ruby-extension is require
     view_window.title = 'Deep view'
     display.event_loop
 
-Line Fit
+Line fit
 --------
+
+Hough transform
+---------------
+
+![Hough transform](images/hough.png)
+
+The following example detects white lines in a black-and-white image using a Hough transform.
+
+    require 'rubygems'
+    require 'multiarray'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def nms( threshold = 0 )
+        finalise do
+          lazy( 3, width, 3, height ) { |i,j,k,l| self[ j, l ] }.
+            diagonal( threshold ) { |a,b| a.major b } <= self
+        end
+      end
+    end
+    A_RANGE = 0 .. 179
+    THRESHOLD = 32
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lines.png'
+    diag = Math.sqrt( img.width ** 2 + img.height ** 2 )
+    d_range = -( diag + 1 ).div( 2 ) ... ( diag + 1 ).div( 2 )
+    binary = img >= THRESHOLD
+    x = lazy( *img.shape ) { |i,j| i - img.width  / 2 }.mask binary
+    y = lazy( *img.shape ) { |i,j| j - img.height / 2 }.mask binary
+    idx = lazy( A_RANGE.end + 1 ) { |i| i }
+    angle = lazy { Math::PI * idx / A_RANGE.end }
+    dist = lazy( d_range.end + 1 - d_range.begin ) { |i| i + d_range.begin }
+    cos, sin = lazy { |i| Math.cos( angle[ i ] ) }, lazy { |i| Math.sin( angle[ i ] ) }
+    a = lazy( angle.size, x.size ) { |i,j| i }
+    d = lazy { |i,j| ( x[j] * cos[i] + y[j] * sin[i] - d_range.begin ).to_int }
+    histogram = [ a, d ].histogram A_RANGE.end + 1, d_range.end + 1 - d_range.begin
+    peaks = histogram.nms 40
+    peaks.conditional( RGB( 255, 0, 0 ), histogram.normalise ).show
+    a = lazy( d_range.end + 1 - d_range.begin ) { |j| angle }.mask peaks
+    d = lazy( A_RANGE.end + 1 ) { |i| dist }.roll.mask peaks
+    x = lazy { |i,j| ( Math.cos( a[j] ) * d[j] - Math.sin( a[j] ) * dist[i] + img.width  / 2 ).to_int }
+    y = lazy { |i,j| ( Math.sin( a[j] ) * d[j] + Math.cos( a[j] ) * dist[i] + img.height / 2 ).to_int }
+    m = lazy { ( x >= 0 ).and( x < img.shape[0] ).and( y >= 0 ).and( y < img.shape[1] ) }
+    ( [ x.mask( m ), y.mask( m ) ].histogram( *img.shape ) > 0 ).
+      conditional( RGB( 255, 0, 0 ), img ).show
 
 PCA Recognition
 ---------------
@@ -497,7 +542,7 @@ The example program performs two-dimensional object recognition with three degre
         hlayout.addWidget @slider
         hlayout.addWidget @checkbox
         layout.addLayout hlayout
-        @input = V4L2Input.new # DC1394Input.new
+        @input = V4L2Input.new
         @w, @h = @input.width, @input.height
         resize @w, @h
         @reference = RGB 128, 128, 128
@@ -579,9 +624,6 @@ Phase Correlation
 
 Normalised Cross-Correlation
 ----------------------------
-
-Mean Shift Tracking
--------------------
 
 Camshift Tracking
 -----------------
@@ -856,4 +898,5 @@ External Links
 * [EAN-13 reader video](http://vision.eng.shu.ac.uk/jan/barcode6.avi) ([Youtube](http://www.youtube.com/watch?v=Sv28MUMM_EA))
 * [PCA recognition video](http://video.google.com/videoplay?docid=8157280827402899141)
 * [Camspace (play games with your webcam)](http://www.camspace.com/)
+* [Hough transform](http://en.wikipedia.org/wiki/Hough_transform)
 
