@@ -747,6 +747,205 @@ This is an implementation of the Camshift algorithm for real-time tracking. The 
 Lucas-Kanade Tracker
 --------------------
 
+![Lucas-Kanade tracker](images/lktracker.png)
+
+This is an implementation of the (inverse compositional) Lucas-Kanade algorithm. The Lucas-Kanade algorithm iteratively tries to minimise the difference between the template and a warped image. The technique can be used for image alignment, tracking, optic flow analysis, and motion estimation. Possible improvements are to incorporate illumination changes and a proper threatment of the image boundaries.
+
+The example offers five different models
+
+1. shift
+2. shift and scale
+3. shift and rotation
+4. affine transform
+5. 2-d homography
+
+A video for testing can be created using PovRay and the files [polygon.ini](polygon.ini) and [polygon.pov](polygon.pov).
+
+    require 'rubygems'
+    require 'matrix'
+    require 'hornetseye_ffmpeg'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    # require 'matrix_fix'
+    include Hornetseye
+    syntax = <<END_OF_STRING
+    Align images using phase correlation
+    Syntax: lktracker.rb <video> <backgr.> <model> <width> <height> <p1> <p2> ...
+    Examples:
+      ./lktracker.rb polygon.avi shift 94 65 80 35
+      ./lktracker.rb polygon.avi shift-n-scale 94 65 80 35 1 1
+      ./lktracker.rb polygon.avi isometry 94 65 80 35 0
+      ./lktracker.rb polygon.avi rotate-n-scale 94 65 80 35 0 1
+      ./lktracker.rb polygon.avi affine 94 65 80 35 1 0 0 1
+      ./lktracker.rb polygon.avi homography 94 65 1 0 0 1 80 35 0 0
+    END_OF_STRING
+    if ARGV.size < 2
+      puts syntax
+      raise 'Wrong number of command-line arguments'
+    end
+    class Node
+      def warp_clipped_interpolate( x, y )
+        x0 = x.floor.to_int
+        y0 = y.floor.to_int
+        x1 = x0 + 1
+        y1 = y0 + 1
+        fx1 = x - x0
+        fy1 = y - y0
+        fx0 = x1 - x
+        fy0 = y1 - y
+        return warp( x0, y0 ) * fx0 * fy0 +
+               warp( x1, y0 ) * fx1 * fy0 +
+               warp( x0, y1 ) * fx0 * fy1 +
+               warp( x1, y1 ) * fx1 * fy1
+      end
+    end
+    input = AVInput.new ARGV[0]
+    w, h = ARGV[2].to_i, ARGV[3].to_i
+    case ARGV[1]
+    when 'shift'
+      raise 'Shifting model requires 2 parameters' if ARGV.size != 6
+      p = Vector[ *ARGV[4...6].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        Vector[ x + p[0], y + p[1] ]
+      end
+      def derivative( x, y ) # derivative at p = [ 0, 0 ]
+        Matrix[ [ 1, 0 ], [ 0, 1 ] ]
+      end
+      def compose( p, d )
+        p + d
+      end
+    when 'shift-n-scale'
+      raise 'Shift-and-scale model requires 4 parameters' if ARGV.size != 8
+      p = Vector[ *ARGV[4...8].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        Vector[ x * p[2] + p[0], y * p[3] + p[1] ]
+      end
+      def derivative( x, y ) # derivative at p = [ 0, 0, 1, 1 ]
+        Matrix[ [ 1, 0 ], [ 0, 1 ], [ x, 0 ], [ 0, y ] ]
+      end
+      def compose( p, d )
+        p + Vector[ p[2] * d[0], p[3] * d[1], p[2] * d[2], p[3] * d[3] ]
+      end
+    when 'isometry'
+      raise 'Isometric model requires 3 parameters' if ARGV.size != 7
+      p = Vector[ *ARGV[4...7].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        cw, sw = Math::cos( p[2] ), Math::sin( p[2] )
+        Vector[ x * cw - y * sw + p[0], x * sw + y * cw + p[1] ]
+      end
+      def derivative( x, y ) # derivative at p = [ 0, 0, 0 ]
+        Matrix[ [ 1, 0 ], [ 0, 1 ], [ -y, x ] ]
+      end
+      def compose( p, d )
+        cw, sw = Math::cos( p[2] ), Math::sin( p[2] )
+        p + Matrix[ [  cw, -sw, 0 ],
+                    [  sw,  cw, 0 ],
+                    [   0,   0, 1 ] ] * d
+      end
+    when 'rotate-n-scale'
+      raise 'Isometric model requires 3 parameters' if ARGV.size != 8
+      p = Vector[ *ARGV[4...8].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        cw, sw, s = Math::cos( p[2] ), Math::sin( p[2] ), p[3]
+        Vector[ x * cw * s - y * sw * s + p[0], x * sw * s + y * cw * s + p[1] ]
+      end
+      def derivative( x, y ) # derivative at p = [ 0, 0, 0 ]
+        Matrix[ [ 1, 0 ], [ 0, 1 ], [ -y, x ], [ x, y ] ]
+      end
+      def compose( p, d )
+        cw, sw, s = Math::cos( p[2] ), Math::sin( p[2] ), p[3]
+        p + Matrix[ [  cw, -sw, 0, 0 ],
+                    [  sw,  cw, 0, 0 ],
+                    [   0,   0, 1, 0 ],
+                    [   0,   0, 0, 1 ] ] * d
+      end
+    when 'affine'
+      raise 'Affine model requires 6 parameters' if ARGV.size != 10
+      p = Vector[ *ARGV[4...10].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        Vector[ x * p[2] + y * p[4] + p[0], x * p[3] + y * p[5] + p[1] ]
+      end
+      def derivative( x, y ) # derivative at p = [ 0, 0, 1, 0, 0, 1 ]
+        Matrix[ [ 1, 0 ], [ 0, 1 ], [ x, 0 ], [ 0, x ], [ y, 0 ], [ 0, y ] ]
+      end
+      def compose( p, d )
+        p + Matrix[ [ p[2], p[4],    0,    0,    0,    0 ],
+                    [ p[3], p[5],    0,    0,    0,    0 ],
+                    [    0,    0, p[2], p[4],    0,    0 ],
+                    [    0,    0, p[3], p[5],    0,    0 ],
+                    [    0,    0,    0,    0, p[2], p[4] ],
+                    [    0,    0,    0,    0, p[3], p[5] ] ] * d
+      end
+    when 'homography'
+      raise 'Homography requires 8 parameters' if ARGV.size != 12
+      p = Vector[ *ARGV[4...12].collect { |a| a.to_f } ]
+      def model( p, x, y )
+        h = Matrix[ [ p[0], p[2], p[4] ],
+                    [ p[1], p[3], p[5] ],
+                    [ p[6], p[7],    1 ] ]
+        rh = h * Vector[ x, y, 1 ]
+        Vector[ rh[0] / rh[2], rh[1] / rh[2] ]
+      end
+      def derivative( x, y )
+        Matrix[
+          [ x, 0 ], [ 0, x ], [ y, 0 ], [ 0, y ], [ 1, 0 ], [ 0, 1 ],
+          [ -x * x, -x * y ], [ -y * x, -y * y ] ]
+      end
+      def compose( p, d )
+        h = Matrix[ [ p[0], p[2], p[4] ],
+                    [ p[1], p[3], p[5] ],
+                    [ p[6], p[7],    1 ] ]
+        hd = Matrix[ [ 1 + d[0],     d[2], d[4] ],
+                     [     d[1], 1 + d[3], d[5] ],
+                     [     d[6],     d[7],    1 ] ]
+        hr = h * hd
+        hr = hr / hr[2,2]
+        Vector[ hr[0,0], hr[1,0], hr[0,1], hr[1,1],
+          hr[0,2], hr[1,2], hr[2,0], hr[2,1] ]
+      end
+    else
+      raise "No such model (#{ARGV[1]})"
+    end
+    img = input.read.to_ubyte
+    sigma = 2.5
+    # compute gradient on a larger field and crop later to avoid fringe effects.
+    b = ( Array.gauss_gradient_filter( sigma ).size - 1 ) / 2
+    x = lazy( w + 2 * b, h + 2 * b ) { |i,j| i - b }
+    y = lazy( w + 2 * b, h + 2 * b ) { |i,j| j - b }
+    tpl = img.warp_clipped_interpolate *model( p, x, y )
+    gx = tpl.gauss_gradient( sigma, 0 )
+    gy = tpl.gauss_gradient( sigma, 1 )
+    tpl, gx, gy, x, y = *( [ tpl, gx, gy, x, y ].collect { |arr| arr[ b...(w+b), b...(h+b) ] } )
+    c = derivative( x, y ) * Vector[ gx, gy ]
+    hs = ( c * c.covector ).collect { |e| e.sum }
+    hsinv = hs.inverse
+    display = X11Display.new
+    output = XImageOutput.new
+    window = X11Window.new display, output, *img.shape
+    window.title = 'Lucas-Kanade tracker'
+    window.show
+    while input.status? and output.status?
+      img = input.read.to_ubyte
+      for i in 0...5
+        diff = img.warp_clipped_interpolate( *model( p, x, y ) ) - tpl
+        s = c.collect { |e| ( e * diff ).sum }
+        p = compose( p, hsinv * s )
+      end
+      gc = Magick::Draw.new
+      gc.fill_opacity 0
+      gc.stroke( 'red' ).stroke_width 1
+      gc.line *( model( p, 0, 0 ).to_a + model( p, w, 0 ).to_a )
+      gc.line *( model( p, 0, h ).to_a + model( p, w, h ).to_a )
+      gc.line *( model( p, 0, 0 ).to_a + model( p, 0, h ).to_a )
+      gc.line *( model( p, w, 0 ).to_a + model( p, w, h ).to_a )
+      gc.circle *( model( p, 0, 0 ).to_a + model( p, 3, 0 ).to_a )
+      result = img.to_ubytergb.to_magick
+      gc.draw result
+      result = result.to_multiarray
+      output.write result
+      display.process_events
+    end
+
 EAN-13 Barcode Reader
 ---------------------
 
@@ -928,4 +1127,7 @@ External Links
 * [PCA recognition video](http://video.google.com/videoplay?docid=8157280827402899141)
 * [Camspace (play games with your webcam)](http://www.camspace.com/)
 * [Hough transform](http://en.wikipedia.org/wiki/Hough_transform)
+* [Lucas-Kanade 20 Years on: A Unifying Framework](http://www.ri.cmu.edu/projects/project_515.html)
+* [A machine vision extension for the Ruby programming language](http://digitalcommons.shu.ac.uk/mmvl_papers/2/)
+* [NASA high definition videos](http://www.nasa.gov/multimedia/hd/)
 
