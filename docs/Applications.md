@@ -459,10 +459,39 @@ Note that the [trollop](http://trollop.rubyforge.org/) Ruby-extension is require
     view_window.title = 'Deep view'
     display.event_loop
 
-Line fit
+Line Fit
 --------
 
-Hough transform
+![Line fit](images/fit.png)
+
+This program fits a line assuming that the input image is showing a single white line without outliers. The problem of ambiguity with the orientation of the line is overcome by estimating "2*a" instead of the angle "a".
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class MultiArray
+      class << self
+        def cramp( w, h )
+          lazy( w, h ) { |i,j| i + Complex::I * j }
+        end
+      end
+    end
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/line.png'
+    x = MultiArray.cramp( *img.shape ).mask img >= 128
+    c = x.sum / x.size.to_f
+    a = Math.sqrt( ( ( x - c ) ** 2 ).sum / x.size )
+    gc = Magick::Draw.new
+    gc.stroke 'red'
+    gc.stroke_width 1
+    gc.line( ( c - 2 * a ).real, ( c - 2 * a ).imag,
+             ( c + 2 * a ).real, ( c + 2 * a ).imag )
+    result = img.to_ubytergb.to_magick
+    gc.draw result
+    result.to_multiarray.show
+
+
+Hough Transform
 ---------------
 
 ![Hough transform](images/hough.png)
@@ -483,7 +512,7 @@ The following example detects white lines in a black-and-white image using a Hou
       end
     end
     A_RANGE = 0 .. 179
-    THRESHOLD = 32
+    THRESHOLD = 128
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lines.png'
     diag = Math.sqrt( img.width ** 2 + img.height ** 2 )
     d_range = -( diag + 1 ).div( 2 ) ... ( diag + 1 ).div( 2 )
@@ -723,7 +752,7 @@ EAN-13 Barcode Reader
 
 ![EAN-13 Barcode reader](images/barcode.png)
 
-The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image.  However the application can read barcodes forwards as well as backwards.
+The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image.  However the application can read barcodes forwards as well as backwards. The detected numbers are displayed using RMagick.
 
     require 'rubygems'
     require 'hornetseye_v4l2'
