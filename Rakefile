@@ -8,10 +8,10 @@ require 'yard'
 PKG_NAME = 'hornetseye-doc'
 PKG_VERSION = '0.1.0'
 MD_FILES = FileList[ 'docs/*.md' ]
-UI_FILES = FileList[ 'docs/*.ui' ]
+DL_FILES = FileList[ 'docs/*.ui', 'docs/*.pov', 'docs/*.ini' ]
 IMG_FILES = FileList[ 'docs/images/*' ]
 PKG_FILES = [ 'Rakefile', 'README.md', 'COPYING', '.document', '.yardopts' ] +
-            MD_FILES + UI_FILES + IMG_FILES
+            MD_FILES + DL_FILES + IMG_FILES
 MODS = %w{malloc multiarray hornetseye-alsa hornetseye-dc1394 hornetseye-ffmpeg
           hornetseye-frame hornetseye-narray hornetseye-opencv hornetseye-openexr
           hornetseye-qt4 hornetseye-rmagick hornetseye-v4l hornetseye-v4l2
@@ -39,7 +39,7 @@ IMG_FILES.each do |f|
   end
 end
 
-UI_FILES.each do |f|
+DL_FILES.each do |f|
   task :yard => "doc/#{f[ 5 .. -1 ]}"
   file "doc/#{f[ 5 .. -1 ]}" => f do |t|
     FileUtils.mkdir_p 'doc'
