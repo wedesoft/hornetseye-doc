@@ -59,6 +59,19 @@ The difference of Gaussian is simply the difference of two Gaussian filters of d
 Laplacian of Gaussian
 ---------------------
 
+![Laplacian of Gaussian](images/log.png)
+
+The LoG-filter creates an image with zero-crossings at edge locations. The edges can be detected using either dilation or erosion. Alternatively one could match a set of small 3x3 patterns. The notable property of edge detection using the LoG-filter is that it generates closed edge contours.
+
+    require 'rubygems'
+    require 'hornetseye_xorg'
+    require 'hornetseye_rmagick'
+    include Hornetseye
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    log = MultiArray.laplacian_of_gaussian 1.4, 9
+    binary = img.convolve( log ) >= 0
+    binary.not.or( binary.erode ).conditional( 0xFF, 0 ).show
+
 Corner Strength by Yang et al.
 ------------------------------
 
