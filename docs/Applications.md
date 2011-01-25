@@ -488,7 +488,7 @@ This program fits a line assuming that the input image is showing a single white
              ( c + 2 * a ).real, ( c + 2 * a ).imag )
     result = img.to_ubytergb.to_magick
     gc.draw result
-    result.to_multiarray.show
+    result.to_ubytergb.show
 
 
 Hough Transform
@@ -630,7 +630,7 @@ The example program performs two-dimensional object recognition with three degre
             gc.line( center[0], center[1], pointer[0], pointer[1] )
             img = img.to_ubytergb.to_magick
             gc.draw img
-            img = img.to_multiarray
+            img = img.to_ubytergb
           end
         end
         @xvideo.write img
@@ -941,10 +941,10 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
       gc.circle *( model( p, 0, 0 ).to_a + model( p, 3, 0 ).to_a )
       result = img.to_ubytergb.to_magick
       gc.draw result
-      result = result.to_multiarray
-      output.write result
+      output.write result.to_ubytergb
       display.process_events
     end
+
 
 EAN-13 Barcode Reader
 ---------------------
@@ -1092,7 +1092,7 @@ The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Rea
               result[ 0 ... WIDTH - text.columns, HEIGHT + 80 ... HEIGHT + 100 ] =
                 result[ text.columns ... WIDTH, HEIGHT + 80 ... HEIGHT + 100 ]
               result[ WIDTH - text.columns ... WIDTH, HEIGHT + 80 ... HEIGHT + 100 ] =
-                text.to_multiarray
+                text.to_ubytergb
               break
             end
           end
