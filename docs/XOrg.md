@@ -64,7 +64,7 @@ The simple API shown above is not sufficient for handling multiple windows. If m
     window.each { |w| w.show }
     t = Time.new.to_f
     while display.status?
-      img = input.read.to_ubytergb
+      img = input.read_ubytergb
       output[0].write img
       output[1].write img.r
       output[2].write img.g

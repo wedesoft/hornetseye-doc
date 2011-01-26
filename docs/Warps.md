@@ -78,7 +78,7 @@ This example shows how to compute the average of a series of frames. You can use
     average = nil
     c = 0
     img = X11Display.show do
-      img = input.read.to_ubytergb
+      img = input.read_ubytergb
       average = average.nil? ? img.to_uintrgb : average + img
       c += 1
       average / c

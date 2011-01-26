@@ -581,7 +581,7 @@ The example program performs two-dimensional object recognition with three degre
         startTimer 0
       end
       def timerEvent( e )
-        img = @input.read.to_ubytergb
+        img = @input.read_ubytergb
         if not @checkbox.checked?
           box = [ ( @w / 2 - SIZE2 )...( @w / 2 + SIZE2 ),
                   ( @h / 2 - SIZE2 )...( @h / 2 + SIZE2 ) ]
@@ -707,7 +707,7 @@ This is an implementation of the Camshift algorithm for real-time tracking. The 
             ( input.height - BOX_SIZE ) / 2 ... ( input.height + BOX_SIZE ) / 2 ]
     reference = nil
     X11Display.show :title => 'Capture Reference Histogram' do
-      img = input.read.to_ubytergb.flip 0
+      img = input.read_ubytergb.flip 0
       reference = img[ *box ].dup
       img[ *box ] = 0x80 + ( reference >> 1 )
       img
@@ -718,7 +718,7 @@ This is an implementation of the Camshift algorithm for real-time tracking. The 
     cx, cy = input.width / 2, input.height / 2
     w, h = BOX_SIZE, ( BOX_SIZE * RATIO ).to_i
     X11Display.show :title => 'Camshift' do
-      image = input.read.to_ubytergb.flip 0
+      image = input.read_ubytergb.flip 0
       n = 0
       sum = 0
       begin
@@ -906,7 +906,7 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
     else
       raise "No such model (#{ARGV[1]})"
     end
-    img = input.read.to_ubyte
+    img = input.read_ubyte
     sigma = 2.5
     # compute gradient on a larger field and crop later to avoid fringe effects.
     b = ( Array.gauss_gradient_filter( sigma ).size - 1 ) / 2
@@ -925,7 +925,7 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
     window.title = 'Lucas-Kanade tracker'
     window.show
     while input.status? and output.status?
-      img = input.read.to_ubyte
+      img = input.read_ubyte
       for i in 0...5
         diff = img.warp_clipped_interpolate( *model( p, x, y ) ) - tpl
         s = c.collect { |e| ( e * diff ).sum }
@@ -1029,7 +1029,7 @@ The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Rea
                            [ 0, 1, 0, 1, 1, 0, 2, 2, 2, 2, 2, 2 ],
                            [ 0, 1, 1, 0, 1, 0, 2, 2, 2, 2, 2, 2 ] ].to_byte
     X11Display.show do
-      img = input.read.to_ubyte
+      img = input.read_ubyte
       avg = img[ HEIGHT / 2 ]
       mean = avg.gauss_blur SIGMA
       var = Math.sqrt( ( ( avg - mean ) ** 2 ).gauss_blur( SIGMA ) )
