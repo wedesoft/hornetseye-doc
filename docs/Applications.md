@@ -505,10 +505,7 @@ The following example detects white lines in a black-and-white image using a Hou
     include Hornetseye
     class Node
       def nms( threshold = 0 )
-        finalise do
-          lazy( 3, width, 3, height ) { |i,j,k,l| self[ j, l ] }.
-            diagonal( threshold ) { |a,b| a.major b } <= self
-        end
+        finalise { dilate.major( threshold ) <= self }
       end
     end
     A_RANGE = 0 .. 179
