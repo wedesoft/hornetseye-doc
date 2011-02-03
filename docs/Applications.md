@@ -648,7 +648,7 @@ The example program performs two-dimensional object recognition with three degre
 Phase Correlation
 -----------------
 
-![Phase correlation](images/phasecorrelation.png)
+![Phase Correlation](images/phasecorrelation.png)
 
 This is an implementation of the phase correlation for aligning images. This implementation also works on images which are of different size. I.e. stitching of overlapping images is possible as well as searching a small template in a large image. Note that you may have to add a windowing function to the implementation to avoid boundary effects.
 
@@ -708,6 +708,63 @@ This is an implementation of the phase correlation for aligning images. This imp
 
 Normalised Cross-Correlation
 ----------------------------
+
+![Normalised Cross-Correlation](images/ncc.png)
+
+This is an implementation of the normalised cross-correlation for locating a template in an image. The template must be smaller than the image. Note that the implementation could be optimised using integral images.
+
+    require 'rubygems'
+    require 'hornetseye_fftw3'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def avg
+        sum / size
+      end
+      def sqr
+        self * self
+      end
+      def corr( other )
+        ( rfft * other.rfft.conj ).irfft
+      end
+      def zcorr( other )
+        zother = MultiArray.dfloat( *shape ).fill!
+        zother[ 0 ... other.shape[0], 0 ... other.shape[1] ] = other
+        corr zother
+      end
+      def median( *shape )
+        filter = MultiArray.dfloat( *shape ).fill! 1
+        zcorr filter
+      end
+      def ncc( other, noise )
+        zcorr( other - other.avg ) /
+          Math.sqrt( ( sqr.median( *other.shape ) -
+                       median( *other.shape ).sqr / other.size ) *
+                     ( other - other.avg ).sqr.sum + noise )
+      end
+    end
+    syntax = <<END_OF_STRING
+    Locate template using normalised cross-correlation
+    Syntax : ncc.rb <image> <template>
+    Example: ncc.rb image.jpg template.jpg
+    END_OF_STRING
+    if ARGV.size != 2
+      puts syntax
+      raise "Wrong number of command-line arguments"
+    end
+    image = MultiArray.load_ubyte ARGV[0]
+    template = MultiArray.load_ubyte ARGV[1]
+    ncc = image.to_dfloat.ncc template.to_dfloat, 0.1
+    shiftx = lazy( *ncc.shape ) { |i,j| i }.mask( ncc >= ncc.max )[0]
+    shifty = lazy( *ncc.shape ) { |i,j| j }.mask( ncc >= ncc.max )[0]
+    shiftx = [ shiftx, image.shape[0] - template.shape[0] ].min
+    shifty = [ shifty, image.shape[1] - template.shape[1] ].min
+    result1 = image / 2
+    result2 = MultiArray.ubyte( *image.shape ).fill!
+    result2[ shiftx ... shiftx + template.shape[0],
+             shifty ... shifty + template.shape[1] ] = template / 2
+    ( result1 + result2 ).show
 
 Camshift Tracking
 -----------------
@@ -1185,4 +1242,5 @@ External Links
 * [Lucas-Kanade 20 Years on: A Unifying Framework](http://www.ri.cmu.edu/projects/project_515.html)
 * [A machine vision extension for the Ruby programming language](http://digitalcommons.shu.ac.uk/mmvl_papers/2/)
 * [NASA high definition videos](http://www.nasa.gov/multimedia/hd/)
+* [Fast Normalised Cross-Correlation](http://scribblethink.org/Work/nvisionInterface/nip.html)
 
