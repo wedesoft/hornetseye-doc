@@ -648,6 +648,64 @@ The example program performs two-dimensional object recognition with three degre
 Phase Correlation
 -----------------
 
+![Phase correlation](images/phasecorrelation.png)
+
+This is an implementation of the phase correlation for aligning images. This implementation also works on images which are of different size. I.e. stitching of overlapping images is possible as well as searching a small template in a large image. Note that you may have to add a windowing function to the implementation to avoid boundary effects.
+
+    require 'rubygems'
+    require 'hornetseye_fftw3'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def zeropad( *s )
+        retval = MultiArray.new( typecode, *s ).fill!
+        retval[ 0 ... shape[0], 0 ... shape[1] ] = self
+        retval
+      end
+      def phase_corr_cyclical( other )
+        nominator = rfft * other.rfft.conj
+        denominator = nominator.abs
+        mask = denominator.abs > 1.0e-5
+        ( nominator.mask( mask ) / denominator.mask( mask ) ).unmask( mask ).irfft
+      end
+      def phase_corr( other )
+        ext_shape = [ shape[0] + other.shape[0], shape[1] + other.shape[1] ]
+        zeropad( *ext_shape ).phase_corr_cyclical other.zeropad( *ext_shape )
+      end
+    end
+    syntax = <<END_OF_STRING
+    Align images using phase correlation
+    Syntax : pc.rb <image1> <image2>
+    Example: pc.rb image1.jpg image2.jpg
+    END_OF_STRING
+    if ARGV.size != 2
+      puts syntax
+      raise "Wrong number of command-line arguments"
+    end
+    image = MultiArray.load_ubyte ARGV[0]
+    template = MultiArray.load_ubyte ARGV[1]
+    shift = image.phase_corr template
+    shiftx = lazy( *shift.shape ) { |i,j| i }.mask( shift >= shift.max )[0]
+    shifty = lazy( *shift.shape ) { |i,j| j }.mask( shift >= shift.max )[0]
+    shiftx = shiftx - image.shape[0] - template.shape[0] if shiftx > image.shape[0]
+    shifty = shifty - image.shape[1] - template.shape[1] if shifty > image.shape[1]
+    minx = [ 0, shiftx ].min
+    miny = [ 0, shifty ].min
+    maxx = [ image.shape[0], template.shape[0] + shiftx ].max - 1
+    maxy = [ image.shape[1], template.shape[1] + shifty ].max - 1
+    offsetx = -minx
+    offsety = -miny
+    resultwidth  = maxx + 1 - minx
+    resultheight = maxy + 1 - miny
+    result1 = MultiArray.ubyte( resultwidth, resultheight ).fill!
+    result1[ offsetx ... offsetx + image.shape[0],
+             offsety ... offsety + image.shape[1] ] = image / 2
+    result2 = MultiArray.ubyte( resultwidth, resultheight ).fill!
+    result2[ shiftx + offsetx ... shiftx + offsetx + template.shape[0],
+             shifty + offsety ... shifty + offsety + template.shape[1] ] = template / 2
+    ( result1 + result2 ).show
+
 Normalised Cross-Correlation
 ----------------------------
 
