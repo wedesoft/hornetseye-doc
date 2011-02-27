@@ -122,6 +122,23 @@ HornetsEye supports fast convolution with custom filters. In this example a 3x3 
 Connected Components Labeling
 -----------------------------
 
+![Connected component labeling](images/components.png)
+
+Connected component analysis assigns the same label to neighbouring pixel which have the same value.
+
+    require 'rubygems'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/letters.png'
+    components = ( img >= 0x7F ).components
+    palette = Sequence.ubytergb components.max + 1
+    palette.r, palette.g, palette.b = *( 1 .. 3 ).collect do
+      Sequence( UBYTE, palette.size ).random 256
+    end
+    palette[ 0 ] = 0
+    components.lut( palette ).show
+
 See Also
 --------
 
