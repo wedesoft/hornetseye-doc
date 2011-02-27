@@ -144,10 +144,12 @@ See Also
 
 * {Hornetseye::Operations#convolve}
 * {Hornetseye::Operations#sobel}
+* {Hornetseye::Operations#components}
 
 External Links
 --------------
 
 * [Sobel operator](http://en.wikipedia.org/wiki/Sobel_operator)
 * [Unsharp masking](http://en.wikipedia.org/wiki/Unsharp_masking)
+* [Connected component labeling](http://en.wikipedia.org/wiki/Connected_Component_Labeling)
 
