@@ -65,6 +65,54 @@ Van Cittert deconvolution is an iterative algorithm for reversing a convolution 
 Wiener Filter
 -------------
 
+![Wiener filter](images/wiener.jpg)
+
+The Wiener filter is the optimal linear filter for denoising and deblurring. The filter requires prior knowledge about the autospectrum of the signal, the point spread function of the blur, and the autospectrum of the noise. In this example white noise is assumed. To demonstrate the algorithm, a Gaussian blur is applied to the input image and the Wiener filter is used to estimate the input signal.
+
+    require 'hornetseye_fftw3'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def radius
+        w, h = *shape
+        lazy w, h do |i,j|
+          Math.sqrt( ( i - w / 2 ) **2 + ( j - h / 2 ) ** 2 )
+        end
+      end
+      def spectrum( alpha )
+        w, h = *shape
+        ( 255.0 / ( 1.0 + ( radius / alpha ) ** 2 ) ).shift -w / 2, -h / 2
+      end
+      def blur( sigma )
+        w, h = *shape
+        retval = MultiArray.ubyte( w, h ).fill!
+        retval[ w / 2, h / 2 ] = 1
+        retval.gauss_blur( sigma ).shift -w / 2, -h / 2
+      end
+      def wiener( alpha, noise, sigma = nil )
+        if typecode < RGB_
+          result = self.array_type.float.new
+          result.r, result.g, result.b = [ r, g, b ].collect do |c|
+            c.wiener alpha, noise, sigma
+          end
+          result
+        else
+          si = spectrum( alpha ) ** 2
+          if sigma
+            bf = blur( sigma ).fft
+            ( bf.conj * si / ( bf.abs ** 2 * si + noise ** 2 ) * fft ).ifft.real
+          else
+            ( si / ( si + noise ** 2 ) * fft ).ifft.real
+          end
+        end
+      end
+    end
+    NOISE = 2.0
+    SIGMA = 3.0
+    img = MultiArray.load_ubytergb( 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
+    img.wiener( img.shape[0] * 0.1, NOISE, SIGMA ).clip.show
+
 Gauss Gradient
 --------------
 
