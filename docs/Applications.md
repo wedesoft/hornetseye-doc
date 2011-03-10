@@ -80,7 +80,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
     require 'hornetseye_ffmpeg'
     require 'hornetseye_alsa'
     require 'hornetseye_qt4'
-    VIDEO = ARGV[0] || 'http://ftp.halifax.rwth-aachen.de/blender/movies/sintel-1024-stereo.mp4'
+    VIDEO = ARGV[0] || 'http://fsmpi.eu/pw/sintel/sintel-1024-stereo.mp4'
     class Win < Qt::Widget
       slots 'seek(int)'
       def initialize

@@ -12,7 +12,7 @@ The class {Hornetseye::AVInput} allows you to capture frames from videos using t
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
     include Hornetseye
-    input = AVInput.new 'http://ftp.halifax.rwth-aachen.de/blender/movies/sintel-1024-stereo.mp4'
+    input = AVInput.new 'http://fsmpi.eu/pw/sintel/sintel-1024-stereo.mp4'
     w, h = ( input.width * input.aspect_ratio ).to_i, input.height
     X11Display.show( w, h, :frame_rate => input.frame_rate ) { input.read }
 
@@ -26,7 +26,7 @@ It is also possible to retrieve audio frames if the video file offers an audio s
     require 'hornetseye_xorg'
     require 'hornetseye_alsa'
     include Hornetseye
-    input = AVInput.new 'http://ftp.halifax.rwth-aachen.de/blender/movies/sintel-1024-stereo.mp4'
+    input = AVInput.new 'http://fsmpi.eu/pw/sintel/sintel-1024-stereo.mp4'
     w, h = ( input.width * input.aspect_ratio ).to_i, input.height
     alsa = AlsaOutput.new 'default:0', input.sample_rate, input.channels
     audio_frame = input.read_audio
