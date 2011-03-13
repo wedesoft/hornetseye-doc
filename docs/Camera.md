@@ -92,6 +92,48 @@ In this example the user is prompted to select a video mode offered by the camer
     end
     X11Display.show { camera.read }
 
+Microsoft Kinect (libfreenect)
+------------------------------
+
+Using the libfreenect bindings one can capture RGB and 11-bit depth images with a Microsoft Kinect sensor.
+
+    require 'rubygems'
+    require 'hornetseye_kinect'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Numeric
+      def clip( range )
+        [ [ self, range.begin ].max, range.end ].min
+      end
+    end
+    colours = Sequence.ubytergb 256
+    for i in 0...256
+      hue = 240 - i * 240.0 / 256.0
+      colours[i] =
+        RGB( ( ( hue - 180 ).abs -  60 ).clip( 0...60 ) * 0xFF / 60.0,
+             ( 120 - ( hue - 120 ).abs ).clip( 0...60 ) * 0xFF / 60.0,
+             ( 120 - ( hue - 240 ).abs ).clip( 0...60 ) * 0xFF / 60.0 )
+    end
+    input = KinectInput.new
+    display = X11Display.new
+    output_depth, output_video = XImageOutput.new, XVideoOutput.new
+    window_depth = X11Window.new display, output_depth, 640, 480
+    window_video = X11Window.new display, output_video, 640, 480
+    window_depth.title = 'Depth'
+    window_video.title = 'Video'
+    window_depth.show
+    window_video.show
+    input.led = KinectInput::LED_RED
+    while display.status?
+      input.tilt = 0.0
+      input.get_state
+      moving = input.tilt_status == KinectInput::TILT_STATUS_MOVING
+      input.led = moving ? KinectInput::LED_RED : KinectInput::LED_GREEN
+      output_video.write input.read_video
+      output_depth.write( ( input.read_depth >> 3 ).lut colours )
+      display.process_events
+    end
+
 See Also
 --------
 
