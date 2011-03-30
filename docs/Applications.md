@@ -733,14 +733,14 @@ This is an implementation of the normalised cross-correlation for locating a tem
         zother[ 0 ... other.shape[0], 0 ... other.shape[1] ] = other
         corr zother
       end
-      def median( *shape )
+      def ma( *shape )
         filter = MultiArray.dfloat( *shape ).fill! 1
         zcorr filter
       end
       def ncc( other, noise )
         zcorr( other - other.avg ) /
-          Math.sqrt( ( sqr.median( *other.shape ) -
-                       median( *other.shape ).sqr / other.size ) *
+          Math.sqrt( ( sqr.ma( *other.shape ) -
+                       ma( *other.shape ).sqr / other.size ) *
                      ( other - other.avg ).sqr.sum + noise )
       end
     end
