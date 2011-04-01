@@ -882,7 +882,7 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
     require 'hornetseye_ffmpeg'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
-    # require 'matrix_fix'
+    #require 'matrix_fix'
     include Hornetseye
     syntax = <<END_OF_STRING
     Align images using phase correlation
@@ -1035,15 +1035,10 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
     c = derivative( x, y ) * Vector[ gx, gy ]
     hs = ( c * c.covector ).collect { |e| e.sum }
     hsinv = hs.inverse
-    display = X11Display.new
-    output = XImageOutput.new
-    window = X11Window.new display, output, *img.shape
-    window.title = 'Lucas-Kanade tracker'
-    window.show
-    while input.status? and output.status?
+    X11Display.show :title => 'Lucas-Kanade tracker' do
       img = input.read_ubyte
       for i in 0...5
-        diff = img.warp_clipped_interpolate( *model( p, x, y ) ) - tpl
+        diff = tpl - img.warp_clipped_interpolate( *model( p, x, y ) )
         s = c.collect { |e| ( e * diff ).sum }
         p = compose( p, hsinv * s )
       end
@@ -1057,10 +1052,8 @@ A video for testing can be created using PovRay and the files [polygon.ini](poly
       gc.circle *( model( p, 0, 0 ).to_a + model( p, 3, 0 ).to_a )
       result = img.to_ubytergb.to_magick
       gc.draw result
-      output.write result.to_ubytergb
-      display.process_events
+      result.to_ubytergb
     end
-
 
 EAN-13 Barcode Reader
 ---------------------
