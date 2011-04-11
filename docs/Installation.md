@@ -66,6 +66,31 @@ To install this Ruby extension, use the following command:
 
     sudo gem install hornetseye-ffmpeg
 
+### hornetseye-fftw3
+
+**hornetseye-fftw3** is a wrapper for doing Fast Fourier Transforms using the FFTW3 library. This Ruby extension requires the development headers for FFTW3. You can install them as follows:
+
+    sudo aptitude install libfftw3-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-fftw3
+
+### hornetseye-kinect
+
+**hornetseye-kinect** allows to capture images from a Microsoft Kinect sensor using the libfreenect library. This Ruby extension requires libfreenect:
+
+    git clone https://github.com/OpenKinect/libfreenect.git
+    cd libfreenect
+    cmake .
+    make
+    sudo make install
+    cd ..
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-kinect
+
 ### hornetseye-narray
 
 **hornetseye-narray** provides conversions between {NArray} (provided by *narray*) and {Hornetseye::MultiArray}. You can install it as follows:
@@ -183,7 +208,9 @@ External Links
     * [hornetseye-alsa](http://rubygems.org/gems/hornetseye-alsa/)
     * [hornetseye-dc1394](http://rubygems.org/gems/hornetseye-dc1394/)
     * [hornetseye-ffmpeg](http://rubygems.org/gems/hornetseye-ffmpeg/)
+    * [hornetseye-fftw3](http://rubygems.org/gems/hornetseye-fftw3/)
     * [hornetseye-frame](http://rubygems.org/gems/hornetseye-frame/)
+    * [hornetseye-kinect](http://rubygems.org/gems/hornetseye-kinect/)
     * [hornetseye-narray](http://rubygems.org/gems/hornetseye-narray/)
     * [hornetseye-opencv](http://rubygems.org/gems/hornetseye-opencv/)
     * [hornetseye-openexr](http://rubygems.org/gems/hornetseye-openexr/)

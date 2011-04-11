@@ -69,6 +69,7 @@ Wiener Filter
 
 The Wiener filter is the optimal linear filter for denoising and deblurring. The filter requires prior knowledge about the autospectrum of the signal, the point spread function of the blur, and the autospectrum of the noise. In this example white noise is assumed. To demonstrate the algorithm, a Gaussian blur is applied to the input image and the Wiener filter is used to estimate the input signal.
 
+    require 'rubygems'
     require 'hornetseye_fftw3'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
