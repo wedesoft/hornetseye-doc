@@ -82,7 +82,11 @@ If you have not used *RubyGems* to install *NArray*, you may have to install *ho
 
 ### hornetseye-opencv
 
-**hornetseye-opencv** provides conversions between {OpenCV::CvMat} (provided by *opencv*) and {Hornetseye::MultiArray}. You can install it as follows:
+**hornetseye-opencv** provides conversions between {OpenCV::CvMat} (provided by *opencv*) and {Hornetseye::MultiArray}. You need to install OpenCV first as follows:
+
+    sudo aptitude install libcv-dev libhighgui-dev
+
+To install this Ruby extension, use the following command:
 
     sudo gem install hornetseye-opencv
 
