@@ -645,6 +645,40 @@ The example program performs two-dimensional object recognition with three degre
     PCAWindow.new.show
     app.exec
 
+Power Spectrum
+--------------
+
+![Power Spectrum](images/power.jpg)
+
+The following example demonstrates using windowing, zero padding, and Fourier transform in order to compute the power spectrum of a signal. The example image shows the power spectrum of a piece of fabric.
+
+    require 'rubygems'
+    require 'hornetseye_fftw3'
+    require 'hornetseye_rmagick'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    class Node
+      def window
+        finalise do |i,j|
+          x = ((i + 0.5 - 0.5 * width ) / (0.5 * width )).abs
+          y = ((j + 0.5 - 0.5 * height) / (0.5 * height)).abs
+          w = (1 - Math.sqrt(x ** 2 + y ** 2)).major 0.0
+          self[i,j] * w
+        end
+      end
+      def zeropad
+        retval = MultiArray.new(typecode, 2 * width, 2 * height).fill!
+        retval[0 ... width, 0 ... height] = self
+        retval
+      end
+      def spectrum
+        fft = window.zeropad.fft
+        (fft.conj * fft).real
+      end
+    end
+    img = MultiArray.load_ubyte 'test.jpg'
+    (img.spectrum ** 0.1).shift(*img.shape).normalise(255 .. 0).show *img.shape
+
 Phase Correlation
 -----------------
 
