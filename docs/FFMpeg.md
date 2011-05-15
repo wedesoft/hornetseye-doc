@@ -36,7 +36,7 @@ It is also possible to retrieve audio frames if the video file offers an audio s
         alsa.write audio_frame
         audio_frame = input.read_audio
       end
-      t = input.audio_pos - alsa.delay.quo( alsa.rate )
+      t = input.audio_pos - (alsa.delay + audio_frame.shape[1]).quo( alsa.rate )
       display.event_loop [ input.video_pos - t, 0 ].max
       video_frame
     end

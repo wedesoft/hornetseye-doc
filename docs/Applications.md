@@ -127,7 +127,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
             @slider.value = p
             @seeking = true
           end
-          t = @video.audio_pos - @speaker.delay.quo( @speaker.rate )
+          t = @video.audio_pos - (@speaker.delay + @audio_frame.shape[1]).quo( @speaker.rate )
           delay = [ 3.quo( 2 ) / @video.frame_rate, [ @video.video_pos - t, 0 ].max ].min
           killTimer @timer
           @timer = startTimer( ( delay * 1000 ).to_i )
