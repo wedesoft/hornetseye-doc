@@ -3,6 +3,12 @@ Publications
 
 **HornetsEye** was presented on a couple of conferences already. Thanks to the anonymous reviewers for the helpful and inspiring comments.
 
+ECOOP 2011
+----------
+**Hornetseye** is going to be demonstrated at the [25th European Conference on Object-Oriented Programming (ECOOP) 2011](http://ecoop11.comp.lancs.ac.uk/) in Lancaster, United Kingdom.
+
+![ECOOP 2011](images/lancaster.jpg)
+
 7th ShRUG meeting
 -----------------
 
