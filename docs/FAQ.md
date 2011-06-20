@@ -4,13 +4,21 @@ Frequently Asked Questions
 Compilation FAQ
 ---------------
 
-### Problems with detection of OpenGL/GL/GLU (GNU+Linux)
+### Problems with detection of OpenGL/GL/GLU
 
 Probably your OpenGL installation is not complete or broken. Try to download and compile a small OpenGL example program. Usually the error-message is conclusive. For example download [cube.c](http://www.sgi.com/products/software/opengl/examples/glut/examples/source/cube.c) and try to compile it like this:
 
     gcc -o cube cube.c -lGL -lGLU -lglut
 
 Also see [http://ubuntuforums.org/showthread.php?p=2362003#post2362003](http://ubuntuforums.org/showthread.php?p=2362003#post2362003).
+
+### Disable documentation for faster installation
+
+One can create a file called _~/.gemrc_ with the following content.
+
+    gem: --no-ri --no-rdoc
+
+This will disable generation of the documentation which reduces the installation time for each Ruby Gem.
 
 Execution FAQ
 -------------
