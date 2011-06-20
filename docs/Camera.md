@@ -57,7 +57,7 @@ This is a more sophisticated example. It opens the first V4L2 camera and then it
     require 'hornetseye_xorg'
     include Hornetseye
     camera = V4L2Input.new '/dev/video0' do |modes|
-      modes.each_with_index { |mode,i| puts "#{i + 1}: #{mode}" }
+      modes.each_with_index { |mode,i| puts "#{i + 1}: #{mode[0]} #{mode[1]}x#{mode[2]}" }
       modes[STDIN.readline.to_i - 1]
     end
     X11Display.show { camera.read }
@@ -87,7 +87,7 @@ In this example the user is prompted to select a video mode offered by the camer
     require 'hornetseye_xorg'
     include Hornetseye
     camera = DC1394Input.new 0 do |modes|
-      modes.each_with_index { |mode,i| puts "#{i + 1}: #{mode}" }
+      modes.each_with_index { |mode,i| puts "#{i + 1}: #{mode[0]} #{mode[1]}x#{mode[2]}" }
       modes[STDIN.readline.to_i - 1]
     end
     X11Display.show { camera.read }
