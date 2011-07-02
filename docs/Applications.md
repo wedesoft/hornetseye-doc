@@ -720,8 +720,7 @@ This is an implementation of the phase correlation for aligning images. This imp
     image = MultiArray.load_ubyte ARGV[0]
     template = MultiArray.load_ubyte ARGV[1]
     shift = image.phase_corr template
-    shiftx = lazy( *shift.shape ) { |i,j| i }.mask( shift >= shift.max )[0]
-    shifty = lazy( *shift.shape ) { |i,j| j }.mask( shift >= shift.max )[0]
+    shiftx, shifty = argmax { |i,j| shift[i,j] }
     shiftx = shiftx - image.shape[0] - template.shape[0] if shiftx > image.shape[0]
     shifty = shifty - image.shape[1] - template.shape[1] if shifty > image.shape[1]
     minx = [ 0, shiftx ].min
@@ -796,8 +795,7 @@ This is an implementation of the normalised cross-correlation for locating a tem
     image = MultiArray.load_ubyte ARGV[0]
     template = MultiArray.load_ubyte ARGV[1]
     ncc = image.to_dfloat.ncc template.to_dfloat, 0.1
-    shiftx = lazy(*ncc.shape) { |i,j| i }.mask(ncc >= ncc.max)[0]
-    shifty = lazy(*ncc.shape) { |i,j| j }.mask(ncc >= ncc.max)[0]
+    shiftx, shifty = argmax { |i,j| ncc[i,j] }
     result1 = image / 2
     result2 = MultiArray.ubyte(*image.shape).fill!
     result2[shiftx ... shiftx + template.shape[0],
@@ -1119,7 +1117,7 @@ The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Rea
         checksum == self % 10
       end
     end
-    input = V4L2Input.new { |modes| modes.sort_by { |mode| ( mode.width - 640 ).abs }.first }
+    input = V4L2Input.new { |modes| modes.sort_by { |mode| ( mode[1] - 640 ).abs }.first }
     SIGMA = 20.0
     NOISE = 10.0
     ERR_THRESH = 0.25
@@ -1216,7 +1214,7 @@ The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Rea
                 end
                 for i in 0 .. 9
                   lgr = patterns[ i ][ 11 - exp[ dir ] ]
-                  match = lazy( err[ lgr ].size ) { |i| i }.mask( err[ lgr ] <= err[ lgr ].min )[0]
+                  match = argmin { |i| err[ lgr ][i] }.first
                   max_err[ [ dir, i ] ] = [ max_err[ [ dir, i ] ], err[ lgr ][ match ].to_f / cut.size ].max
                   number[ [ dir, i ] ] += match * 10 ** exp[ dir ]
                 end

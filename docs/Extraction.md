@@ -161,7 +161,7 @@ Usually computing a feature image is not enough and one needs to determine the l
     require 'hornetseye_xorg'
     include Hornetseye
     class Node
-      def nms( threshold = 0 )
+      def nms( threshold = 0.05 )
         finalise { dilate.major( threshold ) <= self }
       end
       def s_t( sigma_grad = 1.0, sigma_avg = 1.0, threshold = 0.05 )

@@ -57,7 +57,7 @@ The Otsu algorithm is an algorithm for automatic thresholding. The algorithm ass
         u2 = ( s2.mask( m2 ).to_sfloat / w2.mask( m2 ) ).unmask m2
         between_variance = ( u1 - u2 ) ** 2 * w1 * w2
         max_between_variance = between_variance.max
-        self > idx.mask( between_variance >= max_between_variance )[0]
+        self > argmax { |i| between_variance[i] }.first
       end
     end
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
