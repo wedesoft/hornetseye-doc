@@ -41,7 +41,8 @@ One can do gamma correction by applying an exponential function to each pixel.
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_sfloatrgb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    img = MultiArray.load_sfloatrgb 'bmw.exr'
     ( img ** 0.03 ).normalise.show
 
 Adjusting Brightness and Contrast
@@ -55,20 +56,20 @@ Changing the brightness and/or contrast of an image simply means applying a gain
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
+    N = 3
     img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
-    n = 3
     w, h = *img.shape
-    thumb = ( img.downsample( n, n ) / 255.0 ) ** 2.2
-    result = MultiArray.ubytergb *thumb.shape.collect { |d| d * n }
-    for y in 0 ... n
-      for x in 0 ... n
-        brightness = 2 * ( y + 0.5 ) / n - 1
-        contrast = 2 * ( x + 0.5 ) / n - 1
-        factor = ( contrast + 1.0 ) / ( 1.0 - contrast )
-        offset = 0.5 * ( 1.0 + ( brightness -1.0 ) * factor )
+    thumb = (img.downsample(N, N) / 255.0) ** 2.2
+    result = MultiArray.ubytergb *thumb.shape.collect { |d| d * N }
+    for y in 0 ... N
+      for x in 0 ... N
+        brightness = 2 * (y + 0.5) / N - 1.0
+        contrast = 2 * (x + 0.5) / N - 1.0
+        factor = (contrast + 1.0) / (1.0 - contrast)
+        offset = 0.5 * (1.0 + (brightness -1.0) * factor)
         sample = thumb * factor + offset
-        result[ w / n * x ... w / n * ( x + 1 ),
-                h / n * y ... h / n * ( y + 1 ) ] = ( 255 * sample ** ( 1 / 2.2 ) ).clip
+        result[w / N * x ... w / N * (x + 1),
+               h / N * y ... h / N * (y + 1)] = (255 * sample ** (1 / 2.2)).clip
       end
     end
     result.show
@@ -84,8 +85,9 @@ The element-wise logarithm can be used to display images with a large contrast r
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_sfloat 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
-    Math.log( img + 0.1 ).normalise.show
+    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    img = MultiArray.load_sfloatrgb 'bmw.exr'
+    Math.log(img + 0.1).normalise.show
 
 Pseudo Colours
 --------------

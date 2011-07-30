@@ -30,7 +30,8 @@ Using integral arrays and element-wise lookup (map) one can implement histogram 
         end
       end
     end
-    img = MultiArray.load_sfloatrgb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    img = MultiArray.load_sfloatrgb 'bmw.exr'
     img.equalise.show
 
 Otsu Thresholding

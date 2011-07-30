@@ -60,7 +60,8 @@ The values of a high dynamic range images usually exceed the range of the displa
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_sfloat 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    img = MultiArray.load_sfloatrgb 'bmw.exr'
     average = img.sum / img.size
     ( 256 * img / average ).minor( 255 ).show
 
