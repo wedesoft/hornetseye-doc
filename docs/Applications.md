@@ -237,7 +237,7 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
             @input = nil
           end
           input = V4L2Input.new @ui.deviceEdit.text do |modes|
-            modes.select { |mode| mode.rgb? }.sort_by { |mode| ( mode.width - 640 ).abs }.first
+            modes.select { |mode| mode[0].rgb? }.sort_by { |mode| (mode[1] - 640).abs }.first
           end
           input.read
           @sliders.each do |slider,feature|
