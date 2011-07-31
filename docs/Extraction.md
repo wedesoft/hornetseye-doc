@@ -9,16 +9,16 @@ Sobel Gradient Magnitude
 In the following example the sobel gradient magnitude is computed.
 
     require 'rubygems'
-    require 'hornetseye_rmagick'
+    require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
     class Node
-      def sobel_mag
-        Math.sqrt lazy { sobel( 0 ) ** 2 + sobel( 1 ) ** 2 }
+      def sobel_norm
+        Math.sqrt sobel(0) ** 2 + sobel(1) ** 2
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
-    img.sobel_mag.normalise( 255 .. 0 ).show
+    input = V4L2Input.new
+    X11Display.show { input.read_ubyte.sobel_norm.normalise 255 .. 0 }
 
 Roberts Cross Edge Detector
 ---------------------------
@@ -33,13 +33,13 @@ Roberts cross edge detector consists of two small filters. The image is correlat
     include Hornetseye
     class Node
       def roberts
-        filter1 = MultiArray( SINT, 2, 2 )[ [ -1,  0 ], [ 0, 1 ] ]
-        filter2 = MultiArray( SINT, 2, 2 )[ [  0, -1 ], [ 1, 0 ] ]
-        finalise { convolve( filter1 ).abs + convolve( filter2 ).abs }
+        filter1 = MultiArray(SINT, 2)[[-1,  0], [0, 1]]
+        filter2 = MultiArray(SINT, 2)[[ 0, -1], [1, 0]]
+        convolve(filter1).abs + convolve(filter2).abs
       end
     end
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
-    img.roberts.normalise( 0xFF .. 0 ).show
+    img.roberts.normalise(0xFF .. 0).show
 
 Difference of Gaussian
 ----------------------
@@ -161,26 +161,22 @@ Usually computing a feature image is not enough and one needs to determine the l
     require 'hornetseye_xorg'
     include Hornetseye
     class Node
-      def nms( threshold = 0.05 )
-        finalise { dilate.major( threshold ) <= self }
+      def nms(threshold = 0.05)
+        self >= dilate.major(threshold)
       end
-      def s_t( sigma_grad = 1.0, sigma_avg = 1.0, threshold = 0.05 )
-        x, y = gauss_gradient( sigma_grad, 0 ), gauss_gradient( sigma_grad, 1 )
-        a = ( x * x ).gauss_blur sigma_avg
-        b = ( y * y ).gauss_blur sigma_avg
-        c = ( x * y ).gauss_blur sigma_avg
+      def harris(sigma_grad = 1.0, sigma_avg = 1.0, k = 0.05, threshold = 0.05)
+        x, y = gauss_gradient(sigma_grad, 0), gauss_gradient(sigma_grad, 1)
+        a = (x * x).gauss_blur sigma_avg
+        b = (y * y).gauss_blur sigma_avg
+        c = (x * y).gauss_blur sigma_avg
         tr = a + b
         det = a * b - c * c
-        dissqrt = Math.sqrt( ( tr * tr - det * 4 ).major( 0.0 ) )
-        features = 0.5 * ( tr - dissqrt )
-        mask = ( 0.5 * ( tr - dissqrt ) ).nms threshold
-        [ lazy( *shape ) { |i,j| i }.mask( mask ), lazy( *shape ) { |i,j| j }.mask( mask ) ]
+        features = det - tr * tr * k
+        features.nms threshold
       end
     end
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
-    features = img.s_t
-    box = lazy( 3, 3 ) { RGB 0, 255, 0 }
-    ( img | features.histogram( *img.shape ).convolve( box ) ).show
+    img.harris.dilate(3).conditional(RGB(0, 255, 0), img).show
 
 See Also
 --------

@@ -86,7 +86,7 @@ The element-wise logarithm can be used to display images with a large contrast r
     require 'hornetseye_xorg'
     include Hornetseye
     system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
-    img = MultiArray.load_sfloatrgb 'bmw.exr'
+    img = MultiArray.load_sfloat 'bmw.exr'
     Math.log(img + 0.1).normalise.show
 
 Pseudo Colours

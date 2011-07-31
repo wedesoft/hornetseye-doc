@@ -676,7 +676,7 @@ The following example demonstrates using windowing, zero padding, and Fourier tr
         (fft.conj * fft).real
       end
     end
-    img = MultiArray.load_ubyte 'test.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/texture.jpg'
     (img.spectrum ** 0.1).shift(*img.shape).normalise(255 .. 0).show *img.shape
 
 Phase Correlation
@@ -849,7 +849,7 @@ This is an implementation of the Camshift algorithm for real-time tracking. The 
       r.major( g ).major b
     end
     input = V4L2Input.new do |modes|
-      modes.select { |mode| mode.rgb? }.sort_by { |mode| ( mode.width - WIDTH ).abs }.first
+      modes.select { |mode| mode[0].rgb? }.sort_by { |mode| (mode[1] - WIDTH).abs }.first
     end
     box = [ ( input.width  - BOX_SIZE ) / 2 ... ( input.width  + BOX_SIZE ) / 2,
             ( input.height - BOX_SIZE ) / 2 ... ( input.height + BOX_SIZE ) / 2 ]

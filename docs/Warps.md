@@ -18,7 +18,7 @@ Using integral arrays and element-wise lookup (map) one can implement histogram 
       end
       def equalise( n = 4096, c_max = 255 )
         if typecode < RGB_
-          result = array_type.new
+          result = MultiArray(typecode, dimension).new *shape
           max_average = [ r, g, b ].collect { |c| c.average }.max
           result.r, result.g, result.b = *[ r, g, b ].collect do |c|
             c.equalise n, c_max * c.average / max_average
@@ -212,14 +212,14 @@ This example demonstrates dithering using a Bayer matrix. Dithering is most comm
     include Hornetseye
     class MultiArray
       class << self
-        def bayer( lsize )
+        def bayer(lsize)
           n = 1 << lsize
-          idx = MultiArray( INT, n, n ).indgen
-          result = MultiArray.int( n, n ).fill!
-          m = Sequence[ 0, 2, 3, 1 ].to_int
+          idx = MultiArray(INT, 2).indgen n, n
+          result = MultiArray.int(n, n).fill!
+          m = Sequence[0, 2, 3, 1].to_int
           for i in 0 ... lsize
-            q = idx.bit( i ) | idx.bit( i + lsize ) << 1
-            result |= q.lut( m ) << ( ( lsize - i - 1 ) << 1 )
+            q = idx.bit(i) | idx.bit(i + lsize) << 1
+            result |= q.lut(m) << ((lsize - i - 1) << 1)
           end
           result
         end
@@ -227,26 +227,26 @@ This example demonstrates dithering using a Bayer matrix. Dithering is most comm
     end
     class Node
       def bit( i )
-        ( self & ( 1 << i ) ) >> i
+        (self & (1 << i)) >> i
       end
-      def dither( lsize = 4 )
+      def dither(lsize = 4)
         if typecode < RGB_
-          result = array_type.new
-          result.r, result.g, result.b = [ r, g, b ].collect do |c|
+          result = MultiArray(typecode, dimension).new *shape
+          result.r, result.g, result.b = [r, g, b].collect do |c|
             c.dither lsize
           end
           result
         else
           bayer = MultiArray.bayer lsize
-          x = lazy( *shape ) { |i,j| i & ( ( 1 << lsize ) - 1 ) }
-          y = lazy( *shape ) { |i,j| j & ( ( 1 << lsize ) - 1 ) }
-          msk = ( 1 << lsize ) ** 2 - 1
-          ( self & msk <= bayer.warp( x, y ) ).conditional self & ~msk, self | msk
+          x = lazy(*shape) { |i,j| i & ((1 << lsize) - 1) }
+          y = lazy(*shape) { |i,j| j & ((1 << lsize) - 1) }
+          msk = (1 << lsize) ** 2 - 1
+          (self & msk <= bayer.warp(x, y)).conditional self & ~msk, self | msk
         end
       end
     end
     img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
-    img.dither( 3 ).show
+    img.dither(3).show
 
 See Also
 --------

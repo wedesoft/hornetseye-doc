@@ -61,7 +61,7 @@ The values of a high dynamic range images usually exceed the range of the displa
     require 'hornetseye_xorg'
     include Hornetseye
     system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
-    img = MultiArray.load_sfloatrgb 'bmw.exr'
+    img = MultiArray.load_sfloat 'bmw.exr'
     average = img.sum / img.size
     ( 256 * img / average ).minor( 255 ).show
 
@@ -75,7 +75,8 @@ The following example loads a colour HDR image, reduces the gamma, and then disp
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_sfloatrgb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    img = MultiArray.load_sfloatrgb 'bmw.exr'
     ( img ** 0.1 ).normalise.show
 
 See Also

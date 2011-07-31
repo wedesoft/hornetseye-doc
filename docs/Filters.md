@@ -93,7 +93,7 @@ The Wiener filter is the optimal linear filter for denoising and deblurring. The
       end
       def wiener( alpha, noise, sigma = nil )
         if typecode < RGB_
-          result = self.array_type.float.new
+          result = MultiArray(typecode.float, dimension).new *shape
           result.r, result.g, result.b = [ r, g, b ].collect do |c|
             c.wiener alpha, noise, sigma
           end
@@ -180,13 +180,13 @@ Connected component analysis assigns the same label to neighbouring pixel which 
     require 'hornetseye_xorg'
     include Hornetseye
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/letters.png'
-    components = ( img >= 0x7F ).components
+    components = (img >= 0x7F).components
     palette = Sequence.ubytergb components.max + 1
-    palette.r, palette.g, palette.b = *( 1 .. 3 ).collect do
-      Sequence( UBYTE, palette.size ).random 256
+    palette.r, palette.g, palette.b = *(1 .. 3).collect do
+      Sequence(UBYTE).random palette.size, 256
     end
-    palette[ 0 ] = 0
-    components.lut( palette ).show
+    palette[0] = 0
+    components.lut(palette).show
 
 See Also
 --------
