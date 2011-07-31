@@ -202,73 +202,74 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
     include Hornetseye
     app = Qt::Application.new ARGV
     class Webcam < Qt::Dialog
-      slots 'open_camera()'
-      slots 'set_brightness(int)'
-      slots 'set_hue(int)'
-      slots 'set_colour(int)'
-      slots 'set_contrast(int)'
+      slots 'open_camera(bool)'
+      slots 'select_feature(int)'
+      slots 'set_feature(int)'
       def initialize( parent = nil )
         super parent
         @ui = Ui::WebcamWindow.new
         @ui.setupUi self
-        @sliders = { @ui.brightnessSlider => V4L2Input::FEATURE_BRIGHTNESS,
-                     @ui.hueSlider => V4L2Input::FEATURE_HUE,
-                     @ui.colourSlider => V4L2Input::FEATURE_SATURATION,
-                     @ui.contrastSlider => V4L2Input::FEATURE_CONTRAST }
         @xvwidget = XvWidget.new
         @ui.scrollArea.widget = @xvwidget
-        connect @ui.reconnectButton, SIGNAL('clicked()'), self, SLOT('open_camera()')
-        connect @ui.brightnessSlider, SIGNAL('valueChanged(int)'),
-                self, SLOT('set_brightness(int)')
-        connect @ui.hueSlider, SIGNAL('valueChanged(int)'),
-                self, SLOT('set_hue(int)')
-        connect @ui.colourSlider, SIGNAL('valueChanged(int)'),
-                self, SLOT('set_colour(int)')
-        connect @ui.contrastSlider, SIGNAL('valueChanged(int)'),
-                self, SLOT('set_contrast(int)')
+        connect @ui.connectButton, SIGNAL('toggled(bool)'), self, SLOT('open_camera(bool)')
+        connect @ui.featureCombo, SIGNAL('currentIndexChanged(int)'),
+                self, SLOT('select_feature(int)')
+        connect @ui.featureSlider, SIGNAL('valueChanged(int)'),
+                self, SLOT('set_feature(int)')
+        @input = nil
         @timer = 0
-        open_camera
+        @features = []
       end
-      def open_camera
-        @ui.errorLabel.text = ''
+      def open_camera(on)
         begin
-          if @input
-            @input.close
-            @input = nil
-          end
-          input = V4L2Input.new @ui.deviceEdit.text do |modes|
-            modes.select { |mode| mode[0].rgb? }.sort_by { |mode| (mode[1] - 640).abs }.first
-          end
-          input.read
-          @sliders.each do |slider,feature|
-            if input.feature_exist? feature
-              slider.minimum = input.feature_min feature
-              slider.maximum = input.feature_max feature
-              slider.value = input.feature_read feature
-              slider.enabled = true
-            else
-              slider.enabled = false
+          if on
+            @ui.errorLabel.text = ''
+            @input = V4L2Input.new @ui.deviceEdit.text do |modes|
+              modes.select { |mode| mode[0].rgb? }.sort_by { |mode| (mode[1] - 640).abs }.first
             end
+            @input.read
+            for feature in V4L2Input::FEATURE_BASE .. V4L2Input::FEATURE_LASTP1
+              if @input.feature_exist? feature
+                @features << feature
+                @ui.featureCombo.addItem @input.feature_name(feature)
+              end
+            end
+            @ui.featureCombo.enabled = true
+            @ui.deviceEdit.enabled = false
+            @timer = startTimer 0
+          else
+            killTimer @timer if @timer != 0
+            if @input
+              @input.close
+              @input = nil
+            end
+            @features = []
+            @ui.featureCombo.clear
+            @ui.deviceEdit.enabled = true
+            @ui.featureCombo.enabled = false
           end
-          @input = input
-          @timer = startTimer 0 if @timer == 0
         rescue RuntimeError => e
           @ui.errorLabel.text = e.to_s
-          @input = nil
+          @ui.connectButton.checked = false
         end
-        @input
       end
-      def set_brightness( value )
-        @input.feature_write V4L2Input::FEATURE_BRIGHTNESS, value if @input
+      def select_feature(value)
+        if @input and value >= 0
+          feature = @features[value]
+          @input, input = nil, @input
+          @ui.featureSlider.minimum = input.feature_min feature
+          @ui.featureSlider.maximum = input.feature_max feature
+          @ui.featureSlider.value = input.feature_read feature
+          @ui.featureSlider.enabled = true
+          @input = input
+        else
+          @ui.featureSlider.enabled = false
+        end
       end
-      def set_hue( value )
-        @input.feature_write V4L2Input::FEATURE_HUE, value if @input
-      end
-      def set_colour( value )
-        @input.feature_write V4L2Input::FEATURE_SATURATION, value if @input
-      end
-      def set_contrast( value )
-        @input.feature_write V4L2Input::FEATURE_CONTRAST, value if @input
+      def set_feature(value)
+        if @input
+          @input.feature_write @features[@ui.featureCombo.currentIndex], value
+        end
       end
       def timerEvent( e )
         begin
