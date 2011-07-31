@@ -191,21 +191,39 @@ This is an example using an XVideo widget to implement a webcam viewer. The view
 
 To use this application you need to install Qt4Ruby. You also need to compile the user interface description file first:
 
+    rbuic4 modedialog.ui > ui_modedialog.rb
     rbuic4 webcam.ui > ui_webcam.rb
 
-The UI file is available for download here: [webcam.ui](webcam.ui)
+The UI files are available for download here: [webcam.ui](webcam.ui), [modedialog.ui](modedialog.ui)
 
     require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_qt4'
+    require 'ui_modedialog'
     require 'ui_webcam'
     include Hornetseye
     app = Qt::Application.new ARGV
+    class ModeDialog < Qt::Dialog
+      def initialize(parent = nil)
+        super parent
+        @ui = Ui::ModeDialog.new
+        @ui.setupUi self
+      end
+      def clear_modes
+        @ui.modeList.clear
+      end
+      def add_mode(typecode, width, height)
+        @ui.modeList.addItem "#{typecode} #{width} x #{height}"
+      end
+      def selected
+        @ui.modeList.currentRow
+      end
+    end
     class Webcam < Qt::Dialog
       slots 'open_camera(bool)'
       slots 'select_feature(int)'
       slots 'set_feature(int)'
-      def initialize( parent = nil )
+      def initialize(parent = nil)
         super parent
         @ui = Ui::WebcamWindow.new
         @ui.setupUi self
@@ -219,13 +237,17 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
         @input = nil
         @timer = 0
         @features = []
+        @mode_dialog = ModeDialog.new
       end
       def open_camera(on)
         begin
           if on
             @ui.errorLabel.text = ''
             @input = V4L2Input.new @ui.deviceEdit.text do |modes|
-              modes.select { |mode| mode[0].rgb? }.sort_by { |mode| (mode[1] - 640).abs }.first
+              @mode_dialog.clear_modes
+              modes.each { |mode| @mode_dialog.add_mode *mode }
+              raise 'Opening camera was aborted' unless @mode_dialog.exec == Qt::Dialog::Accepted
+              modes[@mode_dialog.selected || 0]
             end
             @input.read
             for feature in V4L2Input::FEATURE_BASE .. V4L2Input::FEATURE_LASTP1
