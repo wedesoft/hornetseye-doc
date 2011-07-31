@@ -275,8 +275,7 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
         begin
           @xvwidget.write @input.read
         rescue RuntimeError => e
-          killTimer @timer
-          @timer = 0
+          @ui.connectButton.checked = false
         end
       end
     end
