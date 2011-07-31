@@ -275,6 +275,7 @@ The UI file is available for download here: [webcam.ui](webcam.ui)
         begin
           @xvwidget.write @input.read
         rescue RuntimeError => e
+          @ui.errorLabel.text = e.to_s
           @ui.connectButton.checked = false
         end
       end
