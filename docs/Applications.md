@@ -189,7 +189,7 @@ Webcam Viewer
 
 This is an example using an XVideo widget to implement a webcam viewer. The viewer also has controls for a few camera features.
 
-To use this application you need to install Qt4Ruby. You also need to compile the user interface description file first:
+To use this application you need to install Qt4Ruby. You also need to compile the user interface description files first:
 
     rbuic4 modedialog.ui > ui_modedialog.rb
     rbuic4 webcam.ui > ui_webcam.rb

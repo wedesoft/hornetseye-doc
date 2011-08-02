@@ -28,6 +28,7 @@ Example Programs
 * {file:docs/Filters.md Filters}
 * {file:docs/Extraction.md Feature extraction}
 * {file:docs/Applications.md Applications}
+* {file:docs/3DVision.md 3D Vision}
 
 See also
 --------
