@@ -19,4 +19,5 @@ External Links
 --------------
 
 * [Zhengyou Zhang calibration](http://research.microsoft.com/en-us/um/people/zhang/calib/)
+* [Ruby linalg](http://rubyforge.org/projects/linalg/)
 

@@ -8,7 +8,7 @@ require 'yard'
 PKG_NAME = 'hornetseye-doc'
 PKG_VERSION = '0.1.0'
 MD_FILES = FileList[ 'docs/*.md' ]
-DL_FILES = FileList[ 'docs/*.ui', 'docs/*.pov', 'docs/*.ini' ]
+DL_FILES = FileList[ 'docs/*.rb', 'docs/*.ui', 'docs/*.pov', 'docs/*.ini' ]
 IMG_FILES = FileList[ 'docs/images/*' ]
 PKG_FILES = [ 'Rakefile', 'README.md', 'COPYING', '.document', '.yardopts' ] +
             MD_FILES + DL_FILES + IMG_FILES
