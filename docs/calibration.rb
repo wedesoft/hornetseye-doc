@@ -170,7 +170,6 @@ X11Display.show do
       end
     end
   end
-result.save_ubytergb '/tmp/calibration.png'
   result
 end
 
