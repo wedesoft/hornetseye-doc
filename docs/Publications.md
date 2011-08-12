@@ -5,7 +5,7 @@ Publications
 
 ECOOP 2011
 ----------
-**Hornetseye** is going to be demonstrated at the [25th European Conference on Object-Oriented Programming (ECOOP) 2011](http://ecoop11.comp.lancs.ac.uk/) in Lancaster, United Kingdom.
+**Hornetseye** was demonstrated at the [25th European Conference on Object-Oriented Programming (ECOOP) 2011](http://ecoop11.comp.lancs.ac.uk/) in Lancaster, United Kingdom ([abstract](http://ecoop11.comp.lancs.ac.uk/?q=content/implementing-machine-vision-systems-dynamically-typed-language)). Thanks to the conference organizers and thanks to all the attendees for an interesting and stimulating conference.
 
 ![ECOOP 2011](images/lancaster.jpg)
 
