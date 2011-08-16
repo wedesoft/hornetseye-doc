@@ -72,6 +72,38 @@ The LoG-filter creates an image with zero-crossings at edge locations. The edges
     binary = img.convolve( log ) >= 0
     binary.not.or( binary.erode ).conditional( 0xFF, 0 ).show
 
+Canny Edge Detector
+-------------------
+
+![Canny edge detector](images/canny.png)
+
+The Canny edge detector uses two thresholds. The gradient norm is used to select edges. The gradient orientation is used to perform non-maxima suppression for edges. Edges are suppressed if the gradient is below the high threshold and the edge is not connected to edges with a gradient norm surpassing the high threshold. The Canny algorithm requires tracing along the edges. Here full connectivity is used instead.
+
+    require 'rubygems'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    HIGH = 6.0
+    LOW = 0.75
+    input = V4L2Input.new
+    w, h = input.width, input.height
+    X11Display.show do
+      img = input.read_ubyte
+      x = img.gauss_gradient 1.4, 0, 0.5
+      y = img.gauss_gradient 1.4, 1, 0.5
+      norm = Math.hypot x, y
+      angle = Math.atan2 y, x
+      orientation = ((2 * Math::PI - Math::PI / 8 + angle) * (4 / Math::PI)).to_ubyte % 4
+      idx, idy = lazy(w, h) { |i,j| i }, lazy(w, h) { |i,j| j }
+      dx, dy = orientation.lut(Sequence[-1, 0, 1, 1]), orientation.lut(Sequence[-1, -1, -1, 0])
+      low = norm >= norm.warp(idx + dx, idy + dy).major(norm.warp(idx - dx, idy - dy)).major(LOW)
+      high = norm >= HIGH
+      comp = low.components
+      hist = comp.histogram comp.max + 1, :weight => high.to_int
+      edges = low.and comp.lut(hist > 0)
+      edges.conditional high.conditional(RGB(255, 255, 0), RGB(255, 0, 0)), img
+    end
+
 Corner Strength by Yang et al.
 ------------------------------
 
@@ -154,7 +186,7 @@ Feature Locations
 
 ![Feature locations](images/features.png)
 
-Usually computing a feature image is not enough and one needs to determine the locations of the most prominent features. This can be achieved by thresholding the image and then locating the maxima (i.e. performing non-maxima suppression). HornetsEye does not support non-maxima suppression directly. However one can use greylevel dilation followed by masking as shown below.
+Usually computing a feature image is not enough and one needs to determine the locations of the most prominent features. This can be achieved by thresholding the image and then locating the maxima (i.e. performing non-maxima suppression for corners). HornetsEye does not support non-maxima suppression directly. However one can use greylevel dilation followed by masking as shown below.
 
     require 'rubygems'
     require 'hornetseye_rmagick'
@@ -191,6 +223,7 @@ External Links
 
 * [Sobel operator](http://en.wikipedia.org/wiki/Sobel_operator)
 * [Roberts cross edge detector](http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm)
+* [Canny edge detector](http://en.wikipedia.org/wiki/Canny_edge_detector)
 * [Corner detection](http://en.wikipedia.org/wiki/Corner_detection)
 * [Difference of Gaussian](http://en.wikipedia.org/wiki/Difference_of_Gaussians)
 * [Corner strength by Yang et al.](http://pubs.doc.ic.ac.uk/structure-anisotropic-image/)
