@@ -46,7 +46,7 @@ Anaglyph Videos
 
 ![Convert 3D to anaglyph video](images/anaglyph.jpg)
 
-One can download 3D stereo videos from Youtube and convert them to a red-cyan anaglyph video as follows. To download videos from Youtube, one can can use the Unplug add-on for Firefox.
+One can download [3D stereo videos from Youtube](http://www.youtube.com/3d) and convert them to a red-cyan [anaglyph](http://en.wikipedia.org/wiki/Anaglyph_image) video as follows. To download videos from Youtube, one can can use the [Unplug](https://addons.mozilla.org/firefox/addon/unplug/) add-on for Firefox.
 
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
@@ -82,5 +82,6 @@ External Links
 * [FFMpeg audio/video codec library](http://www.ffmpeg.org/)
 * [Sintel, the Durian Open Movie Project](http://sintel.org/)
 * [Youtube 3D](http://www.youtube.com/3d)
+* [Anaglyph images](http://en.wikipedia.org/wiki/Anaglyph_image)
 * [Unplug (add-on for Firefox)](https://addons.mozilla.org/firefox/addon/unplug/)
 
