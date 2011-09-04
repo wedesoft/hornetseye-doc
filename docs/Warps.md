@@ -253,11 +253,11 @@ See Also
 
 * {Hornetseye#lazy}
 * {Hornetseye#finalise}
-* {Hornetseye::Operations#lut}
-* {Hornetseye::Operations#histogram}
-* {Hornetseye::Operations#integral}
-* {Hornetseye::Operations#mask}
-* {Hornetseye::Operations#warp}
+* {Hornetseye::Node#lut}
+* {Hornetseye::Node#histogram}
+* {Hornetseye::Node#integral}
+* {Hornetseye::Node#mask}
+* {Hornetseye::Node#warp}
 
 External Links
 --------------

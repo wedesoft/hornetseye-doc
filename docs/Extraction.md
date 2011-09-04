@@ -53,7 +53,7 @@ The difference of Gaussian is simply the difference of two Gaussian filters of d
     require 'hornetseye_xorg'
     include Hornetseye
     img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
-    dog = img.gauss_blur( 1.5 ) - img.gauss_blur( 3.0 )
+    dog = img.gauss_blur(1.5) - img.gauss_blur(3.0)
     dog.normalise.show
 
 Laplacian of Gaussian
@@ -69,8 +69,8 @@ The LoG-filter creates an image with zero-crossings at edge locations. The edges
     include Hornetseye
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
     log = MultiArray.laplacian_of_gaussian 1.4, 9
-    binary = img.convolve( log ) >= 0
-    binary.not.or( binary.erode ).conditional( 0xFF, 0 ).show
+    binary = img.convolve(log) >= 0
+    binary.not.or(binary.erode).conditional(0xFF, 0).show
 
 Canny Edge Detector
 -------------------
@@ -122,12 +122,12 @@ The following program computes the corner strength measure by Yang, Burger, Firm
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
-    a = ( x ** 2 ).gauss_blur COV_SIGMA
-    b = ( y ** 2 ).gauss_blur COV_SIGMA
-    c = ( x * y  ).gauss_blur COV_SIGMA
-    g = ( ( a - b ) ** 2 + ( 2 * c ) ** 2 ) / ( a + b + NOISE ** 2 ) ** 2
-    result = g.normalise( 1.0 .. 0.0 ) ** EXP * ( x ** 2 + y ** 2 )
-    result.normalise( 0xFF .. 0 ).show
+    a = (x * x).gauss_blur COV_SIGMA
+    b = (y * y).gauss_blur COV_SIGMA
+    c = (x * y).gauss_blur COV_SIGMA
+    g = ((a - b) ** 2 + (2 * c) ** 2) / (a + b + NOISE ** 2) ** 2
+    result = g.normalise(1.0 .. 0.0) ** EXP * (x ** 2 + y ** 2)
+    result.normalise(0xFF .. 0).show
 
 Harris-Stephens Corner- and Edge-Detector
 -----------------------------------------
@@ -146,9 +146,9 @@ This program implements the Harris-Stephens corner- and edge-detector. In the re
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
-    a = ( x ** 2 ).gauss_blur COV_SIGMA
-    b = ( y ** 2 ).gauss_blur COV_SIGMA
-    c = ( x * y  ).gauss_blur COV_SIGMA
+    a = (x * x).gauss_blur COV_SIGMA
+    b = (y * y).gauss_blur COV_SIGMA
+    c = (x * y).gauss_blur COV_SIGMA
     tr = a + b
     det = a * b - c * c
     r = det - tr * tr * K
@@ -170,16 +170,16 @@ Here is an implementation of the Shi-Tomasi corner-detector.
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
-    a = ( x ** 2 ).gauss_blur COV_SIGMA
-    b = ( y ** 2 ).gauss_blur COV_SIGMA
-    c = ( x * y  ).gauss_blur COV_SIGMA
+    a = (x * x).gauss_blur COV_SIGMA
+    b = (y * y).gauss_blur COV_SIGMA
+    c = (x * y).gauss_blur COV_SIGMA
     tr = a + b
     det = a * b - c * c
     # "major" is needed to deal with numerical errors.
-    dissqrt = Math.sqrt( ( tr * tr - det * 4 ).major( 0.0 ) )
-    # Take smallest eigenvalue. Eigenvalues are "0.5 * ( tr +- dissqrt)"
-    result = 0.5 * ( tr - dissqrt )
-    result.normalise( 0xFF .. 0 ).show
+    dissqrt = Math.sqrt((tr * tr - det * 4).major(0.0))
+    # Take smallest eigenvalue. Eigenvalues are "0.5 * (tr +- dissqrt)"
+    result = 0.5 * (tr - dissqrt)
+    result.normalise(0xFF .. 0).show
 
 Feature Locations
 -----------------
@@ -212,10 +212,10 @@ Usually computing a feature image is not enough and one needs to determine the l
 See Also
 --------
 
-* {Hornetseye::Operations#convolve}
-* {Hornetseye::Operations#sobel}
-* {Hornetseye::Operations#gauss_blur}
-* {Hornetseye::Operations#gauss_gradient}
+* {Hornetseye::Node#convolve}
+* {Hornetseye::Node#sobel}
+* {Hornetseye::Node#gauss_blur}
+* {Hornetseye::Node#gauss_gradient}
 
 External Links
 --------------

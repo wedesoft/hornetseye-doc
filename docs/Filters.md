@@ -191,9 +191,9 @@ Connected component analysis assigns the same label to neighbouring pixel which 
 See Also
 --------
 
-* {Hornetseye::Operations#convolve}
-* {Hornetseye::Operations#sobel}
-* {Hornetseye::Operations#components}
+* {Hornetseye::Node#convolve}
+* {Hornetseye::Node#sobel}
+* {Hornetseye::Node#components}
 
 External Links
 --------------
