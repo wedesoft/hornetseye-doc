@@ -30,7 +30,7 @@ It is also possible to retrieve audio frames if the video file offers an audio s
     w, h = ( input.width * input.aspect_ratio ).to_i, input.height
     alsa = AlsaOutput.new 'default:0', input.sample_rate, input.channels
     audio_frame = input.read_audio
-    X11Display.show( w, h, :title => 'FFMpeg', :output => XVideoOutput ) do |display|
+    X11Display.show w, h, :title => 'FFMpeg', :output => XVideoOutput do |display|
       video_frame = input.read_video
       while alsa.avail >= audio_frame.shape[1]
         alsa.write audio_frame
@@ -39,6 +39,35 @@ It is also possible to retrieve audio frames if the video file offers an audio s
       t = input.audio_pos - (alsa.delay + audio_frame.shape[1]).quo( alsa.rate )
       display.event_loop [ input.video_pos - t, 0 ].max
       video_frame
+    end
+
+Anaglyph Videos
+---------------
+
+![Convert 3D to anaglyph video](images/anaglyph.jpg)
+
+One can download 3D stereo videos from Youtube and convert them to a red-cyan anaglyph video as follows. To download videos from Youtube, one can can use the Unplug add-on for Firefox.
+
+    require 'hornetseye_ffmpeg'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    raise "Syntax: ./anaglyph [input] [output]" if ARGV.size != 2
+    input = AVInput.new ARGV[0]
+    w2, h2 = input.width, input.height
+    w, h = w2 / 2, h2 # h2 * 2 / 3
+    output = AVOutput.new ARGV[1], 4000000, w, h, input.frame_rate, 1, nil, true, 128000,
+                          input.sample_rate, input.channels, nil
+    y = (h2 - h) / 2
+    X11Display.show do
+      img = input.read_video.to_ubytergb
+      begin
+        output.write_audio input.read_audio
+      end while input.audio_pos < input.video_pos
+      left  = img[0 ...  w, y ... y + h]
+      right = img[w ... w2, y ... y + h]
+      result = MultiArray.ubytergb w, h
+      result.r, result.g, result.b = left.r, right.g / 2, right.b / 2
+      output.write_video result
     end
 
 See also
@@ -52,4 +81,6 @@ External Links
 
 * [FFMpeg audio/video codec library](http://www.ffmpeg.org/)
 * [Sintel, the Durian Open Movie Project](http://sintel.org/)
+* [Youtube 3D](http://www.youtube.com/3d)
+* [Unplug (add-on for Firefox)](https://addons.mozilla.org/firefox/addon/unplug/)
 

@@ -196,19 +196,18 @@ Usually computing a feature image is not enough and one needs to determine the l
       def nms(threshold = 0.05)
         self >= dilate.major(threshold)
       end
-      def harris(sigma_grad = 1.0, sigma_avg = 1.0, k = 0.05, threshold = 0.05)
+      def harris(sigma_grad = 1.0, sigma_avg = 1.0, k = 0.05)
         x, y = gauss_gradient(sigma_grad, 0), gauss_gradient(sigma_grad, 1)
         a = (x * x).gauss_blur sigma_avg
         b = (y * y).gauss_blur sigma_avg
         c = (x * y).gauss_blur sigma_avg
         tr = a + b
         det = a * b - c * c
-        features = det - tr * tr * k
-        features.nms threshold
+        det - tr * tr * k
       end
     end
     img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
-    img.harris.dilate(3).conditional(RGB(0, 255, 0), img).show
+    img.harris.nms.dilate(3).conditional(RGB(0, 255, 0), img).show
 
 See Also
 --------
