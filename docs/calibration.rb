@@ -10,7 +10,7 @@ include Linalg
 include Hornetseye
 class Matrix
   def to_dmatrix
-    DMatrix[ *to_a ]
+    DMatrix[*to_a]
   end
   def svd
     to_dmatrix.svd.collect { |m| m.to_matrix }
@@ -35,7 +35,7 @@ class Vector
 end
 class DMatrix
   def to_matrix
-    Matrix[ *to_a ]
+    Matrix[*to_a]
   end
 end
 class Node
