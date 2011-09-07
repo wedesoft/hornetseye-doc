@@ -91,6 +91,16 @@ To install this Ruby extension, use the following command:
 
     sudo gem install hornetseye-kinect
 
+### hornetseye-linalg
+
+**hornetseye-linalg** provides conversions between {Linalg::DMatrix} (provided by *linalg*) and {Hornetseye::MultiArray}. You can install it as follows:
+
+    sudo aptitude install liblapack-dev libblas-dev libf2c2-dev
+
+To install this Ruby extension, use the following command:
+
+    sudo gem install hornetseye-linalg
+
 ### hornetseye-narray
 
 **hornetseye-narray** provides conversions between {NArray} (provided by *narray*) and {Hornetseye::MultiArray}. You can install it as follows:
@@ -210,6 +220,7 @@ External Links
     * [hornetseye-ffmpeg](http://rubygems.org/gems/hornetseye-ffmpeg/)
     * [hornetseye-fftw3](http://rubygems.org/gems/hornetseye-fftw3/)
     * [hornetseye-frame](http://rubygems.org/gems/hornetseye-frame/)
+    * [hornetseye-linalg](http://rubygems.org/gems/hornetseye-linalg/)
     * [hornetseye-kinect](http://rubygems.org/gems/hornetseye-kinect/)
     * [hornetseye-narray](http://rubygems.org/gems/hornetseye-narray/)
     * [hornetseye-opencv](http://rubygems.org/gems/hornetseye-opencv/)
@@ -226,7 +237,10 @@ External Links
     * [hornetseye-alsa](http://github.com/wedesoft/hornetseye-alsa/)
     * [hornetseye-dc1394](http://github.com/wedesoft/hornetseye-dc1394/)
     * [hornetseye-ffmpeg](http://github.com/wedesoft/hornetseye-ffmpeg/)
+    * [hornetseye-fftw3](http://github.com/wedesoft/hornetseye-fftw3/)
     * [hornetseye-frame](http://github.com/wedesoft/hornetseye-frame/)
+    * [hornetseye-linalg](http://github.com/wedesoft/hornetseye-linalg/)
+    * [hornetseye-kinect](http://github.com/wedesoft/hornetseye-kinect/)
     * [hornetseye-narray](http://github.com/wedesoft/hornetseye-narray/)
     * [hornetseye-opencv](http://github.com/wedesoft/hornetseye-opencv/)
     * [hornetseye-openexr](http://github.com/wedesoft/hornetseye-openexr/)
