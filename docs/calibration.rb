@@ -72,7 +72,7 @@ class Node
     u2 = (w2 > 0).conditional s2.to_sfloat / w2, 0
     between_variance = (u1 - u2) ** 2 * w1 * w2
     max_between_variance = between_variance.max
-    self > idx.mask(between_variance >= max_between_variance)[0]
+    self > argmax { |i| between_variance[i] }.first
   end
 end
 def homography(m, ms)
