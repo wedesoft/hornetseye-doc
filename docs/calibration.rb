@@ -143,7 +143,7 @@ X11Display.show do
         o = Vector[*(o.to_a + [-h[2, 0] * h[2, 1], h[2, 1] ** 2 - h[2, 0] ** 2])]
         d = Matrix[*(d.to_a + [[h[0, 0] * h[0, 1] + h[1, 0] * h[1, 1]],
                    [h[0, 0] ** 2 + h[1, 0] ** 2 - h[0, 1] ** 2 - h[1, 1] ** 2]])]
-        fs = 1.0 / ((d.transpose * d).inv * d.transpose * o)[0]
+        fs = 1.0 / ((d.t * d).inv * d.t * o)[0]
         if fs > 0
           f = Math.sqrt fs
           a = Matrix[[f, 0.0, 0.0], [0.0, f, 0.0], [0.0, 0.0, 1.0]]
@@ -155,13 +155,13 @@ X11Display.show do
           result = (v[0] / v[2]).between?(-W2, W2).and((v[1] / v[2]).between?(-H2, H2)).
             conditional img * RGB(0, 1, 0), img
           gc = Magick::Draw.new
-          gc.fill_opacity(0).stroke('red').stroke_width 1
+          gc.fill_color('red').stroke('red').stroke_width(1).pointsize 16
           for i in 0 ... N
             j = sorted[i]
             gc.circle points[j].real, points[j].imag, points[j].real + 2, points[j].imag
             gc.text points[j].real, points[j].imag, "#{i+1}"
           end
-          gc.stroke 'black'
+          gc.fill_color('black').stroke 'black'
           gc.text 30, 30, "f/ds = #{f}"
           result = result.to_ubytergb.to_magick
           gc.draw result

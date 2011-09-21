@@ -149,7 +149,7 @@ To install this Ruby extension, use the following command:
 
 **hornetseye-qt4** implements a Qt4 widget (compatible with *qtruby4*) for hardware accelerated video output. This Ruby extension requires Qt4, QtRuby4 and the software scaling library. You can install them as follows:
 
-    sudo aptitude install libqt4-ruby1.8 qt4-dev-tools libswscale-dev xserver-xorg-dev libxv-dev libxpm-dev
+    sudo aptitude install libqt4-ruby1.8 libqt4-dev qt4-dev-tools libswscale-dev xserver-xorg-dev libxv-dev libxpm-dev
 
 You need to install *hornetseye-qt4* from source:
 
