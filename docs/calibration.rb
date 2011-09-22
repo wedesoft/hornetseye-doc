@@ -46,7 +46,7 @@ class Node
     hist = mask(corners).histogram max + 1
     msk = hist.eq n
     if msk.inject :or
-      id = lazy(msk.size) { |i| i }.mask(msk)[0]
+      id = argmax { |i| msk.to_ubyte[i] }.first
       eq id
     else
       nil
@@ -58,7 +58,7 @@ class Node
   def largest
     hist = histogram max + 1
     msk = hist.eq hist.max
-    id = lazy(msk.size) { |i| i }.mask(msk)[0]
+    id = argmax { |i| msk.to_ubyte[i] }.first
     eq id
   end
   def otsu(hist_size = 256)
