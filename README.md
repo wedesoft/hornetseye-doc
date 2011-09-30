@@ -44,7 +44,6 @@ See also
 External Links
 --------------
 
+* [Try Ruby](http://tryruby.org/)
 * [RubyForge page](http://rubyforge.org/projects/hornetseye/)
-* [SourceForge page](http://sourceforge.net/projects/hornetseye/)
-* [Launchpad page](https://launchpad.net/hornetseye/)
 
