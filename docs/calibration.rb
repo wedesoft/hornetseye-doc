@@ -146,11 +146,11 @@ X11Display.show do
         fs = 1.0 / ((d.t * d).inv * d.t * o)[0]
         if fs > 0
           f = Math.sqrt fs
-          a = Matrix[[f, 0.0, 0.0], [0.0, f, 0.0], [0.0, 0.0, 1.0]]
-          r1, r2, t = *proc { |r| (0 .. 2).collect { |i| r.column i } }.call(a.inv * h)
-          s = (t[2] >= 0 ? 2.0 : -2.0) / (r1.norm + r2.norm)
-          q = Matrix[(r1 * s).to_a, (r2 * s).to_a, (r1 * s).x(r2 * s).to_a].t
-          r = proc { |u,l,vt| u * vt }.call *q.svd
+          # a = Matrix[[f, 0.0, 0.0], [0.0, f, 0.0], [0.0, 0.0, 1.0]]
+          # r1, r2, t = *proc { |r| (0 .. 2).collect { |i| r.column i } }.call(a.inv * h)
+          # s = (t[2] >= 0 ? 2.0 : -2.0) / (r1.norm + r2.norm)
+          # q = Matrix[(r1 * s).to_a, (r2 * s).to_a, (r1 * s).x(r2 * s).to_a].t
+          # r = proc { |u,l,vt| u * vt }.call *q.svd
           v = h.inv * Vector[coords.real, coords.imag, 1.0]
           result = (v[0] / v[2]).between?(-W2, W2).and((v[1] / v[2]).between?(-H2, H2)).
             conditional img * RGB(0, 1, 0), img
