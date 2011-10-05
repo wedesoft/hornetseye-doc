@@ -97,7 +97,14 @@ To install this Ruby extension, use the following command:
 
     sudo aptitude install liblapack-dev libblas-dev libf2c2-dev
 
-To install this Ruby extension, use the following command:
+You also need to install the *linalg* Ruby extension. You can install it as follows:
+
+    git clone https://github.com/wedesoft/linalg.git
+    cd linalg
+    ruby install.rb
+    cd ..
+
+To install *hornetseye-linalg*, use the following command:
 
     sudo gem install hornetseye-linalg
 
