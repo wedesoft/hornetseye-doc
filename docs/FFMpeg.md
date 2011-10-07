@@ -41,6 +41,40 @@ It is also possible to retrieve audio frames if the video file offers an audio s
       video_frame
     end
 
+Record Video and Audio
+----------------------
+
+This example is about recording audio and video in real-time. The frame rate needs to be specified ahead of time. It might be necessary to reduce the value if the camera or the computer are too slow.
+
+    require 'rubygems'
+    require 'hornetseye_v4l2'
+    require 'hornetseye_alsa'
+    require 'hornetseye_xorg'
+    require 'hornetseye_ffmpeg'
+    include Hornetseye
+    FRAME_RATE = 8
+    camera = V4L2Input.new '/dev/video0' do |modes|
+      modes.each_with_index do |mode,i|
+        puts "#{i+1}. #{mode.inspect}"
+      end
+      modes[STDIN.readline.to_i - 1]
+    end
+    w, h = camera.width, camera.height
+    audio = AlsaInput.new 'default:0'
+    output = AVOutput.new 'test.avi',
+      4000000, w, h, FRAME_RATE, 1, AVOutput::CODEC_ID_FFV1,
+      true, 128000, audio.rate, audio.channels, AVOutput::CODEC_ID_MP3
+    t = Time.new.to_f
+    c = 0
+    X11Display.show w, h, :title => 'FFMpeg', :output => XVideoOutput do
+      img = camera.read
+      output.write_video img
+      output.write_audio audio.read(audio.rate / FRAME_RATE)
+      c += 1
+      puts c / (Time.new.to_f - t) if c % FRAME_RATE == 0
+      img
+    end
+
 Anaglyph Videos
 ---------------
 
