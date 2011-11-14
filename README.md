@@ -30,6 +30,11 @@ Example Programs
 * {file:docs/Applications.md Applications}
 * {file:docs/3DVision.md 3D Vision}
 
+Copyright
+---------
+
+Copyright © 2006-2011 Jan Wedekind, Sheffield, United Kingdom. See {file:docs/License.md License} for details.
+
 See also
 --------
 
