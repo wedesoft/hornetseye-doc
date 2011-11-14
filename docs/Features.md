@@ -14,7 +14,7 @@ After installation you can use **HornetsEye** without having to compile or link 
 
 **See also**
 
-* [HornetsEye Interactive Ruby demonstration](http://vision.eng.shu.ac.uk/jan/hornetseye-demo.avi "26 MByte demo video") (also available at [Youtube](http://www.youtube.com/watch?v=5xJa2ytsE7I "HornetsEye Interactive Ruby demonstration"))
+* [HornetsEye Interactive Ruby demonstration](http://www.youtube.com/watch?v=5xJa2ytsE7I "HornetsEye Interactive Ruby demonstration")
 * [Audio track of demo video](http://ccmixter.org/files/Nurykabe/16646 "Morusque - Funki good time")
 
 ### I/O and Array Operation
@@ -23,6 +23,6 @@ After installation you can use **HornetsEye** without having to compile or link 
 
 HornetsEye provides generic array operations and it offers a comprehensive set of I/O interfaces.
 
-* [HornetsEye Interactive Ruby demonstration](http://vision.eng.shu.ac.uk/jan/hornetseye2010.avi "48 MByte demo video") (also available at [Youtube](http://www.youtube.com/watch?v=wNFr7RNWeCs "HornetsEye demonstration video"))
+* [HornetsEye Interactive Ruby demonstration](http://www.youtube.com/watch?v=wNFr7RNWeCs "HornetsEye demonstration video")
 * [Audio track of demo video](http://ccmixter.org/files/Tekno_Eddy/14488 "Tekno Eddy - Depart")
 

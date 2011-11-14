@@ -53,5 +53,5 @@ There are a lot of developers who have developed other open-source software on w
 
 Thanks to all developers using this library for their valuable feedback!
 
-Part of the work was funded by the [EPSRC Nanorobotics Basic Technology grant](http://vision.eng.shu.ac.uk/mmvlwiki/index.php/Nanorobotics).
+Part of the work was funded by the [EPSRC Nanorobotics Basic Technology grant](http://gow.epsrc.ac.uk/ViewGrant.aspx?GrantRef=GR/S85696/01).
 

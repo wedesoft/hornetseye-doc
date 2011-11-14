@@ -33,7 +33,7 @@ Manchester Science Festival 2009
 AVA meeting at Bristol 2008
 ---------------------------
 
-**HornetsEye** was presented at the [AVA meeting at Bristol 2008](http://hlsweb.dmu.ac.uk/ava/meetings/bristol2008.html) ([poster](http://vision.eng.shu.ac.uk/mmvlwiki/index.php/Image:AVA-Bristol-2008.jpg)).
+**HornetsEye** was presented at the [AVA meeting at Bristol 2008](http://hlsweb.dmu.ac.uk/ava/meetings/bristol2008.html) ([poster](http://www.scribd.com/doc/72593333/Real-Time-Computer-Vision-with-Ruby-and-libJIT)).
 
 ![AVA meeting at Bristol 2008](images/avabristol.jpg)
 

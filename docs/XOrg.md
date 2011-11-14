@@ -52,7 +52,7 @@ The simple API shown above is not sufficient for handling multiple windows. If m
     require 'hornetseye_xorg'
     require 'hornetseye_ffmpeg'
     include Hornetseye
-    input = AVInput.new 'http://vision.eng.shu.ac.uk/jan/hornetseye2010.avi'
+    input = AVInput.new 'http://ftp.nluug.nl/ftp/graphics/blender/apricot/trailer/sintel_trailer-480p.mp4'
     dt = 1.0 / input.frame_rate
     width, height = input.width, input.height
     p width
