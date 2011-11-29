@@ -156,8 +156,7 @@ X11Display.show do
             conditional img * RGB(0, 1, 0), img
           gc = Magick::Draw.new
           gc.fill_color('red').stroke('red').stroke_width(1).pointsize 16
-          for i in 0 ... N
-            j = sorted[i]
+          sorted.each_with_index do |j,i|
             gc.circle points[j].real, points[j].imag, points[j].real + 2, points[j].imag
             gc.text points[j].real, points[j].imag, "#{i+1}"
           end
