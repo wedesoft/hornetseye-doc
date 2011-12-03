@@ -8,11 +8,23 @@ GNU/Linux
 
 First you need to install the *build tools* and *Ruby 1.8* (or *Ruby 1.9*) with development headers. It is also recommended to install *libswscale-dev*. Under [Kubuntu](http://www.kubuntu.org/) or [Debian](http://www.debian.org/) you can do this using the following command:
 
-    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 rubygems1.8 rake libswscale-dev libboost-dev
+    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 rubygems1.8 libopenssl-ruby1.8 rake libswscale-dev libboost-dev
+    sudo ln -s /usr/bin/rake /usr/bin/rake1.8
 
 If you want to retrieve sources, it is recommended to install the *Git* version control system:
 
     sudo aptitude install git-core
+
+If you need a newer version of *Rubygems*, you can download the TGZ-file from the [Rubygems website](http://rubygems.org/pages/download) and install it like that:
+
+    tar xzf rubygems-1.8.11.tgz
+    cd rubygems-1.8.11
+    sudo ruby setup.rb
+    cd ..
+
+Also it is possible to install a newer version of *rake* using Rubygems:
+
+    sudo gem install rake
 
 ### malloc
 
@@ -101,7 +113,7 @@ You also need to install the *linalg* Ruby extension. You can install it as foll
 
     git clone https://github.com/wedesoft/linalg.git
     cd linalg
-    ruby install.rb
+    sudo ruby install.rb
     cd ..
 
 To install *hornetseye-linalg*, use the following command:
