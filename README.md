@@ -3,11 +3,17 @@ HornetsEye - Computer Vision for the Robotic Age
 
 **HornetsEye** is a **real-time computer vision library** for the **Ruby programming language**. HornetsEye is maybe the first free software project providing a **solid platform for implementing real-time computer vision software** in a scripting language. The platform potentially could be used in **industrial automation**, **robotic applications**, and **human computer interfaces**.
 
-![Hornetseye logo](images/hornetseye.png)
-
 HornetsEye is free software. Developers and users are given the full freedom to study the source code, run, modify, and redistribute the software as they wish.
 
-The logo shows a honeycomb structure as you would find on an insect's compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes.
+    require 'rubygems'
+    require 'hornetseye_ffmpeg'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    input = AVInput.new 'http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4'
+    w, h = (input.width * input.aspect_ratio).to_i, input.height
+    X11Display.show(w, h, :frame_rate => input.frame_rate) { input.read }
+
+![Read video files](images/sintel.jpg)
 
 Example Programs
 ----------------
@@ -33,7 +39,7 @@ Example Programs
 Copyright
 ---------
 
-Copyright © 2006-2011 Jan Wedekind, Sheffield, United Kingdom. See {file:docs/License.md License} for details.
+Copyright © 2006-2012 Jan Wedekind, Kingston upon Thames, United Kingdom. See {file:docs/License.md License} for details.
 
 See also
 --------

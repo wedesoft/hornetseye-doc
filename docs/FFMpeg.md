@@ -28,7 +28,7 @@ It is also possible to retrieve audio frames if the video file offers an audio s
     include Hornetseye
     input = AVInput.new 'http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4'
     w, h = (input.width * input.aspect_ratio).to_i, input.height
-    alsa = AlsaOutput.new 'default:0', input.sample_rate, input.channels
+    alsa = AlsaOutput.new 'default', input.sample_rate, input.channels
     audio_frame = input.read_audio
     X11Display.show w, h, :title => 'FFMpeg', :output => XVideoOutput do |display|
       video_frame = input.read_video
@@ -60,7 +60,7 @@ This example is about recording audio and video in real-time. The frame rate nee
       modes[STDIN.readline.to_i - 1]
     end
     w, h = camera.width, camera.height
-    audio = AlsaInput.new 'default:0'
+    audio = AlsaInput.new 'default'
     output = AVOutput.new 'test.avi',
       4000000, w, h, FRAME_RATE, 1, AVOutput::CODEC_ID_FFV1,
       true, 128000, audio.rate, audio.channels, AVOutput::CODEC_ID_MP3
