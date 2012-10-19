@@ -5,6 +5,8 @@ HornetsEye - Computer Vision for the Robotic Age
 
 HornetsEye is free software. Developers and users are given the full freedom to study the source code, run, modify, and redistribute the software as they wish.
 
+![Screenshot of video player below](images/sintel.jpg)
+
     require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
@@ -13,7 +15,15 @@ HornetsEye is free software. Developers and users are given the full freedom to 
     w, h = (input.width * input.aspect_ratio).to_i, input.height
     X11Display.show(w, h, :frame_rate => input.frame_rate) { input.read }
 
-![Read video files](images/sintel.jpg)
+Demo Videos
+-----------
+
+<table>
+  <tr>
+    <td><p><span class="center"><object data="http://www.youtube.com/v/5xJa2ytsE7I" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/5xJa2ytsE7I" /></object></span></p></td>
+    <td><p><span class="center"><object data="http://www.youtube.com/v/wNFr7RNWeCs" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/wNFr7RNWeCs" /></object></span></p></td>
+  </tr>
+</table>
 
 Example Programs
 ----------------
