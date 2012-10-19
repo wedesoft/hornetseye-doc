@@ -1,6 +1,8 @@
 Frequently Asked Questions
 ==========================
 
+![Hornetseye logo](images/hornetseye.png)
+
 Compilation FAQ
 ---------------
 

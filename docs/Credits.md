@@ -1,6 +1,8 @@
 Credits
 =======
 
+![Hornetseye logo](images/hornetseye.png)
+
 Yukihiro Matsumoto and his team are providing a proper programming language with a simple way of interfacing with native code.
 
 Masahiro Tanaka develops NArray which offers great ideas on how to do image processing with Ruby.

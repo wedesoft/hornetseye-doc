@@ -1,6 +1,8 @@
 Contact
 =======
 
+![Hornetseye logo](images/hornetseye.png)
+
 Bug Reports
 -----------
 

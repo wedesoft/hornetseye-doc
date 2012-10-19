@@ -3,6 +3,8 @@ Installation
 
 *HornetsEye* consists of several packages. Most of them rely on other free software since HornetsEye does not reinvent the wheel.
 
+![Hornetseye logo](images/hornetseye.png)
+
 GNU/Linux
 ---------
 
