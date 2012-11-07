@@ -47,10 +47,9 @@ The Otsu algorithm is an algorithm for automatic thresholding. The algorithm ass
     class Node
       def otsu( hist_size = 256 )
         h = histogram hist_size
-        idx = lazy( hist_size ) { |i| i }
         w1 = h.integral
         w2 = w1[ w1.size - 1 ] - w1
-        s1 = ( h * idx ).integral
+        s1 = lazy { |i| h[i] * i }.integral
         s2 = sum - s1
         m1 = w1 > 0
         u1 = ( s1.mask( m1 ).to_sfloat / w1.mask( m1 ) ).unmask m1
