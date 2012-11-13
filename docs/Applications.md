@@ -108,7 +108,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
       end
       def update_audio
         @audio_frame = @video.read_audio unless @audio_frame
-        while @speaker.avail >= @audio_frame.shape[1]
+        while @video.audio_pos < @video.video_pos + 1
           @speaker.write @audio_frame
           @audio_frame = @video.read_audio
         end
@@ -169,7 +169,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
             @audio_frame = nil
             @video.pos = p
             @speaker.drop
-            @speaker.prepare
+            # @speaker.prepare
           rescue Exception => e
             p e
             stop
