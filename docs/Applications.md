@@ -80,7 +80,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
     require 'hornetseye_ffmpeg'
     require 'hornetseye_alsa'
     require 'hornetseye_qt4'
-    VIDEO = ARGV[0] || 'http://fsmpi.eu/pw/sintel/sintel-1024-stereo.mp4'
+    VIDEO = ARGV.first || 'http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4'
     class Win < Qt::Widget
       slots 'seek(int)'
       def initialize
@@ -108,7 +108,7 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
       end
       def update_audio
         @audio_frame = @video.read_audio unless @audio_frame
-        while @video.audio_pos < @video.video_pos + 1
+        while @speaker.delay < @speaker.rate / 4
           @speaker.write @audio_frame
           @audio_frame = @video.read_audio
         end
@@ -118,19 +118,21 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
       end
       def timerEvent( e )
         begin
-          update_audio
+          update_audio if @video.has_audio?
           update_video
           unless @slider.sliderDown
             @seeking = false
-            p = @video.audio_pos.to_i
+            p = @video.video_pos.to_i
             @slider.maximum = p if p > @slider.maximum
             @slider.value = p
             @seeking = true
           end
-          t = @video.audio_pos - (@speaker.delay + @audio_frame.shape[1]).quo( @speaker.rate )
-          delay = [ 3.quo( 2 ) / @video.frame_rate, [ @video.video_pos - t, 0 ].max ].min
-          killTimer @timer
-          @timer = startTimer( ( delay * 1000 ).to_i )
+          if @video.has_audio?
+            t = @video.audio_pos - (@speaker.delay + @audio_frame.shape[1]).quo( @speaker.rate )
+            delay = [ 3.quo( 2 ) / @video.frame_rate, [ @video.video_pos - t, 0 ].max ].min
+            killTimer @timer
+            @timer = startTimer( ( delay * 1000 ).to_i )
+          end
         rescue Exception => e
           p e
           stop
@@ -141,9 +143,14 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
           stop
           @video = Hornetseye::AVInput.new VIDEO
           @audio_frame = nil
-          resize ( @video.width * @video.aspect_ratio ).to_i, @video.height
-          @speaker = Hornetseye::AlsaOutput.new 'default:0', @video.sample_rate, @video.channels
-          @timer = startTimer 0
+          resize (@video.width * @video.aspect_ratio).to_i, @video.height
+          if @video.has_audio?
+            @speaker = Hornetseye::AlsaOutput.new 'default', @video.sample_rate, @video.channels
+            @timer = startTimer 0
+          else
+            @speaker = nil
+            @timer = startTimer((1000 / @video.frame_rate).to_i)
+          end
         end
       end
       def stop
@@ -168,8 +175,9 @@ The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application.
             start
             @audio_frame = nil
             @video.pos = p
-            @speaker.drop
-            # @speaker.prepare
+            if @speaker
+              @speaker.drop
+            end
           rescue Exception => e
             p e
             stop

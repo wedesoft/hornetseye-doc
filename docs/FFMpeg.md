@@ -26,13 +26,13 @@ It is also possible to retrieve audio frames if the video file offers an audio s
     require 'hornetseye_xorg'
     require 'hornetseye_alsa'
     include Hornetseye
-    input = AVInput.new '/home/jan/Videos/V22.asf' # 'http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4'
+    input = AVInput.new 'http://mirrorblender.top-ix.org/movies/sintel-1024-surround.mp4'
     w, h = (input.width * input.aspect_ratio).to_i, input.height
     alsa = AlsaOutput.new 'default', input.sample_rate, input.channels
     audio_frame = input.read_audio
     X11Display.show w, h, :title => 'FFMpeg', :output => XVideoOutput do |display|
       video_frame = input.read_video
-      while input.audio_pos < input.video_pos + 1
+      while alsa.delay < alsa.rate / 2
         alsa.write audio_frame
         audio_frame = input.read_audio
       end
