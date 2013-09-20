@@ -19,6 +19,8 @@ The conference organizers from OSCON 2008 accepted my proposal to give a talk an
 
 Thanks to Klaus Treichel, Aleksey Demakov, and Kirill Kononenko for their valuable support with libJIT.
 
+Thanks to Andrey Turkin for contributing compatibility fixes for the FFmpeg bindings.
+
 Thanks to Damien Douxchamps for his support with libdc1394.
 
 Thanks to Richard Dale for his support with qt4-qtruby.

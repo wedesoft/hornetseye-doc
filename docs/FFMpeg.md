@@ -62,7 +62,7 @@ This example is about recording audio and video in real-time. The frame rate nee
     w, h = camera.width, camera.height
     audio = AlsaInput.new 'default'
     output = AVOutput.new 'test.avi',
-      4000000, w, h, FRAME_RATE, 1, AVOutput::CODEC_ID_FFV1,
+      4000000, w, h, FRAME_RATE, 1, AVOutput::CODEC_ID_MPEG4,
       true, 128000, audio.rate, audio.channels, AVOutput::CODEC_ID_MP3
     t = Time.new.to_f
     c = 0
