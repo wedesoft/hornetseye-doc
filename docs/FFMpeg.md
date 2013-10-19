@@ -16,6 +16,17 @@ The class {Hornetseye::AVInput} allows you to capture frames from videos using t
     w, h = (input.width * input.aspect_ratio).to_i, input.height
     X11Display.show(w, h, :frame_rate => input.frame_rate) { input.read }
 
+![Parrot AR.Drone](images/ardrone.jpg)
+
+Using FFMpeg it is also possible to decode H.264 live streams. Here is an example to read and display the video stream from a [Parrot AR.Drone 2.0](http://ardrone2.parrot.com/) with a small Ruby program.
+
+    require 'rubygems'
+    require 'hornetseye_ffmpeg'
+    require 'hornetseye_xorg'
+    include Hornetseye
+    input = AVInput.new 'tcp://192.168.1.1:5555'
+    X11Display.show { input.read }
+
 Read Video and Audio Data
 -------------------------
 
