@@ -17,6 +17,10 @@ The example opens the first sound device and plays a 400 Hz tone for the duratio
     ( 3 * RATE / LEN ).times { output.write wave }
     output.drain
 
+You can list available playback devices using the *aplay* command:
+
+    aplay -L
+
 Recording sounds
 ----------------
 
@@ -32,6 +36,10 @@ It is also possible to record sounds. Note that the microphone of a USB webcam u
     output = AlsaOutput.new 'default', RATE, CHANNELS
     output.write data
     output.drain
+
+You can list available recording devices using the *arecord* command:
+
+    arecord -L
 
 See Also
 --------
