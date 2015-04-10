@@ -27,6 +27,24 @@ Using FFMpeg it is also possible to decode H.264 live streams. Here is an exampl
     input = AVInput.new 'tcp://192.168.1.1:5555'
     X11Display.show { input.read }
 
+Read Audio Data
+---------------
+
+The following example reads data from an audio file. The data is written to the audio output device. Note that currently one has to catch the exception occurring at the end of the stream.
+
+    require 'rubygems'
+    require 'hornetseye_ffmpeg'
+    require 'hornetseye_alsa'
+    include Hornetseye
+    input = AVInput.new 'http://www.kozco.com/tech/LRMonoPhaset4.wav'
+    alsa = AlsaOutput.new 'default', input.sample_rate, input.channels
+    begin
+      while true
+        alsa.write input.read
+      end
+    rescue RuntimeError
+    end
+
 Read Video and Audio Data
 -------------------------
 
