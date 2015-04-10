@@ -49,7 +49,7 @@ Example Programs
 Copyright
 ---------
 
-Copyright © 2006, .., 2014 Jan Wedekind, Sutton, United Kingdom. See {file:docs/License.md License} for details.
+Copyright © 2006, .., 2015 Jan Wedekind, Totton, United Kingdom. See {file:docs/License.md License} for details.
 
 See also
 --------
