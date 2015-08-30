@@ -9,7 +9,6 @@ docs/hornetseye-opencv/lib/**/*.rb
 docs/hornetseye-openexr/lib/**/*.rb
 docs/hornetseye-qt4/lib/**/*.rb
 docs/hornetseye-rmagick/lib/**/*.rb
-docs/hornetseye-v4l/lib/**/*.rb
 docs/hornetseye-v4l2/lib/**/*.rb
 docs/hornetseye-xorg/lib/**/*.rb
 

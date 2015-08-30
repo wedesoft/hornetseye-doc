@@ -27,7 +27,6 @@ External Links
     * [hornetseye-openexr](http://github.com/wedesoft/hornetseye-openexr/issues)
     * [hornetseye-qt4](http://github.com/wedesoft/hornetseye-qt4/issues)
     * [hornetseye-rmagick](http://github.com/wedesoft/hornetseye-rmagick/issues)
-    * [hornetseye-v4l](http://github.com/wedesoft/hornetseye-v4l/issues)
     * [hornetseye-v4l2](http://github.com/wedesoft/hornetseye-v4l2/issues)
     * [hornetseye-xorg](http://github.com/wedesoft/hornetseye-xorg/issues)
 

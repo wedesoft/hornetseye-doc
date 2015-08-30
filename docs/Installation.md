@@ -8,23 +8,15 @@ Installation
 GNU/Linux
 ---------
 
-First you need to install the *build tools* and *Ruby 1.8* (or *Ruby 1.9*, or *Ruby 2.0*) with development headers. It is also recommended to install *libswscale-dev*. Under [Kubuntu](http://www.kubuntu.org/), [Ubuntu](http://www.ubuntu.com/), or [Debian](http://www.debian.org/) you can do this using the following command:
+First you need to install the *build tools* and *Ruby 2.1* with development headers. It is also recommended to install *libswscale-dev*. Under [Debian](http://www.debian.org/) you can do this using the following command:
 
-    sudo aptitude install build-essential ruby1.8 ruby1.8-dev irb1.8 rubygems1.8 libopenssl-ruby1.8 rake libswscale-dev libboost-dev
-    sudo ln -s /usr/bin/rake /usr/bin/rake1.8
+    sudo aptitude install build-essential ruby ruby-dev rubygems-integration rake libswscale-dev libboost-dev
 
 If you want to retrieve sources, it is recommended to install the *Git* version control system:
 
     sudo aptitude install git-core
 
-If you need a newer version of *Rubygems*, you can download the TGZ-file from the [Rubygems website](http://rubygems.org/pages/download) and install it like that:
-
-    tar xzf rubygems-1.8.11.tgz
-    cd rubygems-1.8.11
-    sudo ruby setup.rb
-    cd ..
-
-Also it is possible to install a newer version of *rake* using Rubygems:
+It is possible to install a newer version of *rake* using Rubygems:
 
     sudo gem install rake
 
@@ -94,12 +86,7 @@ To install this Ruby extension, use the following command:
 
 **hornetseye-kinect** allows to capture images from a Microsoft Kinect sensor using the libfreenect library. This Ruby extension requires libfreenect:
 
-    git clone https://github.com/OpenKinect/libfreenect.git
-    cd libfreenect
-    cmake .
-    make
-    sudo make install
-    cd ..
+    sudo aptitude install libfreenect-dev
 
 To install this Ruby extension, use the following command:
 
@@ -190,16 +177,6 @@ To install this Ruby extension, use the following command:
 
     sudo gem install hornetseye-rmagick 
 
-### hornetseye-v4l
-
-**hornetseye-v4l** is deprecated. It requires the Video for Linux development headers. You can install them as follows:
-
-    sudo aptitude install linux-libc-dev
-
-To install this Ruby extension, use the following command:
-
-    sudo gem install hornetseye-v4l
-
 ### hornetseye-v4l2
 
 **hornetseye-v4l2** is a wrapper for accessing webcams and frame grabbers. It requires the Video for Linux development headers. You can install them as follows:
@@ -248,7 +225,6 @@ External Links
     * [hornetseye-openexr](http://rubygems.org/gems/hornetseye-openexr/)
     * [hornetseye-qt4](http://rubygems.org/gems/hornetseye-qt4/)
     * [hornetseye-rmagick](http://rubygems.org/gems/hornetseye-rmagick/)
-    * [hornetseye-v4l](http://rubygems.org/gems/hornetseye-v4l/)
     * [hornetseye-v4l2](http://rubygems.org/gems/hornetseye-v4l2/)
     * [hornetseye-xorg](http://rubygems.org/gems/hornetseye-xorg/)
 
@@ -267,7 +243,5 @@ External Links
     * [hornetseye-openexr](http://github.com/wedesoft/hornetseye-openexr/)
     * [hornetseye-qt4](http://github.com/wedesoft/hornetseye-qt4/)
     * [hornetseye-rmagick](http://github.com/wedesoft/hornetseye-rmagick/)
-    * [hornetseye-v4l](http://github.com/wedesoft/hornetseye-v4l/)
     * [hornetseye-v4l2](http://github.com/wedesoft/hornetseye-v4l2/)
     * [hornetseye-xorg](http://github.com/wedesoft/hornetseye-xorg/)
-
