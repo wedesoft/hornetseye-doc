@@ -14,7 +14,7 @@ This is an example on how to compute the Sobel x-gradient. A correlation of the 
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     img.sobel( 0 ).normalise.show
 
 ### Y-Gradient
@@ -27,7 +27,7 @@ This is an example on how to compute the Sobel y-gradient. A correlation of the 
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     img.sobel( 1 ).normalise.show
 
 Gaussian Blur
@@ -41,7 +41,7 @@ This is an example on how to apply a Gauss blur filter. The filter can be applie
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     img.gauss_blur( 3.0 ).show
 
 Van Cittert Deconvolution
@@ -57,7 +57,7 @@ Van Cittert deconvolution is an iterative algorithm for reversing a convolution 
     include Hornetseye
     SIGMA = 3.0
     N = 20
-    img = MultiArray.load_ubytergb( 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
+    img = MultiArray.load_ubytergb( 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
     g = img.to_sfloatrgb
     N.times { g = img + g - g.gauss_blur( SIGMA ) }
     g.clip.show
@@ -111,7 +111,7 @@ The Wiener filter is the optimal linear filter for denoising and deblurring. The
     end
     NOISE = 2.0
     SIGMA = 3.0
-    img = MultiArray.load_ubytergb( 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
+    img = MultiArray.load_ubytergb( 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg' ).gauss_blur( SIGMA ).to_ubytergb
     img.wiener( img.shape[0] * 0.1, NOISE, SIGMA ).clip.show
 
 Gauss Gradient
@@ -127,7 +127,7 @@ This is an example on how to compute the Gaussian x-gradient.
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     img.gauss_gradient( 3.0, 0 ).normalise.show
 
 ### Y-Gradient
@@ -140,7 +140,7 @@ This is an example on how to compute the Gaussian y-gradient.
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     img.gauss_gradient( 3.0, 1 ).normalise.show
 
 Custom Filters
@@ -164,7 +164,7 @@ HornetsEye supports fast convolution with custom filters. In this example a 3x3 
     include Hornetseye
     K = 0.4
     filter = MultiArray[ [ -K, -K, -K ], [ -K,  8 * K + 1, -K ], [ -K, -K, -K ] ]
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     result = img.convolve filter
     result.clip.show
 
@@ -179,7 +179,7 @@ Connected component analysis assigns the same label to neighbouring pixel which 
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/letters.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/letters.png'
     components = (img >= 0x7F).components
     palette = Sequence.ubytergb components.max + 1
     palette.r, palette.g, palette.b = *(1 .. 3).collect do

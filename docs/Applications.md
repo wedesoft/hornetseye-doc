@@ -347,7 +347,7 @@ With Gordon James Miller's [rgplot](http://rgplot.rubyforge.org/) package you ca
       end
       nil
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     plot img.histogram( 256 ), :title => [ 'Histogram' ]
 
 3D Plot
@@ -508,7 +508,7 @@ This program fits a line assuming that the input image is showing a single white
         end
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/line.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/line.png'
     x = MultiArray.cramp( *img.shape ).mask img >= 128
     c = x.sum / x.size.to_f
     a = Math.sqrt( ( ( x - c ) ** 2 ).sum / x.size )
@@ -541,7 +541,7 @@ The following example detects white lines in a black-and-white image using a Hou
     end
     A_RANGE = 0 .. 179
     THRESHOLD = 128
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lines.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/lines.png'
     diag = Math.sqrt( img.width ** 2 + img.height ** 2 )
     d_range = -( diag + 1 ).div( 2 ) ... ( diag + 1 ).div( 2 )
     binary = img >= THRESHOLD
@@ -707,7 +707,7 @@ The following example demonstrates using windowing, zero padding, and Fourier tr
         (fft.conj * fft).real
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/texture.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/texture.jpg'
     (img.spectrum ** 0.1).shift(*img.shape).normalise(255 .. 0).show *img.shape
 
 Phase Correlation

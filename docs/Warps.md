@@ -30,7 +30,7 @@ Using integral arrays and element-wise lookup (map) one can implement histogram 
         end
       end
     end
-    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.de/hornetseye-api/images/bmw.exr'
     img = MultiArray.load_sfloatrgb 'bmw.exr'
     img.equalise.show
 
@@ -59,7 +59,7 @@ The Otsu algorithm is an algorithm for automatic thresholding. The algorithm ass
         self > argmax { |i| between_variance[i] }.first
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     ( img.otsu.to_ubyte * 255 ).show
 
 Compute Average
@@ -95,7 +95,7 @@ A mask which specifies pixel locations of interest is created. The mask then is 
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/viking.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/viking.jpg'
     mask = img <= 50
     x = lazy( *img.shape ) { |i,j| i }
     y = lazy( *img.shape ) { |i,j| j }
@@ -114,7 +114,7 @@ Images can be warped using vector fields. The warp vectors are indicating the lo
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/world.jpg'
     w, h = *img.shape
     c = 0.5 * h
     x, y = lazy( h, h ) { |i,j| i - c }, lazy( h, h ) { |i,j| j - c }
@@ -170,7 +170,7 @@ This is an implementation of histogram inversion. Here a ratio-histogram of the 
     include Hornetseye
     div = 0x40
     size = 0x100 / div
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/world.jpg'
     land = img[ 455 ... 525, 32 ... 116 ]
     water = img[ 33 ... 133, 172 ... 272 ]
     land_hist = ( land / div ).histogram( size, size, size ).to_int
@@ -244,7 +244,7 @@ This example demonstrates dithering using a Bayer matrix. Dithering is most comm
         end
       end
     end
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/world.jpg'
     img.dither(3).show
 
 See Also

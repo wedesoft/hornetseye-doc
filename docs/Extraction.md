@@ -38,7 +38,7 @@ Roberts cross edge detector consists of two small filters. The image is correlat
         convolve(filter1).abs + convolve(filter2).abs
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     img.roberts.normalise(0xFF .. 0).show
 
 Difference of Gaussian
@@ -52,7 +52,7 @@ The difference of Gaussian is simply the difference of two Gaussian filters of d
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/colour.png'
     dog = img.gauss_blur(1.5) - img.gauss_blur(3.0)
     dog.normalise.show
 
@@ -67,7 +67,7 @@ The LoG-filter creates an image with zero-crossings at edge locations. The edges
     require 'hornetseye_xorg'
     require 'hornetseye_rmagick'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/lena.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/lena.jpg'
     log = MultiArray.laplacian_of_gaussian 1.4, 9
     binary = img.convolve(log) >= 0
     binary.not.or(binary.erode).conditional(0xFF, 0).show
@@ -119,7 +119,7 @@ The following program computes the corner strength measure by Yang, Burger, Firm
     COV_SIGMA = 1.0
     NOISE = 1.0
     EXP = 0.5
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
     a = (x * x).gauss_blur COV_SIGMA
@@ -143,7 +143,7 @@ This program implements the Harris-Stephens corner- and edge-detector. In the re
     GRAD_SIGMA = 1
     COV_SIGMA = 1
     K = 0.05
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
     a = (x * x).gauss_blur COV_SIGMA
@@ -167,7 +167,7 @@ Here is an implementation of the Shi-Tomasi corner-detector.
     include Hornetseye
     GRAD_SIGMA = 1
     COV_SIGMA = 1
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     x = img.gauss_gradient GRAD_SIGMA, 0
     y = img.gauss_gradient GRAD_SIGMA, 1
     a = (x * x).gauss_blur COV_SIGMA
@@ -206,7 +206,7 @@ Usually computing a feature image is not enough and one needs to determine the l
         det - tr * tr * k
       end
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     img.harris.nms.dilate(3).conditional(RGB(0, 255, 0), img).show
 
 See Also

@@ -12,7 +12,7 @@ Display using {Hornetseye::XImageOutput} should work any X.Org true colour displ
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/colour.png'
     img.show
 
 OpenGL display
@@ -24,7 +24,7 @@ One can use {Hornetseye::OpenGLOutput} to use OpenGL hardware acceleration (*glD
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/colour.png'
     img.show :output => OpenGLOutput
 
 XVideo display

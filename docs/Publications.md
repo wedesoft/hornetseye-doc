@@ -12,14 +12,14 @@ ECOOP 2011
 7th ShRUG meeting
 -----------------
 
-**Hornetseye** was demonstrated at the [7th Sheffield Ruby User Group (ShRUG) meeting](http://shrug.org/meetings/shrug-7/) in Sheffield, United Kingdom ([presentation slides](http://www.wedesoft.demon.co.uk/shrug7.html)). Thanks to the organizers and thanks to the audience for attending.
+**Hornetseye** was demonstrated at the [7th Sheffield Ruby User Group (ShRUG) meeting](http://shrug.org/meetings/shrug-7/) in Sheffield, United Kingdom ([presentation slides](http://www.wedesoft.de/shrug7.html)). Thanks to the organizers and thanks to the audience for attending.
 
 ![7th ShRUG meeting](images/showroomshrug7.png)
 
 RubyConf 2009
 -------------
 
-**HornetsEye** was presented at [RubyConf 2009](http://rubyconf.org/) in San Francisco, California ([presentation slides and video](http://www.wedesoft.demon.co.uk/rubyconf09video.html)). Thank you to the conference organizers for all their hard work and thanks to all the people for their feedback and encouragement.
+**HornetsEye** was presented at [RubyConf 2009](http://rubyconf.org/) in San Francisco, California ([presentation slides and video](http://www.wedesoft.de/rubyconf09video.html)). Thank you to the conference organizers for all their hard work and thanks to all the people for their feedback and encouragement.
 
 ![RubyConf 2009](images/sanfrancisco.png)
 

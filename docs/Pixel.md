@@ -12,7 +12,7 @@ Greyscale as well as colour images can be inverted. This example shows how to do
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/colour.png'
     ( 255 - img ).show
 
 Thresholding
@@ -26,7 +26,7 @@ This example shows how to apply a threshold to an image. Since the result is a b
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/grey.png'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/grey.png'
     binary = img >= 128
     binary.conditional( 255, 0 ).show
 
@@ -41,7 +41,7 @@ One can do gamma correction by applying an exponential function to each pixel.
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.de/hornetseye-api/images/bmw.exr'
     img = MultiArray.load_sfloatrgb 'bmw.exr'
     ( img ** 0.03 ).normalise.show
 
@@ -57,7 +57,7 @@ Changing the brightness and/or contrast of an image simply means applying a gain
     require 'hornetseye_xorg'
     include Hornetseye
     N = 3
-    img = MultiArray.load_ubytergb 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/colour.png'
+    img = MultiArray.load_ubytergb 'http://www.wedesoft.de/hornetseye-api/images/colour.png'
     w, h = *img.shape
     thumb = (img.downsample(N, N) / 255.0) ** 2.2
     result = MultiArray.ubytergb *thumb.shape.collect { |d| d * N }
@@ -85,7 +85,7 @@ The element-wise logarithm can be used to display images with a large contrast r
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
-    system 'wget -c http://www.wedesoft.demon.co.uk/hornetseye-api/images/bmw.exr'
+    system 'wget -c http://www.wedesoft.de/hornetseye-api/images/bmw.exr'
     img = MultiArray.load_sfloat 'bmw.exr'
     Math.log(img + 0.1).normalise.show
 
@@ -113,7 +113,7 @@ You can create pseudo-colour images in real-time. The example program loads a si
              ( 120 - ( hue - 120 ).abs ).clip( 0...60 ) * 0xFF / 60.0,
              ( 120 - ( hue - 240 ).abs ).clip( 0...60 ) * 0xFF / 60.0 )
     end
-    img = MultiArray.load_ubyte 'http://www.wedesoft.demon.co.uk/hornetseye-api/images/world.jpg'
+    img = MultiArray.load_ubyte 'http://www.wedesoft.de/hornetseye-api/images/world.jpg'
     img.lut( colours ).show
 
 See Also
