@@ -9,6 +9,6 @@ HornetsEye is distributed in the hope that it will be useful, but **without any 
 
 You should receive a copy of the GNU General Public License along with every copy of this program. If not, see [http://www.gnu.org/licenses/](http://www.gnu.org/licenses/ "The GNU General Public License").
 
-Copyright © 2006, .., 2016 Jan Wedekind, Totton, United Kingdom.
+Copyright © 2006, .., 2016 Jan Wedekind, Eastleigh, United Kingdom.
 
 
