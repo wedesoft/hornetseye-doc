@@ -49,7 +49,7 @@ Example Programs
 Copyright
 ---------
 
-Copyright © 2006, .., 2015 Jan Wedekind, Eastleigh, United Kingdom. See {file:docs/License.md License} for details.
+Copyright © 2006, .., 2016 Jan Wedekind, Eastleigh, United Kingdom. See {file:docs/License.md License} for details.
 
 See also
 --------
