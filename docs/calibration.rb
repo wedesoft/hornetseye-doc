@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-require 'rubygems'
 require 'matrix'
 require 'linalg'
 require 'hornetseye_rmagick'

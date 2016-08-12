@@ -11,7 +11,6 @@ start the shell like this:
 
 You can put frequently used command into the file `$HOME/.irbrc`. It is useful to load Ruby Gems, IRB command line completion, and syntax highlighting (see {file:docs/FAQ.md FAQ} for more information on *wirble*).
 
-    require 'rubygems'
     require 'irb/completion'
     require 'wirble'
     Wirble.init( { :skip_prompt => true } )
@@ -24,7 +23,6 @@ Example Session
 
 Here is a small example session. The comments (lines preceded with '#') show the textual output returned by each command. The textual output can be useful for understanding the effect each operation has on the image.
 
-    require 'rubygems'
     # false
     require 'multiarray'
     # true

@@ -29,7 +29,6 @@ Execution FAQ
 
 Install Wirble for Ruby and RubyGems. Then create an *.irbrc* file with the following content
 
-    require 'rubygems'
     require 'irb/completion'
     require 'wirble'
     Wirble.init( { :skip_prompt => true } )
@@ -46,7 +45,7 @@ The error occurs when loading user interface files generated with rbuic4.
     undefined method `setLeftMargin' for
     #<Qt::GridLayout:0xb530d904 objectName="qgridLayout">
 
-The reason is that rbuic4 generates method calls to methods which are not supported by the version of Qt4-QtRuby. The easiest solution is to remove all calls to setLeftMargin, setRightMargin, setTopMargin, and setBottomMargin in the ui_\*.rb files after they have been generated. However the best solution is to compile a newer version of Qt4-QtRuby or to upgrade the distribution.
+The reason is that rbuic4 generates method calls to methods which are not supported by the version of Qt4-QtRuby. The easiest solution is to remove all calls to setLeftMargin, setRightMargin, setTopMargin, and setBottomMargin in the ui\_\*.rb files after they have been generated. However the best solution is to compile a newer version of Qt4-QtRuby or to upgrade the distribution.
 
 ### What is the meaning of the HornetsEye logo?
 

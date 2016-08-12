@@ -8,7 +8,6 @@ Histogram Equalisation
 
 Using integral arrays and element-wise lookup (map) one can implement histogram equalisation.
 
-    require 'rubygems'
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -69,7 +68,6 @@ Compute Average
 
 This example shows how to compute the average of a series of frames. You can use a program like this to reduce noise by averaging a large number of frames.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -91,7 +89,6 @@ Bounding Box
 
 A mask which specifies pixel locations of interest is created. The mask then is applied to an x-ramp and a y-ramp to find the bounding box. The area outside the bounding box finally is highlighted.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -110,7 +107,6 @@ Warps
 
 Images can be warped using vector fields. The warp vectors are indicating the location of the source pixel. The example warps an equirectangular projection to an azimuthal projection.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -129,7 +125,6 @@ Colour Circle
 
 You can create images yourself.  In this example an image with different colours is generated and the result is mapped to a circle using a vector-field.
 
-    require 'rubygems'
     require 'hornetseye_xorg'
     include Hornetseye
     img = MultiArray.ubytergb( 360, 128 ).fill!
@@ -164,7 +159,6 @@ Histogram Segmentation
 
 This is an implementation of histogram inversion. Here a ratio-histogram of the target (land) and the background (water) is computed. Histogram inversion is used to highlight the areas of the image which are considered to be land.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -205,7 +199,6 @@ Ordered Dithering
 
 This example demonstrates dithering using a Bayer matrix. Dithering is most commonly used for displaying images on hardware with a low colour depth. The algorithm modifies the input values using an index matrix before quantising them.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye

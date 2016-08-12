@@ -8,7 +8,6 @@ XImage display
 
 Display using {Hornetseye::XImageOutput} should work any X.Org true colour display. This display mode is used by default.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -20,7 +19,6 @@ OpenGL display
 
 One can use {Hornetseye::OpenGLOutput} to use OpenGL hardware acceleration (*glDrawPixels* to be more exact). OpenGL also works on displays other than true colour. However OpenGL is not always supported and it can interfere with compositing window managers.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -34,7 +32,6 @@ XVideo display
 
 {Hornetseye::XVideoOutput} provides hardware accelerated video display. Note that XVideo is not supported by some graphic cards. Usually it is not possible to have more than one window using XVideo display at the same time. XVideo is usually used to display videos.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -48,7 +45,6 @@ Multiple Windows
 
 The simple API shown above is not sufficient for handling multiple windows. If more than one window is required for display, one can use the lower level API to do so. The following example displays multiple windows with the colour channels of a video.
 
-    require 'rubygems'
     require 'hornetseye_xorg'
     require 'hornetseye_ffmpeg'
     include Hornetseye

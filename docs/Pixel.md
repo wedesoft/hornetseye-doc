@@ -8,7 +8,6 @@ Invert Image
 
 Greyscale as well as colour images can be inverted. This example shows how to do this.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -22,7 +21,6 @@ Thresholding
 
 This example shows how to apply a threshold to an image. Since the result is a boolean image, it needs to be converted using the conditional function before it can be displayed.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -37,7 +35,6 @@ Gamma correction
 
 One can do gamma correction by applying an exponential function to each pixel.
 
-    require 'rubygems'
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -52,7 +49,6 @@ Adjusting Brightness and Contrast
 
 Changing the brightness and/or contrast of an image simply means applying a gain and an offset to the image. The values need to be clamped before they can be displayed.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -81,7 +77,6 @@ Element-wise Logarithm
 
 The element-wise logarithm can be used to display images with a large contrast range.
 
-    require 'rubygems'
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -96,7 +91,6 @@ Pseudo Colours
 
 You can create pseudo-colour images in real-time. The example program loads a single greyscale image and converts it to pseudo colour. Pseudo colour are often used to display IR images.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye

@@ -8,7 +8,6 @@ Read Video Data
 
 The class {Hornetseye::AVInput} allows you to capture frames from videos using the [FFMpeg library](http://www.ffmpeg.org/). The example program shows how to display a video.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -20,7 +19,6 @@ The class {Hornetseye::AVInput} allows you to capture frames from videos using t
 
 Using FFMpeg it is also possible to decode H.264 live streams. Here is an example to read and display the video stream from a [Parrot AR.Drone 2.0](http://ardrone2.parrot.com/) with a small Ruby program.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -32,7 +30,6 @@ Read Audio Data
 
 The following example reads data from an audio file. The data is written to the audio output device. Note that currently one has to catch the exception occurring at the end of the stream.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_alsa'
     include Hornetseye
@@ -50,7 +47,6 @@ Read Video and Audio Data
 
 It is also possible to retrieve audio frames if the video file offers an audio stream. The audio frames are two-dimensional arrays with the first dimension indicating the number of audio channels (*i.e.* 1=mono, 2=stereo). The following example plays synchronised video and audio.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_xorg'
     require 'hornetseye_alsa'
@@ -75,7 +71,6 @@ Record Video and Audio
 
 This example is about recording audio and video in real-time. The frame rate needs to be specified ahead of time. It might be necessary to reduce the value if the camera or the computer are too slow.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_alsa'
     require 'hornetseye_xorg'

@@ -8,7 +8,6 @@ Sobel Gradient Magnitude
 
 In the following example the sobel gradient magnitude is computed.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -27,7 +26,6 @@ Roberts Cross Edge Detector
 
 Roberts cross edge detector consists of two small filters. The image is correlated with both filters. The final edge image is computed by taking the sum of the two correlation results.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -48,7 +46,6 @@ Difference of Gaussian
 
 The difference of Gaussian is simply the difference of two Gaussian filters of different size.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -63,7 +60,6 @@ Laplacian of Gaussian
 
 The LoG-filter creates an image with zero-crossings at edge locations. The edges can be detected using either dilation or erosion. Alternatively one could match a set of small 3x3 patterns. The notable property of edge detection using the LoG-filter is that it generates closed edge contours.
 
-    require 'rubygems'
     require 'hornetseye_xorg'
     require 'hornetseye_rmagick'
     include Hornetseye
@@ -79,7 +75,6 @@ Canny Edge Detector
 
 The Canny edge detector uses two thresholds. The gradient norm is used to select edges. The gradient orientation is used to perform non-maxima suppression for edges. Edges are suppressed if the gradient is below the high threshold and the edge is not connected to edges with a gradient norm surpassing the high threshold. The Canny algorithm requires tracing along the edges. Here full connectivity is used instead.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -111,7 +106,6 @@ Corner Strength by Yang et al.
 
 The following program computes the corner strength measure by Yang, Burger, Firmin, and Underwood.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -136,7 +130,6 @@ Harris-Stephens Corner- and Edge-Detector
 
 This program implements the Harris-Stephens corner- and edge-detector. In the resulting image corners will appear white while edges will become black.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -161,7 +154,6 @@ Shi-Tomasi Corner Detector
 
 Here is an implementation of the Shi-Tomasi corner-detector.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -188,7 +180,6 @@ Feature Locations
 
 Usually computing a feature image is not enough and one needs to determine the locations of the most prominent features. This can be achieved by thresholding the image and then locating the maxima (i.e. performing non-maxima suppression for corners). HornetsEye does not support non-maxima suppression directly. However one can use greylevel dilation followed by masking as shown below.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye

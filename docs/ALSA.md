@@ -6,7 +6,6 @@ Playing sounds
 
 The example opens the first sound device and plays a 400 Hz tone for the duration of 3 seconds. The last command waits for the audio output to finish.
 
-    require 'rubygems'
     require 'hornetseye_alsa'
     include Hornetseye
     RATE = 44_100
@@ -26,7 +25,6 @@ Recording sounds
 
 It is also possible to record sounds. Note that the microphone of a USB webcam usually is the second sound device (*i.e.* **'default:1'**). The example below records 3 seconds of audio and then plays it back.
 
-    require 'rubygems'
     require 'hornetseye_alsa'
     include Hornetseye
     RATE = 44_100

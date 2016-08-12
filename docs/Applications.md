@@ -19,11 +19,9 @@ To use this application you need to install Qt4Ruby. You also need to compile th
 
 The UI file is available for download here: [exrviewer.ui](exrviewer.ui)
 
-    require 'rubygems'
     require 'hornetseye_openexr'
-    require 'hornetseye_rmagick'
     require 'hornetseye_qt4'
-    require 'ui_exrviewer'
+    require_relative 'ui_exrviewer'
     include Hornetseye
     class EXRViewer < Qt::Widget
       slots 'load()'
@@ -46,20 +44,17 @@ The UI file is available for download here: [exrviewer.ui](exrviewer.ui)
                                                   "EXR image (*.exr)"
         if fileName
           @arr = MultiArray.load_sfloatrgb fileName
-          @max = proc { |x| [ x.r, x.g, x.b ].max }.call @arr.max
+          @max = proc { |x| [x.r, x.g, x.b].max }.call @arr.max
           @ui.brightness_slider.setEnabled true
           recompute
         end
       end
       def recompute
-        factor = 2.0 ** ( @ui.brightness_slider.value / 4096.0 ) * 0xFF / @max
-        image = ( @arr * factor ).minor( 0xFF ).to_ubytergb
-        str = image.to_magick.to_blob do
-          self.format = "PPM"
-          self.depth = 8
-        end
+        factor = 2.0 ** (@ui.brightness_slider.value / 4096.0) * 0xFF / @max
+        img = (@arr * factor).minor(0xFF).to_ubytergb
+        qimage = Qt::Image.new img.memory.export, img.width, img.height, Qt::Image::Format_RGB888
         pixmap = Qt::Pixmap.new
-        pixmap.loadFromData Qt::ByteArray.fromRawData( str, str.size )
+        pixmap.convertFromImage qimage
         @label.setPixmap pixmap
         @label.resize pixmap.width, pixmap.height
       end
@@ -76,7 +71,6 @@ XVideo Widget
 
 The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application. The example application shows how to write a small program for playing videos.
 
-    require 'rubygems'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_alsa'
     require 'hornetseye_qt4'
@@ -204,11 +198,10 @@ To use this application you need to install Qt4Ruby. You also need to compile th
 
 The UI files are available for download here: [webcam.ui](webcam.ui), [modedialog.ui](modedialog.ui)
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_qt4'
-    require 'ui_modedialog'
-    require 'ui_webcam'
+    require_relative 'ui_modedialog'
+    require_relative 'ui_webcam'
     include Hornetseye
     app = Qt::Application.new ARGV
     class ModeDialog < Qt::Dialog
@@ -321,7 +314,6 @@ The UI files are available for download here: [webcam.ui](webcam.ui), [modedialo
 
 With Gordon James Miller's [rgplot](http://rgplot.rubyforge.org/) package you can use [Gnuplot](http://www.gnuplot.info/) from within Ruby. This example shows how you can plot the histogram of an image.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'gnuplot'
     include Hornetseye
@@ -357,7 +349,6 @@ With Gordon James Miller's [rgplot](http://rgplot.rubyforge.org/) package you ca
 
 This example shows how you can use Gnuplot to make a 3D plot of a two-dimensional array.
 
-    require 'rubygems'
     require 'multiarray'
     require 'gnuplot'
     include  Hornetseye
@@ -404,7 +395,6 @@ This is an implementation of depth of focus. The Sobel gradient magnitude of the
 
 Note that the [trollop](http://trollop.rubyforge.org/) Ruby-extension is required for parsing the command line.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     require 'trollop'
@@ -497,7 +487,6 @@ Line Fit
 
 This program fits a line assuming that the input image is showing a single white line without outliers. The problem of ambiguity with the orientation of the line is overcome by estimating "2*a" instead of the angle "a".
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -529,7 +518,6 @@ Hough Transform
 
 The following example detects white lines in a black-and-white image using a Hough transform.
 
-    require 'rubygems'
     require 'multiarray'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
@@ -571,7 +559,6 @@ PCA Recognition
 
 The example program performs two-dimensional object recognition with three degrees of freedom. This is a customised algorithm which only works on images showing a single object which can be detected using colour-segmentation. In a controlled environment however this algorithm can be very useful as it is easy to implement. This algorithm has become popular recently in the context of touchless interfaces.
 
-    require 'rubygems'
     require 'matrix'
     require 'hornetseye_rmagick'
     require 'hornetseye_v4l2'
@@ -683,7 +670,6 @@ Power Spectrum
 
 The following example demonstrates using windowing, zero padding, and Fourier transform in order to compute the power spectrum of a signal. The example image shows the power spectrum of a piece of fabric.
 
-    require 'rubygems'
     require 'hornetseye_fftw3'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
@@ -717,7 +703,6 @@ Phase Correlation
 
 This is an implementation of the phase correlation for aligning images. This implementation also works on images which are of different size. I.e. stitching of overlapping images is possible as well as searching a small template in a large image. Note that you may have to add a windowing function to the implementation to avoid boundary effects.
 
-    require 'rubygems'
     require 'hornetseye_fftw3'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
@@ -777,7 +762,6 @@ Normalised Cross-Correlation
 
 This is an implementation of the normalised cross-correlation for locating a template in an image. The template must be smaller than the image. Note that the implementation could be optimised using integral images.
 
-    require 'rubygems'
     require 'hornetseye_fftw3'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
@@ -840,7 +824,6 @@ Camshift Tracking
 
 This is an implementation of the Camshift algorithm for real-time tracking. The algorithm tracks the object by maximising the similarity of a hue reference histogram and a hue scene histogram.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -940,7 +923,6 @@ The example offers five different models
 
 A video for testing can be created using PovRay and the files [polygon.ini](polygon.ini) and [polygon.pov](polygon.pov).
 
-    require 'rubygems'
     require 'matrix'
     require 'hornetseye_ffmpeg'
     require 'hornetseye_rmagick'
@@ -1125,7 +1107,6 @@ EAN-13 Barcode Reader
 
 The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image.  However the application can read barcodes forwards as well as backwards. The detected numbers are displayed using RMagick.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     require 'hornetseye_rmagick'

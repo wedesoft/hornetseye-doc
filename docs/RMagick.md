@@ -12,7 +12,6 @@ Traditional Raster Formats
 
 This example shows how to load, display, and save a grey scale image. If the image is a colour image, it is converted to grey scale on-the-fly.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -26,7 +25,6 @@ This example shows how to load, display, and save a grey scale image. If the ima
 
 This example shows how to load, display, and save a colour image. If the image is a grey scale image, the different colour channels will have the same values.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -40,7 +38,6 @@ This example shows how to load, display, and save a colour image. If the image i
 
 The following example shows how one can swap the colour channels of an image using the method {Hornetseye::RGB#swap_rgb}.
 
-    require 'rubygems'
     require 'hornetseye_rmagick'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -56,7 +53,6 @@ High Dynamic Range Images
 
 The values of a high dynamic range images usually exceed the range of the display. The example below scales the values of the image to an average of 256. The values are clipped before the result is displayed.
 
-    require 'rubygems'
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -71,7 +67,6 @@ The values of a high dynamic range images usually exceed the range of the displa
 
 The following example loads a colour HDR image, reduces the gamma, and then displays the normalised result.
 
-    require 'rubygems'
     require 'hornetseye_openexr'
     require 'hornetseye_xorg'
     include Hornetseye

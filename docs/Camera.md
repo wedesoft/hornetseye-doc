@@ -12,7 +12,6 @@ Video for Linux Version 2 (V4L2)
 
 The basic example program opens a camera and displays the frames.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -23,7 +22,6 @@ The basic example program opens a camera and displays the frames.
 
 This is a more sophisticated example. It opens the first V4L2 camera and then it prompts the user to select one of the video modes offered by the camera. Finally the program displays the frames.
 
-    require 'rubygems'
     require 'hornetseye_v4l2'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -42,7 +40,6 @@ Firewire Digital Camera (DC1394)
 
 ### Basic Example
 
-    require 'rubygems'
     require 'hornetseye_dc1394'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -53,7 +50,6 @@ Firewire Digital Camera (DC1394)
 
 In this example the user is prompted to select a video mode offered by the camera.
 
-    require 'rubygems'
     require 'hornetseye_dc1394'
     require 'hornetseye_xorg'
     include Hornetseye
@@ -70,7 +66,6 @@ Microsoft Kinect (libfreenect)
 
 Using the libfreenect bindings one can capture RGB and 11-bit depth images with a Microsoft Kinect sensor.
 
-    require 'rubygems'
     require 'hornetseye_kinect'
     require 'hornetseye_xorg'
     include Hornetseye
