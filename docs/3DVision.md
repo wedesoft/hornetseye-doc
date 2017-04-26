@@ -10,7 +10,7 @@ The following program can be used to estimate the ratio of focal length to pixel
 
     ruby calibration.rb 'calibration.avi' 8 5
 
-The program for camera calibration can be downloaded here: [calibration.rb](calibration.rb)
+The program for camera calibration can be downloaded here: [calibration.rb](calibration.rb.txt)
 
 See Also
 --------
