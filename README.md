@@ -20,8 +20,12 @@ Demo Videos
 
 <table>
   <tr>
-    <td><p><span class="center"><object data="http://www.youtube.com/v/5xJa2ytsE7I" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/5xJa2ytsE7I" /></object></span></p></td>
-    <td><p><span class="center"><object data="http://www.youtube.com/v/wNFr7RNWeCs" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/wNFr7RNWeCs" /></object></span></p></td>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/5xJa2ytsE7I" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/wNFr7RNWeCs" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
   </tr>
 </table>
 
