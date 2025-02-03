@@ -1,5 +1,5 @@
-HornetsEye - Computer Vision for the Robotic Age
-================================================
+HornetsEye - Computer Vision for the Robotic Age (DEPRECATED)
+=============================================================
 
 **HornetsEye** is a **real-time computer vision library** for the **Ruby programming language**. HornetsEye is maybe the first free software project providing a **solid platform for implementing real-time computer vision software** in a scripting language. The platform potentially could be used in **industrial automation**, **robotic applications**, and **human computer interfaces**.
 
