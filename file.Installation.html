@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: Installation
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Installation";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: Installation</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-Installation">Installation</h1>
+
+<p><em>HornetsEye</em> consists of several packages. Most of them rely on other free software since HornetsEye does not reinvent the wheel.</p>
+
+<p><img src="images/hornetseye.png"></p>
+
+<h2 id="label-GNU-2FLinux">GNU/Linux</h2>
+
+<p>First you need to install the <em>build tools</em> and <em>Ruby 2.1</em> with development headers. It is also recommended to install <em>libswscale-dev</em>. Under <a href="http://www.debian.org/">Debian</a> you can do this using the following command:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install build-essential ruby ruby-dev rubygems-integration rake libswscale-dev libboost-dev
+</code></pre>
+
+<p>If you want to retrieve sources, it is recommended to install the <em>Git</em> version control system:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_git'>git</span><span class='op'>-</span><span class='id identifier rubyid_core'>core</span>
+</code></pre>
+
+<p>It is possible to install a newer version of <em>rake</em> using Rubygems:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_rake'>rake</span>
+</code></pre>
+
+<h3 id="label-malloc">malloc</h3>
+
+<p><strong>malloc</strong> is part of the basis of <em>HornetsEye</em>. The following command will download and install this Ruby extension:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_malloc'>malloc</span>
+</code></pre>
+
+<h3 id="label-multiarray">multiarray</h3>
+
+<p><strong>multiarray</strong> is part of the basis of <em>HornetsEye</em>. It provides the array operations of <em>HornetsEye</em>. The following command will download and install this Ruby extension:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_multiarray'>multiarray</span>
+</code></pre>
+
+<h3 id="label-hornetseye-frame">hornetseye-frame</h3>
+
+<p><strong>hornetseye-frame</strong> is part of the basis of <em>HornetsEye</em>. It provides the necessary colourspace conversions for doing image I/O. This Ruby extension requires the software scaling library. You can install it like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libswscale'>libswscale</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install the Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_frame'>frame</span>
+</code></pre>
+
+<h3 id="label-hornetseye-alsa">hornetseye-alsa</h3>
+
+<p><strong>hornetseye-alsa</strong> provides an interface for playing and recording audio data using the Advanced Linux Sound Architecture (ALSA). This Ruby extension requires the ALSA library. You can install it like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libasound2'>libasound2</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install the Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_alsa'>alsa</span>
+</code></pre>
+
+<h3 id="label-hornetseye-dc1394">hornetseye-dc1394</h3>
+
+<p><strong>hornetseye-dc1394</strong> allows capturing video frames using a DC1394-compatible firewire camera. This Ruby extension requires the DC1394 development headers. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libdc1394'>libdc1394</span><span class='op'>-</span><span class='int'>22</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install the Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_dc1394'>dc1394</span>
+</code></pre>
+
+<h3 id="label-hornetseye-ffmpeg">hornetseye-ffmpeg</h3>
+
+<p><strong>hornetseye-ffmpeg</strong> is useful for reading and writing video files with optional audio data. This Ruby extension requires the development headers for FFMpeg and the software scaling library. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install libavformat-dev libswscale-dev
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_ffmpeg'>ffmpeg</span>
+</code></pre>
+
+<h3 id="label-hornetseye-fftw3">hornetseye-fftw3</h3>
+
+<p><strong>hornetseye-fftw3</strong> is a wrapper for doing Fast Fourier Transforms using the FFTW3 library. This Ruby extension requires the development headers for FFTW3. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libfftw3'>libfftw3</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_fftw3'>fftw3</span>
+</code></pre>
+
+<h3 id="label-hornetseye-kinect">hornetseye-kinect</h3>
+
+<p><strong>hornetseye-kinect</strong> allows to capture images from a Microsoft Kinect sensor using the libfreenect library. This Ruby extension requires libfreenect:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libfreenect'>libfreenect</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_kinect'>kinect</span>
+</code></pre>
+
+<h3 id="label-hornetseye-linalg">hornetseye-linalg</h3>
+
+<p><strong>hornetseye-linalg</strong> provides conversions between Linalg::DMatrix (provided by <em>linalg</em>) and <span class='object_link'><a href="Hornetseye/MultiArray.html" title="Hornetseye::MultiArray (class)">Hornetseye::MultiArray</a></span>. You can install it as follows:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install liblapack-dev libblas-dev libf2c2-dev
+</code></pre>
+
+<p>You also need to install the <em>linalg</em> Ruby extension. You can install it as follows:</p>
+
+<pre class="code ruby"><code class="ruby">git clone https://github.com/wedesoft/linalg.git
+cd linalg
+sudo ruby install.rb
+cd ..
+</code></pre>
+
+<p>To install <em>hornetseye-linalg</em>, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_linalg'>linalg</span>
+</code></pre>
+
+<h3 id="label-hornetseye-narray">hornetseye-narray</h3>
+
+<p><strong>hornetseye-narray</strong> provides conversions between <span class='object_link'><a href="NArray.html" title="NArray (class)">NArray</a></span> (provided by <em>narray</em>) and <span class='object_link'><a href="Hornetseye/MultiArray.html" title="Hornetseye::MultiArray (class)">Hornetseye::MultiArray</a></span>. You can install it as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_narray'>narray</span>
+</code></pre>
+
+<p>If you have not used <em>RubyGems</em> to install <em>NArray</em>, you may have to install <em>hornetseye-narray</em> from source:</p>
+
+<pre class="code ruby"><code class="ruby">git clone git://github.com/wedesoft/hornetseye-narray.git
+cd hornetseye-narray
+rake
+sudo rake install
+cd ..
+</code></pre>
+
+<h3 id="label-hornetseye-opencv">hornetseye-opencv</h3>
+
+<p><strong>hornetseye-opencv</strong> provides conversions between <span class='object_link'><a href="OpenCV/CvMat.html" title="OpenCV::CvMat (class)">OpenCV::CvMat</a></span> (provided by <em>opencv</em>) and <span class='object_link'><a href="Hornetseye/MultiArray.html" title="Hornetseye::MultiArray (class)">Hornetseye::MultiArray</a></span>. You need to install OpenCV first as follows:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install libcv-dev libcvaux-dev libhighgui-dev libffcall1-dev
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_opencv'>opencv</span>
+</code></pre>
+
+<p>If you are unable to use <em>RubyGems</em> to install <em>opencv</em>, you may have to install <em>hornetseye-opencv</em> from source:</p>
+
+<pre class="code ruby"><code class="ruby">git clone git://github.com/wedesoft/hornetseye-opencv.git
+cd hornetseye-opencv
+rake
+sudo rake install
+cd ..
+</code></pre>
+
+<p>See <a href="https://github.com/wedesoft/ruby-opencv">github.com/wedesoft/ruby-opencv</a> for more information on how to install <em>opencv</em> for Ruby.</p>
+
+<h3 id="label-hornetseye-openexr">hornetseye-openexr</h3>
+
+<p><strong>hornetseye-openexr</strong> is useful for reading and writing EXR image files. EXR is a file format for high dynamic range images. This Ruby extension requires the OpenEXR development headers. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libopenexr'>libopenexr</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_openexr'>openexr</span>
+</code></pre>
+
+<h3 id="label-hornetseye-qt4">hornetseye-qt4</h3>
+
+<p><strong>hornetseye-qt4</strong> implements a Qt4 widget (compatible with <em>qtruby4</em>) for hardware accelerated video output. This Ruby extension requires Qt4, QtRuby4 and the software scaling library. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install libqt4-ruby1.8 libqt4-dev qt4-dev-tools libswscale-dev xserver-xorg-dev libxv-dev libxpm-dev
+</code></pre>
+
+<p>You need to install <em>hornetseye-qt4</em> from source:</p>
+
+<pre class="code ruby"><code class="ruby">git clone git://github.com/wedesoft/hornetseye-qt4.git
+cd hornetseye-qt4
+rake
+sudo rake install
+cd ..
+</code></pre>
+
+<h3 id="label-hornetseye-rmagick">hornetseye-rmagick</h3>
+
+<p><strong>hornetseye-rmagick</strong> provides file-I/O using the <em>RMagick</em> Ruby extension. <em>RMagick</em> requires the ImageMagick development headers. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_libmagickwand'>libmagickwand</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_rmagick'>rmagick</span>
+</code></pre>
+
+<h3 id="label-hornetseye-v4l2">hornetseye-v4l2</h3>
+
+<p><strong>hornetseye-v4l2</strong> is a wrapper for accessing webcams and frame grabbers. It requires the Video for Linux development headers. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_aptitude'>aptitude</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_linux'>linux</span><span class='op'>-</span><span class='id identifier rubyid_libc'>libc</span><span class='op'>-</span><span class='id identifier rubyid_dev'>dev</span>
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_v4l2'>v4l2</span>
+</code></pre>
+
+<h3 id="label-hornetseye-xorg">hornetseye-xorg</h3>
+
+<p><strong>hornetseye-xorg</strong> facilitates display of videos and images under X.Org. It requires the X.Org and Mesa development headers. You can install them as follows:</p>
+
+<pre class="code ruby"><code class="ruby">sudo aptitude install xserver-xorg-dev libxv-dev libxpm-dev libgl1-mesa-dev libglu1-mesa-dev
+</code></pre>
+
+<p>To install this Ruby extension, use the following command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_sudo'>sudo</span> <span class='id identifier rubyid_gem'>gem</span> <span class='id identifier rubyid_install'>install</span> <span class='id identifier rubyid_hornetseye'>hornetseye</span><span class='op'>-</span><span class='id identifier rubyid_xorg'>xorg</span>
+</code></pre>
+
+<h2 id="label-Microsoft+Windows">Microsoft Windows</h2>
+
+<p>HornetsEye for Microsoft Windows is not supported at the moment. The GDI and DirectShow support of the old (monolithic) version needs to be ported.</p>
+
+<h2 id="label-Mac+OS">Mac OS</h2>
+
+<p><strong>malloc</strong> and <strong>multiarray</strong> where tested successfully under Mac OS. However there is no active support for MaC OS at the moment.</p>
+
+<h2 id="label-External+Links">External Links</h2>
+<ul><li>
+<p>Ruby Gems</p>
+<ul><li>
+<p><a href="http://rubygems.org/gems/malloc/">malloc</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/multiarray/">multiarray</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-alsa/">hornetseye-alsa</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-dc1394/">hornetseye-dc1394</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-ffmpeg/">hornetseye-ffmpeg</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-fftw3/">hornetseye-fftw3</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-frame/">hornetseye-frame</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-linalg/">hornetseye-linalg</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-kinect/">hornetseye-kinect</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-narray/">hornetseye-narray</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-opencv/">hornetseye-opencv</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-openexr/">hornetseye-openexr</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-qt4/">hornetseye-qt4</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-rmagick/">hornetseye-rmagick</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-v4l2/">hornetseye-v4l2</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-xorg/">hornetseye-xorg</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/malloc/">malloc</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/multiarray/">multiarray</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-alsa/">hornetseye-alsa</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-dc1394/">hornetseye-dc1394</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-ffmpeg/">hornetseye-ffmpeg</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-fftw3/">hornetseye-fftw3</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-frame/">hornetseye-frame</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-linalg/">hornetseye-linalg</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-kinect/">hornetseye-kinect</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-narray/">hornetseye-narray</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-opencv/">hornetseye-opencv</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-openexr/">hornetseye-openexr</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-qt4/">hornetseye-qt4</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-rmagick/">hornetseye-rmagick</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-v4l2/">hornetseye-v4l2</a></p>
+</li><li>
+<p><a href="http://rubygems.org/gems/hornetseye-xorg/">hornetseye-xorg</a></p>
+</li></ul>
+</li><li>
+<p>Git repositories</p>
+<ul><li>
+<p><a href="http://github.com/wedesoft/malloc/">malloc</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/multiarray/">multiarray</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-alsa/">hornetseye-alsa</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-dc1394/">hornetseye-dc1394</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-ffmpeg/">hornetseye-ffmpeg</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-fftw3/">hornetseye-fftw3</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-frame/">hornetseye-frame</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-linalg/">hornetseye-linalg</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-kinect/">hornetseye-kinect</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-narray/">hornetseye-narray</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-opencv/">hornetseye-opencv</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-openexr/">hornetseye-openexr</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-qt4/">hornetseye-qt4</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-rmagick/">hornetseye-rmagick</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-v4l2/">hornetseye-v4l2</a></p>
+</li><li>
+<p><a href="http://github.com/wedesoft/hornetseye-xorg/">hornetseye-xorg</a></p>
+</li></ul>
+</li></ul>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:57 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

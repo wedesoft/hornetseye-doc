@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-HornetsEye+-+Computer+Vision+for+the+Robotic+Age+-28DEPRECATED-29">HornetsEye - Computer Vision for the Robotic Age (DEPRECATED)</h1>
+
+<p><strong>HornetsEye</strong> is a <strong>real-time computer vision library</strong> for the <strong>Ruby programming language</strong>. HornetsEye is maybe the first free software project providing a <strong>solid platform for implementing real-time computer vision software</strong> in a scripting language. The platform potentially could be used in <strong>industrial automation</strong>, <strong>robotic applications</strong>, and <strong>human computer interfaces</strong>.</p>
+
+<p>HornetsEye is free software. Developers and users are given the full freedom to study the source code, run, modify, and redistribute the software as they wish.</p>
+
+<p><img src="images/sintel.jpg"></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>rubygems</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_ffmpeg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_input'>input</span> <span class='op'>=</span> <span class='const'>AVInput</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>*</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_aspect_ratio'>aspect_ratio</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='comma'>,</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span>
+<span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='symbol'>:frame_rate</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_frame_rate'>frame_rate</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
+</code></pre>
+
+<h2 id="label-Demo+Videos">Demo Videos</h2>
+<table>
+  <tr>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/5xJa2ytsE7I" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/wNFr7RNWeCs" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
+  </tr>
+</table>
+<h2 id="label-Example+Programs">Example Programs</h2>
+
+<h3 id="label-Basic+I-2FO">Basic I/O</h3>
+<ul><li>
+<p><a href="file.IRB.html" title="Interactive Ruby session">Interactive Ruby session</a></p>
+</li><li>
+<p><a href="file.XOrg.html" title="Displaying images">Displaying images</a></p>
+</li><li>
+<p><a href="file.RMagick.html" title="Loading and saving image files">Loading and saving image files</a></p>
+</li><li>
+<p><a href="file.FFMpeg.html" title="Reading and writing video files">Reading and writing video files</a></p>
+</li><li>
+<p><a href="file.Camera.html" title="Capturing frames from a camera">Capturing frames from a camera</a></p>
+</li><li>
+<p><a href="file.ALSA.html" title="Recording and playing audio">Recording and playing audio</a></p>
+</li></ul>
+
+<h3 id="label-Manipulating+images">Manipulating images</h3>
+<ul><li>
+<p><a href="file.Pixel.html" title="Element-wise operations">Element-wise operations</a></p>
+</li><li>
+<p><a href="file.Warps.html" title="Histograms and warps">Histograms and warps</a></p>
+</li><li>
+<p><a href="file.Filters.html" title="Filters">Filters</a></p>
+</li><li>
+<p><a href="file.Extraction.html" title="Feature extraction">Feature extraction</a></p>
+</li><li>
+<p><a href="file.Applications.html" title="Applications">Applications</a></p>
+</li><li>
+<p><a href="file.3DVision.html" title="3D Vision">3D Vision</a></p>
+</li></ul>
+
+<h2 id="label-Copyright">Copyright</h2>
+
+<p>Copyright © 2006, .., 2017 Jan Wedekind, Eastleigh, United Kingdom. See <a href="file.License.html" title="License">License</a> for details.</p>
+
+<h2 id="label-See+also">See also</h2>
+<ul><li>
+<p><a href="file.Features.html" title="Features">Features</a></p>
+</li><li>
+<p><a href="file.License.html" title="License">License</a></p>
+</li><li>
+<p><a href="file.Installation.html" title="Installation">Installation</a></p>
+</li><li>
+<p><a href="file.FAQ.html" title="FAQ">FAQ</a></p>
+</li><li>
+<p><a href="file.Contact.html" title="Contact">Contact</a></p>
+</li><li>
+<p><a href="file.Publications.html" title="Publications">Publications</a></p>
+</li><li>
+<p><a href="file.Credits.html" title="Credits">Credits</a></p>
+</li></ul>
+
+<h2 id="label-External+Links">External Links</h2>
+<ul><li>
+<p><a href="http://tryruby.org/">Try Ruby</a></p>
+</li><li>
+<p><a href="http://rubyforge.org/projects/hornetseye/">RubyForge page</a></p>
+</li></ul>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:55 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

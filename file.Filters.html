@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: Filters
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Filters";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: Filters</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-Filters">Filters</h1>
+
+<h2 id="label-Sobel+Operator">Sobel Operator</h2>
+
+<h3 id="label-X-Gradient">X-Gradient</h3>
+
+<p><img src="images/sobelx.png"></p>
+
+<p>This is an example on how to compute the Sobel x-gradient. A correlation of the input image with the following separable filter is performed.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubyte'>load_ubyte</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/grey.png</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_sobel'>sobel</span><span class='lparen'>(</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h3 id="label-Y-Gradient">Y-Gradient</h3>
+
+<p><img src="images/sobely.png"></p>
+
+<p>This is an example on how to compute the Sobel y-gradient. A correlation of the input image with the following separable filter is performed.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubyte'>load_ubyte</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/grey.png</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_sobel'>sobel</span><span class='lparen'>(</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Gaussian+Blur">Gaussian Blur</h2>
+
+<p><img src="images/gaussblur.jpg"></p>
+
+<p>This is an example on how to apply a Gauss blur filter. The filter can be applied to colour images as well.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='float'>3.0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Van+Cittert+Deconvolution">Van Cittert Deconvolution</h2>
+
+<p><img src="images/vancittert.jpg"></p>
+
+<p>Van Cittert deconvolution is an iterative algorithm for reversing a convolution with a known point spread function. To demonstrate the algorithm, the result of the Gaussian blur is used. The Van Cittert algorithm then is applied to this image to estimate the original input image. The first iteration of the algorithm uses the blurred image as an estimate.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='const'>SIGMA</span> <span class='op'>=</span> <span class='float'>3.0</span>
+<span class='const'>N</span> <span class='op'>=</span> <span class='int'>20</span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='const'>SIGMA</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_ubytergb'>to_ubytergb</span>
+<span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_to_sfloatrgb'>to_sfloatrgb</span>
+<span class='const'>N</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_g'>g</span> <span class='op'>=</span> <span class='id identifier rubyid_img'>img</span> <span class='op'>+</span> <span class='id identifier rubyid_g'>g</span> <span class='op'>-</span> <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='const'>SIGMA</span> <span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Wiener+Filter">Wiener Filter</h2>
+
+<p><img src="images/wiener.jpg"></p>
+
+<p>The Wiener filter is the optimal linear filter for denoising and deblurring. The filter requires prior knowledge about the autospectrum of the signal, the point spread function of the blur, and the autospectrum of the noise. In this example white noise is assumed. To demonstrate the algorithm, a Gaussian blur is applied to the input image and the Wiener filter is used to estimate the input signal.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_fftw3</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='kw'>class</span> <span class='const'>Node</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_radius'>radius</span>
+    <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_shape'>shape</span>
+    <span class='id identifier rubyid_lazy'>lazy</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='comma'>,</span><span class='id identifier rubyid_j'>j</span><span class='op'>|</span>
+      <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sqrt'><span class='object_link'><a href="Math.html#sqrt-class_method" title="Math.sqrt (method)">sqrt</a></span></span><span class='lparen'>(</span> <span class='lparen'>(</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>-</span> <span class='id identifier rubyid_w'>w</span> <span class='op'>/</span> <span class='int'>2</span> <span class='rparen'>)</span> <span class='op'>**</span><span class='int'>2</span> <span class='op'>+</span> <span class='lparen'>(</span> <span class='id identifier rubyid_j'>j</span> <span class='op'>-</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>/</span> <span class='int'>2</span> <span class='rparen'>)</span> <span class='op'>**</span> <span class='int'>2</span> <span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_spectrum'>spectrum</span><span class='lparen'>(</span> <span class='id identifier rubyid_alpha'>alpha</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_shape'>shape</span>
+    <span class='lparen'>(</span> <span class='float'>255.0</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='float'>1.0</span> <span class='op'>+</span> <span class='lparen'>(</span> <span class='id identifier rubyid_radius'>radius</span> <span class='op'>/</span> <span class='id identifier rubyid_alpha'>alpha</span> <span class='rparen'>)</span> <span class='op'>**</span> <span class='int'>2</span> <span class='rparen'>)</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span> <span class='op'>-</span><span class='id identifier rubyid_w'>w</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span> <span class='op'>-</span><span class='id identifier rubyid_h'>h</span> <span class='op'>/</span> <span class='int'>2</span>
+  <span class='kw'>end</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_blur'>blur</span><span class='lparen'>(</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>=</span> <span class='op'>*</span><span class='id identifier rubyid_shape'>shape</span>
+    <span class='id identifier rubyid_retval'>retval</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_ubyte'>ubyte</span><span class='lparen'>(</span> <span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fill!'>fill!</span>
+    <span class='id identifier rubyid_retval'>retval</span><span class='lbracket'>[</span> <span class='id identifier rubyid_w'>w</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span> <span class='op'>/</span> <span class='int'>2</span> <span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>1</span>
+    <span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span> <span class='op'>-</span><span class='id identifier rubyid_w'>w</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span> <span class='op'>-</span><span class='id identifier rubyid_h'>h</span> <span class='op'>/</span> <span class='int'>2</span>
+  <span class='kw'>end</span>
+  <span class='kw'>def</span> <span class='id identifier rubyid_wiener'>wiener</span><span class='lparen'>(</span> <span class='id identifier rubyid_alpha'>alpha</span><span class='comma'>,</span> <span class='id identifier rubyid_noise'>noise</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='op'>=</span> <span class='kw'>nil</span> <span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_typecode'>typecode</span> <span class='op'>&lt;</span> <span class='const'>RGB_</span>
+      <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='lparen'>(</span><span class='id identifier rubyid_typecode'>typecode</span><span class='period'>.</span><span class='id identifier rubyid_float'>float</span><span class='comma'>,</span> <span class='id identifier rubyid_dimension'>dimension</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='op'>*</span><span class='id identifier rubyid_shape'>shape</span>
+      <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='id identifier rubyid_b'>b</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span>
+        <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_wiener'>wiener</span> <span class='id identifier rubyid_alpha'>alpha</span><span class='comma'>,</span> <span class='id identifier rubyid_noise'>noise</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span>
+      <span class='kw'>end</span>
+      <span class='id identifier rubyid_result'>result</span>
+    <span class='kw'>else</span>
+      <span class='id identifier rubyid_si'>si</span> <span class='op'>=</span> <span class='id identifier rubyid_spectrum'>spectrum</span><span class='lparen'>(</span> <span class='id identifier rubyid_alpha'>alpha</span> <span class='rparen'>)</span> <span class='op'>**</span> <span class='int'>2</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_sigma'>sigma</span>
+        <span class='id identifier rubyid_bf'>bf</span> <span class='op'>=</span> <span class='id identifier rubyid_blur'>blur</span><span class='lparen'>(</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_fft'>fft</span>
+        <span class='lparen'>(</span> <span class='id identifier rubyid_bf'>bf</span><span class='period'>.</span><span class='id identifier rubyid_conj'>conj</span> <span class='op'>*</span> <span class='id identifier rubyid_si'>si</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='id identifier rubyid_bf'>bf</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='op'>**</span> <span class='int'>2</span> <span class='op'>*</span> <span class='id identifier rubyid_si'>si</span> <span class='op'>+</span> <span class='id identifier rubyid_noise'>noise</span> <span class='op'>**</span> <span class='int'>2</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_fft'>fft</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ifft'>ifft</span><span class='period'>.</span><span class='id identifier rubyid_real'>real</span>
+      <span class='kw'>else</span>
+        <span class='lparen'>(</span> <span class='id identifier rubyid_si'>si</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='id identifier rubyid_si'>si</span> <span class='op'>+</span> <span class='id identifier rubyid_noise'>noise</span> <span class='op'>**</span> <span class='int'>2</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_fft'>fft</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ifft'>ifft</span><span class='period'>.</span><span class='id identifier rubyid_real'>real</span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span>
+<span class='const'>NOISE</span> <span class='op'>=</span> <span class='float'>2.0</span>
+<span class='const'>SIGMA</span> <span class='op'>=</span> <span class='float'>3.0</span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span><span class='lparen'>(</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='const'>SIGMA</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_ubytergb'>to_ubytergb</span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_wiener'>wiener</span><span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='float'>0.1</span><span class='comma'>,</span> <span class='const'>NOISE</span><span class='comma'>,</span> <span class='const'>SIGMA</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Gauss+Gradient">Gauss Gradient</h2>
+
+<h3 id="label-X-Gradient">X-Gradient</h3>
+
+<p><img src="images/gaussgradx.jpg"></p>
+
+<p>This is an example on how to compute the Gaussian x-gradient.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_gradient'>gauss_gradient</span><span class='lparen'>(</span> <span class='float'>3.0</span><span class='comma'>,</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h3 id="label-Y-Gradient">Y-Gradient</h3>
+
+<p><img src="images/gaussgrady.jpg"></p>
+
+<p>This is an example on how to compute the Gaussian y-gradient.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_gradient'>gauss_gradient</span><span class='lparen'>(</span> <span class='float'>3.0</span><span class='comma'>,</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Custom+Filters">Custom Filters</h2>
+
+<p><img src="images/sharpen.jpg"></p>
+
+<pre class="code ruby"><code class="ruby">+------+------+------+
+|  -k  |  -k  |  -k  |
++------+------+------+
+|  -k  | 8k+1 |  -k  |
++------+------+------+
+|  -k  |  -k  |  -k  |
++------+------+------+
+</code></pre>
+
+<p>HornetsEye supports fast convolution with custom filters. In this example a 3x3 sharpness filter is created and used to sharpen the input image (here k=0.4). Note that the filter in this example is not separable. If your filter is separable you should exploit this to improve the speed of the filtering operation.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='const'>K</span> <span class='op'>=</span> <span class='float'>0.4</span>
+<span class='id identifier rubyid_filter'>filter</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='lbracket'>[</span> <span class='lbracket'>[</span> <span class='op'>-</span><span class='const'>K</span><span class='comma'>,</span> <span class='op'>-</span><span class='const'>K</span><span class='comma'>,</span> <span class='op'>-</span><span class='const'>K</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='op'>-</span><span class='const'>K</span><span class='comma'>,</span>  <span class='int'>8</span> <span class='op'>*</span> <span class='const'>K</span> <span class='op'>+</span> <span class='int'>1</span><span class='comma'>,</span> <span class='op'>-</span><span class='const'>K</span> <span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span> <span class='op'>-</span><span class='const'>K</span><span class='comma'>,</span> <span class='op'>-</span><span class='const'>K</span><span class='comma'>,</span> <span class='op'>-</span><span class='const'>K</span> <span class='rbracket'>]</span> <span class='rbracket'>]</span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubytergb'>load_ubytergb</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/lena.jpg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_convolve'>convolve</span> <span class='id identifier rubyid_filter'>filter</span>
+<span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-Connected+Components+Labeling">Connected Components Labeling</h2>
+
+<p><img src="images/components.png"></p>
+
+<p>Connected component analysis assigns the same label to neighbouring pixel which have the same value.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_img'>img</span> <span class='op'>=</span> <span class='const'>MultiArray</span><span class='period'>.</span><span class='id identifier rubyid_load_ubyte'>load_ubyte</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>http://www.wedesoft.de/hornetseye-api/images/letters.png</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_components'>components</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='id identifier rubyid_img'>img</span> <span class='op'>&gt;=</span> <span class='int'>0x7F</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_components'>components</span>
+<span class='id identifier rubyid_palette'>palette</span> <span class='op'>=</span> <span class='const'>Sequence</span><span class='period'>.</span><span class='id identifier rubyid_ubytergb'>ubytergb</span> <span class='id identifier rubyid_components'>components</span><span class='period'>.</span><span class='id identifier rubyid_max'>max</span> <span class='op'>+</span> <span class='int'>1</span>
+<span class='id identifier rubyid_palette'>palette</span><span class='period'>.</span><span class='id identifier rubyid_r'>r</span><span class='comma'>,</span> <span class='id identifier rubyid_palette'>palette</span><span class='period'>.</span><span class='id identifier rubyid_g'>g</span><span class='comma'>,</span> <span class='id identifier rubyid_palette'>palette</span><span class='period'>.</span><span class='id identifier rubyid_b'>b</span> <span class='op'>=</span> <span class='op'>*</span><span class='lparen'>(</span><span class='int'>1</span> <span class='op'>..</span> <span class='int'>3</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='kw'>do</span>
+  <span class='const'>Sequence</span><span class='lparen'>(</span><span class='const'>UBYTE</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_random'>random</span> <span class='id identifier rubyid_palette'>palette</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='int'>256</span>
+<span class='kw'>end</span>
+<span class='id identifier rubyid_palette'>palette</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
+<span class='id identifier rubyid_components'>components</span><span class='period'>.</span><span class='id identifier rubyid_lut'>lut</span><span class='lparen'>(</span><span class='id identifier rubyid_palette'>palette</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
+</code></pre>
+
+<h2 id="label-See+Also">See Also</h2>
+<ul><li>
+<p><span class='object_link'><a href="Hornetseye/Node.html#convolve-instance_method" title="Hornetseye::Node#convolve (method)">Hornetseye::Node#convolve</a></span></p>
+</li><li>
+<p><span class='object_link'><a href="Hornetseye/Node.html#sobel-instance_method" title="Hornetseye::Node#sobel (method)">Hornetseye::Node#sobel</a></span></p>
+</li><li>
+<p><span class='object_link'><a href="Hornetseye/Node.html#components-instance_method" title="Hornetseye::Node#components (method)">Hornetseye::Node#components</a></span></p>
+</li></ul>
+
+<h2 id="label-External+Links">External Links</h2>
+<ul><li>
+<p><a href="http://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a></p>
+</li><li>
+<p><a href="http://en.wikipedia.org/wiki/Unsharp_masking">Unsharp masking</a></p>
+</li><li>
+<p><a href="http://en.wikipedia.org/wiki/Connected_Component_Labeling">Connected component labeling</a></p>
+</li></ul>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:56 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

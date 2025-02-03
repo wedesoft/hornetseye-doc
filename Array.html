@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Array
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Array";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (A)</a> &raquo;
+    
+    
+    <span class="title">Array</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Array
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Array</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>docs/multiarray/lib/multiarray.rb<span class="defines">,<br />
+  docs/multiarray/lib/multiarray/operations.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The <code>Array</code> class is extended with a few methods</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gauss_blur_filter-class_method" title="gauss_blur_filter (class method)">.<strong>gauss_blur_filter</strong>(sigma, max_error = 1.0 / 0x100)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compute Gauss blur filter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gauss_gradient_filter-class_method" title="gauss_gradient_filter (class method)">.<strong>gauss_gradient_filter</strong>(sigma, max_error = 1.0 / 0x100)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compute Gauss gradient filter.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#collect_with_index-instance_method" title="#collect_with_index (instance method)">#<strong>collect_with_index</strong>(&amp;action)  &#x21d2; Array&lt;Object&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Element-wise operation based on element and its index.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#histogram-instance_method" title="#histogram (instance method)">#<strong>histogram</strong>(*ret_shape, options = {})  &#x21d2; Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Compute histogram of this array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lut-instance_method" title="#lut (instance method)">#<strong>lut</strong>(table, options = {})  &#x21d2; Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Perform element-wise lookup.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#strip-instance_method" title="#strip (instance method)">#<strong>strip</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="gauss_blur_filter-class_method">
+  
+    .<strong>gauss_blur_filter</strong>(sigma, max_error = 1.0 / 0x100)  &#x21d2; <tt><span class='object_link'><a href="" title="Array (class)">Array</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compute Gauss blur filter</p>
+
+<p>Compute a filter for approximating a Gaussian blur. The size of the filter is determined by the given error bound.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sigma</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Spread of blur filter.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_error</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1.0 / 0x100</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Upper bound for filter error.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array with the filter elements.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray.rb', line 615</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gauss_blur_filter'>gauss_blur_filter</span><span class='lparen'>(</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='comma'>,</span> <span class='id identifier rubyid_max_error'>max_error</span> <span class='op'>=</span> <span class='float'>1.0</span> <span class='op'>/</span> <span class='int'>0x100</span> <span class='rparen'>)</span>
+  <span class='comment'># Error function
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param [Float] x Function argument
+</span>  <span class='comment'># @param [Float] sigma Function parameter
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @private
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='rparen'>)</span>
+    <span class='float'>0.5</span> <span class='op'>*</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span> <span class='id identifier rubyid_x'>x</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sqrt'><span class='object_link'><a href="Math.html#sqrt-class_method" title="Math.sqrt (method)">sqrt</a></span></span><span class='lparen'>(</span> <span class='float'>2.0</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='rparen'>)</span> <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sigma must be greater than zero.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+  <span class='comment'># Integral of Gauss-bell from -0.5 to +0.5.
+</span>  <span class='id identifier rubyid_integral'>integral</span> <span class='op'>=</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span> <span class='float'>+0.5</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span> <span class='op'>-</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span> <span class='op'>-</span><span class='float'>0.5</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_retVal'>retVal</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_integral'>integral</span> <span class='rbracket'>]</span>
+  <span class='kw'>while</span> <span class='float'>1.0</span> <span class='op'>-</span> <span class='id identifier rubyid_integral'>integral</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_max_error'>max_error</span>
+    <span class='comment'># Integral of Gauss-bell from -size2 to +size2.
+</span>    <span class='id identifier rubyid_size2'>size2</span> <span class='op'>=</span> <span class='float'>0.5</span> <span class='op'>*</span> <span class='lparen'>(</span> <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>+</span> <span class='int'>2</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_nIntegral'>nIntegral</span> <span class='op'>=</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span> <span class='op'>+</span><span class='id identifier rubyid_size2'>size2</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span> <span class='op'>-</span> <span class='id identifier rubyid_erf'>erf</span><span class='lparen'>(</span> <span class='op'>-</span><span class='id identifier rubyid_size2'>size2</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='float'>0.5</span> <span class='op'>*</span> <span class='lparen'>(</span> <span class='id identifier rubyid_nIntegral'>nIntegral</span> <span class='op'>-</span> <span class='id identifier rubyid_integral'>integral</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_integral'>integral</span> <span class='op'>=</span> <span class='id identifier rubyid_nIntegral'>nIntegral</span>
+  <span class='kw'>end</span>
+  <span class='comment'># Normalise result.
+</span>  <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span> <span class='id identifier rubyid_element'>element</span> <span class='op'>/</span> <span class='id identifier rubyid_integral'>integral</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gauss_gradient_filter-class_method">
+  
+    .<strong>gauss_gradient_filter</strong>(sigma, max_error = 1.0 / 0x100)  &#x21d2; <tt><span class='object_link'><a href="" title="Array (class)">Array</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compute Gauss gradient filter</p>
+
+<p>Compute a filter for approximating a Gaussian gradient. The size of the filter is determined by the given error bound.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>sigma</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Spread of blur filter.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>max_error</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Float.html" title="Float (class)">Float</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>1.0 / 0x100</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Upper bound for filter error.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Array (class)">Array</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An array with the filter elements.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray.rb', line 651</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_gauss_gradient_filter'>gauss_gradient_filter</span><span class='lparen'>(</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='comma'>,</span> <span class='id identifier rubyid_max_error'>max_error</span> <span class='op'>=</span> <span class='float'>1.0</span> <span class='op'>/</span> <span class='int'>0x100</span> <span class='rparen'>)</span>
+  <span class='comment'># Gaussian function
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param [Float] x Function argument
+</span>  <span class='comment'># @param [Float] sigma Function parameter
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @private
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_gauss'>gauss</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='rparen'>)</span>
+    <span class='float'>1.0</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sqrt'><span class='object_link'><a href="Math.html#sqrt-class_method" title="Math.sqrt (method)">sqrt</a></span></span><span class='lparen'>(</span> <span class='float'>2.0</span> <span class='op'>*</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='op'>::</span><span class='const'>PI</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='period'>.</span><span class='id identifier rubyid_abs'>abs</span> <span class='rparen'>)</span> <span class='op'>*</span>
+      <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_exp'><span class='object_link'><a href="Math.html#exp-class_method" title="Math.exp (method)">exp</a></span></span><span class='lparen'>(</span> <span class='op'>-</span><span class='id identifier rubyid_x'>x</span><span class='op'>**</span><span class='int'>2</span> <span class='op'>/</span> <span class='lparen'>(</span> <span class='float'>2.0</span> <span class='op'>*</span> <span class='id identifier rubyid_sigma'>sigma</span><span class='op'>**</span><span class='int'>2</span> <span class='rparen'>)</span> <span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sigma must be greater than zero.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
+  <span class='comment'># Integral of Gauss-gradient from -0.5 to +0.5.
+</span>  <span class='id identifier rubyid_retVal'>retVal</span> <span class='op'>=</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_gauss'>gauss</span><span class='lparen'>(</span> <span class='float'>+0.5</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span> <span class='op'>-</span> <span class='id identifier rubyid_gauss'>gauss</span><span class='lparen'>(</span> <span class='op'>-</span><span class='float'>0.5</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span> <span class='rbracket'>]</span>
+  <span class='comment'># Absolute integral of Gauss-gradient from 0.5 to infinity.
+</span>  <span class='id identifier rubyid_integral'>integral</span> <span class='op'>=</span> <span class='id identifier rubyid_gauss'>gauss</span><span class='lparen'>(</span> <span class='float'>0.5</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_sumX'>sumX</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>while</span> <span class='float'>2.0</span> <span class='op'>*</span> <span class='id identifier rubyid_integral'>integral</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_max_error'>max_error</span>
+    <span class='id identifier rubyid_size2'>size2</span> <span class='op'>=</span> <span class='float'>0.5</span> <span class='op'>*</span> <span class='lparen'>(</span> <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>+</span> <span class='int'>2</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_nIntegral'>nIntegral</span> <span class='op'>=</span> <span class='id identifier rubyid_gauss'>gauss</span><span class='lparen'>(</span> <span class='id identifier rubyid_size2'>size2</span><span class='comma'>,</span> <span class='id identifier rubyid_sigma'>sigma</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='id identifier rubyid_integral'>integral</span> <span class='op'>-</span> <span class='id identifier rubyid_nIntegral'>nIntegral</span>
+    <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_unshift'>unshift</span> <span class='op'>+</span><span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span> <span class='op'>-</span><span class='id identifier rubyid_value'>value</span>
+    <span class='id identifier rubyid_sumX'>sumX</span> <span class='op'>+=</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>*</span> <span class='lparen'>(</span> <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>-</span> <span class='int'>1</span> <span class='rparen'>)</span>
+    <span class='id identifier rubyid_integral'>integral</span> <span class='op'>=</span> <span class='id identifier rubyid_nIntegral'>nIntegral</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_retVal'>retVal</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_element'>element</span><span class='op'>|</span> <span class='id identifier rubyid_element'>element</span> <span class='op'>/</span> <span class='id identifier rubyid_sumX'>sumX</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="collect_with_index-instance_method">
+  
+    #<strong>collect_with_index</strong>(&amp;action)  &#x21d2; <tt><span class='object_link'><a href="" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Element-wise operation based on element and its index</p>
+
+<p>Same as <tt>Array#collect</tt> but with index.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>&amp;action</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Closure accepting an element and an index.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Array (class)">Array</a></span>&lt;<span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Array with results.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+689
+690
+691</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray.rb', line 689</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_collect_with_index'>collect_with_index</span><span class='lparen'>(</span> <span class='op'>&amp;</span><span class='id identifier rubyid_action'>action</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_zip'>zip</span><span class='lparen'>(</span> <span class='lparen'>(</span> <span class='int'>0</span> <span class='op'>...</span> <span class='id identifier rubyid_size'>size</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_collect'>collect</span> <span class='op'>&amp;</span><span class='id identifier rubyid_action'>action</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="histogram-instance_method">
+  
+    #<strong>histogram</strong>(*ret_shape, options = {})  &#x21d2; <tt>Node</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Compute histogram of this array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>ret_shape</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Array (class)">Array</a></span>&lt;<span class='object_link'>Integer</span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Dimensions of resulting histogram.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:weight</span>
+          <span class="type">(<tt>Node</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>Hornetseye::UINT(1)</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Weights for computing the histogram.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:safe</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>true</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Do a boundary check before creating the histogram.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+
+</div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Node</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The histogram.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+968
+969
+970
+971
+972
+973
+974
+975
+976
+977
+978
+979
+980
+981
+982
+983
+984
+985
+986
+987
+988
+989
+990
+991
+992
+993
+994
+995
+996
+997
+998
+999
+1000
+1001
+1002
+1003
+1004
+1005</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray/operations.rb', line 968</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_histogram'>histogram</span><span class='lparen'>(</span> <span class='op'>*</span><span class='id identifier rubyid_ret_shape'>ret_shape</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span> <span class='const'>Hash</span> <span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='period'>.</span><span class='id identifier rubyid_pop'>pop</span> <span class='op'>:</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:weight</span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye.html#UINT-constant" title="Hornetseye::UINT (constant)">UINT</a></span></span><span class='period'>.</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:safe</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>unless</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:weight</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_matched?'>matched?</span>
+    <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span><span class='symbol'>:weight</span><span class='rbracket'>]</span> <span class='op'>=</span>
+      <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye/Node.html" title="Hornetseye::Node (class)">Node</a></span></span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:weight</span> <span class='rbracket'>]</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_maxint'>maxint</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:weight</span> <span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_weight'>weight</span> <span class='op'>=</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:weight</span> <span class='rbracket'>]</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:safe</span> <span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_size'>size</span> <span class='op'>!=</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Number of arrays for histogram (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'>) differs from number of </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>dimensions of histogram (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_source_type'>source_type</span> <span class='op'>=</span> <span class='id identifier rubyid_inject'>inject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>?</span> <span class='id identifier rubyid_a'>a</span> <span class='op'>:</span> <span class='id identifier rubyid_b'>b</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_source_type'>source_type</span><span class='period'>.</span><span class='id identifier rubyid_check_shape'>check_shape</span> <span class='op'>*</span><span class='kw'>self</span>
+    <span class='id identifier rubyid_source_type'>source_type</span><span class='period'>.</span><span class='id identifier rubyid_check_shape'>check_shape</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:weight</span> <span class='rbracket'>]</span>
+    <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>0</span> <span class='op'>...</span> <span class='id identifier rubyid_size'>size</span>
+      <span class='id identifier rubyid_range'>range</span> <span class='op'>=</span> <span class='kw'>self</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_range'>range</span> <span class='int'>0</span> <span class='op'>...</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='rbracket'>]</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>1</span><span class='embexpr_end'>}</span><span class='tstring_content'>th dimension of index must be in 0 ... </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='rbracket'>]</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>1</span><span class='embexpr_end'>}</span><span class='tstring_content'>th dimension of index must be in 0 ... </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_left'>left</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye/MultiArray.html" title="Hornetseye::MultiArray (class)">MultiArray</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_weight'>weight</span><span class='period'>.</span><span class='id identifier rubyid_typecode'>typecode</span><span class='comma'>,</span> <span class='id identifier rubyid_ret_shape'>ret_shape</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Hornetseye/MultiArray.html#new-class_method" title="Hornetseye::MultiArray.new (method)">new</a></span></span> <span class='op'>*</span><span class='id identifier rubyid_ret_shape'>ret_shape</span>
+  <span class='id identifier rubyid_left'>left</span><span class='lbracket'>[</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='id identifier rubyid_block'>block</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye/Histogram.html" title="Hornetseye::Histogram (class)">Histogram</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='id identifier rubyid_weight'>weight</span><span class='comma'>,</span> <span class='op'>*</span><span class='kw'>self</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_compilable?'>compilable?</span>
+    <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye/GCCFunction.html" title="Hornetseye::GCCFunction (class)">GCCFunction</a></span></span><span class='period'>.</span><span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_block'>block</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_block'>block</span><span class='period'>.</span><span class='id identifier rubyid_demand'>demand</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_left'>left</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="lut-instance_method">
+  
+    #<strong>lut</strong>(table, options = {})  &#x21d2; <tt>Node</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Perform element-wise lookup</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>table</span>
+      
+      
+        <span class='type'>(<tt>Node</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The lookup table (LUT).</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>options</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    
+    
+    <p class="tag_title">Options Hash (<tt>options</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:safe</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>true</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Do a boundary check before creating the element-wise lookup.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Node</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The result of the lookup operation.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+1014
+1015
+1016
+1017
+1018
+1019
+1020
+1021
+1022
+1023
+1024
+1025
+1026
+1027
+1028
+1029
+1030
+1031
+1032
+1033
+1034
+1035
+1036
+1037
+1038
+1039
+1040
+1041
+1042
+1043
+1044
+1045</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray/operations.rb', line 1014</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_lut'>lut</span><span class='lparen'>(</span> <span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='symbol'>:safe</span> <span class='op'>=&gt;</span> <span class='kw'>true</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_merge'>merge</span> <span class='id identifier rubyid_options'>options</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_options'>options</span><span class='lbracket'>[</span> <span class='symbol'>:safe</span> <span class='rbracket'>]</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Number of arrays for lookup (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'>) is greater than the </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+            <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>number of dimensions of LUT (</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_source_type'>source_type</span> <span class='op'>=</span> <span class='id identifier rubyid_inject'>inject</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_a'>a</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>?</span> <span class='id identifier rubyid_a'>a</span> <span class='op'>:</span> <span class='id identifier rubyid_b'>b</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_source_type'>source_type</span><span class='period'>.</span><span class='id identifier rubyid_check_shape'>check_shape</span> <span class='op'>*</span><span class='kw'>self</span>
+    <span class='kw'>for</span> <span class='id identifier rubyid_i'>i</span> <span class='kw'>in</span> <span class='int'>0</span> <span class='op'>...</span> <span class='id identifier rubyid_size'>size</span>
+      <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>-</span> <span class='id identifier rubyid_size'>size</span>
+      <span class='id identifier rubyid_range'>range</span> <span class='op'>=</span> <span class='kw'>self</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_range'>range</span> <span class='int'>0</span> <span class='op'>...</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>+</span> <span class='id identifier rubyid_offset'>offset</span> <span class='rbracket'>]</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span> <span class='op'>&lt;</span> <span class='int'>0</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>1</span><span class='embexpr_end'>}</span><span class='tstring_content'>th index must be in 0 ... </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span><span class='id identifier rubyid_i'>i</span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_begin'>begin</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+      <span class='kw'>if</span> <span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span> <span class='op'>&gt;=</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>+</span> <span class='id identifier rubyid_offset'>offset</span> <span class='rbracket'>]</span>
+        <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_i'>i</span><span class='op'>+</span><span class='int'>1</span><span class='embexpr_end'>}</span><span class='tstring_content'>th index must be in 0 ... </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+              <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>+</span> <span class='id identifier rubyid_offset'>offset</span> <span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_content'> (but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_range'>range</span><span class='period'>.</span><span class='id identifier rubyid_end'>end</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+      <span class='kw'>end</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_source'>source</span><span class='op'>|</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>==</span> <span class='int'>0</span> <span class='kw'>and</span> <span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_variables'>variables</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span> <span class='rbrace'>}</span>
+    <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_table'>table</span>
+    <span class='lparen'>(</span> <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>-</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_downto'>downto</span><span class='lparen'>(</span> <span class='int'>0</span> <span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span>
+      <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_element'>element</span><span class='lparen'>(</span> <span class='kw'>self</span><span class='lbracket'>[</span> <span class='id identifier rubyid_i'>i</span> <span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_demand'>demand</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_demand'>demand</span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_result'>result</span>
+  <span class='kw'>else</span>
+    <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hornetseye/Lut.html" title="Hornetseye::Lut (class)">Lut</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span> <span class='op'>*</span><span class='lparen'>(</span> <span class='kw'>self</span> <span class='op'>+</span> <span class='lbracket'>[</span> <span class='id identifier rubyid_table'>table</span> <span class='rbracket'>]</span> <span class='rparen'>)</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_force'>force</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="strip-instance_method">
+  
+    #<strong>strip</strong>  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+693
+694
+695
+696
+697</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray.rb', line 693</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_strip'>strip</span>
+  <span class='id identifier rubyid_collect'>collect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_arg'>arg</span><span class='op'>|</span> <span class='id identifier rubyid_arg'>arg</span><span class='period'>.</span><span class='id identifier rubyid_strip'>strip</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_inject'>inject</span> <span class='lbracket'>[</span><span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='rbracket'>]</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_retval'>retval</span><span class='comma'>,</span><span class='id identifier rubyid_s'>s</span><span class='op'>|</span>
+    <span class='lbracket'>[</span><span class='id identifier rubyid_retval'>retval</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_retval'>retval</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='int'>1</span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_retval'>retval</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span> <span class='op'>+</span> <span class='lbracket'>[</span><span class='id identifier rubyid_s'>s</span><span class='lbracket'>[</span><span class='int'>2</span><span class='rbracket'>]</span><span class='rbracket'>]</span><span class='rbracket'>]</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:57 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

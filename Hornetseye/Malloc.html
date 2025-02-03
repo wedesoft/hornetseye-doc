@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Hornetseye::Malloc
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Hornetseye::Malloc";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+     &raquo; 
+    <span class="title">Malloc</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Hornetseye::Malloc
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Hornetseye::Malloc</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>docs/malloc/lib/malloc_ext.rb<span class="defines">,<br />
+  docs/multiarray/lib/multiarray/malloc.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Malloc is extended with a few methods</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="List.html" title="Hornetseye::List (class)">List</a></span></li>
+    
+  </ul>
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#size-instance_method" title="#size (instance method)">#<strong>size</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of bytes allocated.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#align-class_method" title="align (class method)">.<strong>align</strong>(size, alignment)  &#x21d2; Malloc </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new Malloc object with aligned memory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-class_method" title="new (class method)">.<strong>new</strong>(size)  &#x21d2; Malloc </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Create new Malloc object.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%2B-instance_method" title="#+ (instance method)">#<strong>+</strong>(offset)  &#x21d2; Malloc </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Operator for doing pointer arithmetic.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dup-instance_method" title="#dup (instance method)">#<strong>dup</strong>  &#x21d2; Malloc </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Duplicate object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Read complete data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#inspect-instance_method" title="#inspect (instance method)">#<strong>inspect</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Display information about this object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(typecode)  &#x21d2; Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Read typed value.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#read-instance_method" title="#read (instance method)">#<strong>read</strong>(length)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Read data from memory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save-instance_method" title="#save (instance method)">#<strong>save</strong>(value)  &#x21d2; Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Write typed value to memory.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Display information about this object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">#<strong>write</strong>(data)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Write data to memory.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="size-instance_method">
+  
+    #<strong>size</strong>  &#x21d2; <tt><span class='object_link'>Integer</span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of bytes allocated</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Querying size of allocated memory</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>32</span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='comment'># 32
+</span><span class='lparen'>(</span> <span class='id identifier rubyid_m'>m</span> <span class='op'>+</span> <span class='int'>8</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='comment'># 24</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Size of allocated memory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
+  <span class='ivar'>@size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="align-class_method">
+  
+    .<strong>align</strong>(size, alignment)  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new Malloc object with aligned memory</p>
+
+<p>Allocate memory with specified alignment</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Allocate raw memory</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_align'>align</span> <span class='int'>256</span><span class='comma'>,</span> <span class='int'>16</span>
+<span class='comment'># Malloc(256)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>size</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of bytes to allocate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>alignment</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Page size of memory to align with</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new Malloc object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Hornetseye::Malloc</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_align'>align</span> <span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='id identifier rubyid_alignment'>alignment</span>
+  <span class='id identifier rubyid_offset'>offset</span> <span class='op'>=</span> <span class='id identifier rubyid_alignment'>alignment</span> <span class='op'>-</span> <span class='int'>1</span>
+  <span class='id identifier rubyid_retval'>retval</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='id identifier rubyid_size'>size</span> <span class='op'>+</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='id identifier rubyid_incr'>incr</span> <span class='op'>=</span> <span class='lparen'>(</span><span class='lparen'>(</span><span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>+</span> <span class='id identifier rubyid_offset'>offset</span><span class='rparen'>)</span> <span class='op'>&amp;</span> <span class='op'>~</span><span class='id identifier rubyid_offset'>offset</span><span class='rparen'>)</span> <span class='op'>-</span> <span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_retval'>retval</span> <span class='op'>+</span> <span class='id identifier rubyid_incr'>incr</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new-class_method">
+  
+    .<strong>new</strong>(size)  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Create new Malloc object</p>
+
+<p>Allocate the specified number of bytes of raw memory.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Allocate raw memory</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='int'>32</span>
+<span class='comment'># Malloc(32)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>size</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of bytes to allocate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new Malloc object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Hornetseye::Malloc</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57
+58
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span> <span class='id identifier rubyid_size'>size</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_retval'>retval</span> <span class='op'>=</span> <span class='id identifier rubyid_orig_new'>orig_new</span> <span class='id identifier rubyid_size'>size</span>
+  <span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_instance_eval'>instance_eval</span> <span class='lbrace'>{</span> <span class='ivar'>@size</span> <span class='op'>=</span> <span class='id identifier rubyid_size'>size</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_retval'>retval</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="+-instance_method">
+  
+    #<strong>+</strong>(offset)  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Operator for doing pointer arithmetic</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Pointer arithmetic</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>4</span>
+<span class='comment'># Malloc(4)
+</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>abcd</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span> <span class='op'>+</span> <span class='int'>2</span>
+<span class='comment'># Malloc(2)
+</span><span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='int'>2</span>
+<span class='comment'># &quot;cd&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>offset</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Non-negative offset for pointer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new Malloc object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+160
+161
+162
+163
+164
+165
+166
+167
+168</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 160</span>
+
+<span class='kw'>def</span> <span class='op'>+</span><span class='lparen'>(</span> <span class='id identifier rubyid_offset'>offset</span> <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_offset'>offset</span> <span class='op'>&gt;</span> <span class='ivar'>@size</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Offset must not be more than </span><span class='embexpr_beg'>#{</span><span class='ivar'>@size</span><span class='embexpr_end'>}</span><span class='tstring_content'> (but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_offset'>offset</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_mark'>mark</span><span class='comma'>,</span> <span class='id identifier rubyid_size'>size</span> <span class='op'>=</span> <span class='kw'>self</span><span class='comma'>,</span> <span class='ivar'>@size</span> <span class='op'>-</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='id identifier rubyid_retval'>retval</span> <span class='op'>=</span> <span class='id identifier rubyid_orig_plus'>orig_plus</span> <span class='id identifier rubyid_offset'>offset</span>
+  <span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_instance_eval'>instance_eval</span> <span class='lbrace'>{</span> <span class='ivar'>@mark</span><span class='comma'>,</span> <span class='ivar'>@size</span> <span class='op'>=</span> <span class='id identifier rubyid_mark'>mark</span><span class='comma'>,</span> <span class='id identifier rubyid_size'>size</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_retval'>retval</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dup-instance_method">
+  
+    #<strong>dup</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Duplicate object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Duplicating a Malloc object</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>3</span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>aaa</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_dup'>dup</span>
+<span class='id identifier rubyid_n'>n</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bbb</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='int'>3</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>aaa</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new malloc object with a copy of the data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+119
+120
+121
+122
+123</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 119</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dup'>dup</span>
+  <span class='id identifier rubyid_retval'>retval</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='ivar'>@size</span>
+  <span class='id identifier rubyid_retval'>retval</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='kw'>self</span>
+  <span class='id identifier rubyid_retval'>retval</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="export-instance_method">
+  
+    #<strong>export</strong>  &#x21d2; <tt><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Read complete data</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Export to string</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>3</span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>abc</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_export'>export</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>abc</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+  </div>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+143
+144
+145</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 143</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span>
+  <span class='id identifier rubyid_read'>read</span> <span class='ivar'>@size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="inspect-instance_method">
+  
+    #<strong>inspect</strong>  &#x21d2; <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Display information about this object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Displaying information about a Malloc object</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span><span class='lparen'>(</span> <span class='int'>8</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_inspect'>inspect</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Malloc(8)</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string with information about this object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 104</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_inspect'>inspect</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Malloc(</span><span class='embexpr_beg'>#{</span><span class='ivar'>@size</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load-instance_method">
+  
+    #<strong>load</strong>(typecode)  &#x21d2; <tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Read typed value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>typecode</span>
+      
+      
+        <span class='type'>(<tt>Class</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Load typed value from memory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Value from memory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray/malloc.rb', line 30</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span> <span class='id identifier rubyid_typecode'>typecode</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span> <span class='id identifier rubyid_typecode'>typecode</span><span class='period'>.</span><span class='id identifier rubyid_storage_size'>storage_size</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_unpack'>unpack</span><span class='lparen'>(</span> <span class='id identifier rubyid_typecode'>typecode</span><span class='period'>.</span><span class='id identifier rubyid_directive'>directive</span> <span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="read-instance_method">
+  
+    #<strong>read</strong>(length)  &#x21d2; <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Read data from memory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Reading and writing data</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>4</span>
+<span class='comment'># Malloc(4)
+</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>abcd</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='int'>2</span>
+<span class='comment'># &quot;ab&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>length</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of bytes to read.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string containing the data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#write-instance_method" title="Hornetseye::Malloc#write (method)">#write</a></span></li>
+    
+      <li><span class='object_link'><a href="#to_s-instance_method" title="Hornetseye::Malloc#to_s (method)">#to_s</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span> <span class='id identifier rubyid_length'>length</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Only </span><span class='embexpr_beg'>#{</span><span class='ivar'>@size</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes of memory left to read </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(illegal attempt to read </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_length'>length</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes)</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>if</span> <span class='id identifier rubyid_length'>length</span> <span class='op'>&gt;</span> <span class='ivar'>@size</span>
+  <span class='id identifier rubyid_orig_read'>orig_read</span> <span class='id identifier rubyid_length'>length</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save-instance_method">
+  
+    #<strong>save</strong>(value)  &#x21d2; <tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Write typed value to memory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Value to write to memory.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns <code>value</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/multiarray/lib/multiarray/malloc.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span> <span class='id identifier rubyid_value'>value</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_write'>write</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_values'>values</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span> <span class='id identifier rubyid_value'>value</span><span class='period'>.</span><span class='id identifier rubyid_typecode'>typecode</span><span class='period'>.</span><span class='id identifier rubyid_directive'>directive</span> <span class='rparen'>)</span>
+  <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="to_s-instance_method">
+  
+    #<strong>to_s</strong>  &#x21d2; <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Display information about this object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Displaying information about a Malloc object</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span><span class='lparen'>(</span> <span class='int'>8</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+<span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Malloc(8)</span><span class='tstring_end'>&quot;</span></span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string with information about this object.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 132</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='id identifier rubyid_inspect'>inspect</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-instance_method">
+  
+    #<strong>write</strong>(data)  &#x21d2; <tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Write data to memory</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Reading and writing data</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_m'>m</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::Malloc.new (method)">new</a></span></span> <span class='int'>4</span>
+<span class='comment'># Malloc(4)
+</span><span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>abcd</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_m'>m</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='int'>2</span>
+<span class='comment'># &quot;ab&quot;</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>data</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>, <tt><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string or malloc object with the data.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns the parameter <code>string</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#read-instance_method" title="Hornetseye::Malloc#read (method)">#read</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/malloc/lib/malloc_ext.rb', line 207</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span> <span class='id identifier rubyid_data'>data</span> <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::Malloc (class)">Malloc</a></span></span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='ivar'>@size</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Must not write more than </span><span class='embexpr_beg'>#{</span><span class='ivar'>@size</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes of memory </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(illegal attempt to write </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes)</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_orig_write'>orig_write</span> <span class='id identifier rubyid_data'>data</span><span class='comma'>,</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+  <span class='kw'>else</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_bytesize'>bytesize</span> <span class='op'>&gt;</span> <span class='ivar'>@size</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Must not write more than </span><span class='embexpr_beg'>#{</span><span class='ivar'>@size</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes of memory </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+        <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>(illegal attempt to write </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_bytesize'>bytesize</span><span class='embexpr_end'>}</span><span class='tstring_content'> bytes)</span><span class='tstring_end'>&quot;</span></span>
+    <span class='kw'>end</span>
+    <span class='id identifier rubyid_orig_write'>orig_write</span> <span class='id identifier rubyid_data'>data</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:57 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

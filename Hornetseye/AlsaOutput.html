@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Hornetseye::AlsaOutput
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "Hornetseye::AlsaOutput";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (A)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+     &raquo; 
+    <span class="title">AlsaOutput</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Hornetseye::AlsaOutput
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></span>
+      
+        <ul class="fullTree">
+          <li><span class='object_link'><a href="../Object.html" title="Object (class)">Object</a></span></li>
+          
+            <li class="next">Hornetseye::AlsaOutput</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>docs/hornetseye-alsa/lib/hornetseye-alsa/alsaoutput.rb<span class="defines">,<br />
+  docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Class for playing sounds using the ALSA library</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://www.alsa-project.org/" target="_parent" title="http://www.alsa-project.org/">http://www.alsa-project.org/</a></li>
+    
+  </ul>
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#channels-instance_method" title="#channels (instance method)">#<strong>channels</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of audio channels.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#rate-instance_method" title="#rate (instance method)">#<strong>rate</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the sampling rate of the sound device.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new-class_method" title="new (class method)">.<strong>new</strong>(pcm_name = &#39;default&#39;, rate = 48000, channels = 2)  &#x21d2; AlsaOutput </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Open a sound device for output.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avail-instance_method" title="#avail (instance method)">#<strong>avail</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Space available for writing to the audio buffer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>  &#x21d2; AlsaOutput </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Close the audio device.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#delay-instance_method" title="#delay (instance method)">#<strong>delay</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Number of audio samples in the audio buffer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#drain-instance_method" title="#drain (instance method)">#<strong>drain</strong>  &#x21d2; AlsaOutput </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Wait until audio buffer underflows.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#drop-instance_method" title="#drop (instance method)">#<strong>drop</strong>  &#x21d2; AlsaOutput </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Drop content of audio output buffer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#prepare-instance_method" title="#prepare (instance method)">#<strong>prepare</strong>  &#x21d2; AlsaOutput </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reset the sound device.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#write-instance_method" title="#write (instance method)">#<strong>write</strong>(frame)  &#x21d2; Node </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Write an audio frame to the sound device.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="channels-instance_method">
+  
+    #<strong>channels</strong>  &#x21d2; <tt><span class='object_link'>Integer</span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of audio channels</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of audio channels (1=mono, 2=stereo).</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_channels'>channels</span>
+  <span class='ivar'>@channels</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="rate-instance_method">
+  
+    #<strong>rate</strong>  &#x21d2; <tt><span class='object_link'>Integer</span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the sampling rate of the sound device</p>
+
+<p>The sampling rate may be different to the desired sampling rate specified in the constructor.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The sampling rate of the sound device.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_rate'>rate</span>
+  <span class='ivar'>@rate</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="new-class_method">
+  
+    .<strong>new</strong>(pcm_name = &#39;default&#39;, rate = 48000, channels = 2)  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Open a sound device for output</p>
+
+<p>Open the specified sound device for writing. Note that the desired sample rate may not be supported. In that case the sound library will select a sampling rate near the desired one.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Open default speakers</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_alsa</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="../Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_speaker'>speaker</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>44_100</span><span class='comma'>,</span> <span class='int'>2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pcm_name</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;default&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Name of the PCM device</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>rate</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>48000</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Desired sampling rate.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>channels</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>2</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of channels (1=mono, 2=stereo).</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An object for accessing the speakers.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#rate-instance_method" title="Hornetseye::AlsaOutput#rate (method)">#rate</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+51
+52
+53</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/alsaoutput.rb', line 51</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_pcm_name'>pcm_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_rate'>rate</span> <span class='op'>=</span> <span class='int'>48000</span><span class='comma'>,</span> <span class='id identifier rubyid_channels'>channels</span> <span class='op'>=</span> <span class='int'>2</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_orig_new'>orig_new</span> <span class='id identifier rubyid_pcm_name'>pcm_name</span><span class='comma'>,</span> <span class='id identifier rubyid_rate'>rate</span><span class='comma'>,</span> <span class='id identifier rubyid_channels'>channels</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="avail-instance_method">
+  
+    #<strong>avail</strong>  &#x21d2; <tt><span class='object_link'>Integer</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Space available for writing to the audio buffer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of audio samples which can be written to the audio buffer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+99
+100</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 99</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_avail'>avail</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="close-instance_method">
+  
+    #<strong>close</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Close the audio device</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns <code>self</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="delay-instance_method">
+  
+    #<strong>delay</strong>  &#x21d2; <tt><span class='object_link'>Integer</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Number of audio samples in the audio buffer</p>
+
+<p>Returns the number of audio samples left in the audio buffer. This can be used to properly synchronise video display with audio output.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Integer</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Number of audio samples left to play.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+108
+109</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 108</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delay'>delay</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="drain-instance_method">
+  
+    #<strong>drain</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wait until audio buffer underflows</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns <code>self</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 92</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_drain'>drain</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="drop-instance_method">
+  
+    #<strong>drop</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Drop content of audio output buffer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns <code>self</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_drop'>drop</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="prepare-instance_method">
+  
+    #<strong>prepare</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Reset the sound device</p>
+
+<p>One needs to call this method if one wants to resume playing audio samples after calling #drop.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns <code>self</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+117
+118</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/docs.rb', line 117</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_prepare'>prepare</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="write-instance_method">
+  
+    #<strong>write</strong>(frame)  &#x21d2; <tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Write an audio frame to the sound device</p>
+
+<p>The audio data is written to the output buffer of the sound device. Playback is resumed if a buffer underflow occurred earlier. The first dimension of the array with the audio data must match the number of channels of the audio device. The second dimension is the number of audio samples.</p>
+
+<p>A blocking write operation is used. I.e. the program is blocked until there is sufficient space in the audio output buffer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'>
+<p>Play a 400Hz tune for 3 seconds</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_alsa</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="../Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='id identifier rubyid_speaker'>speaker</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Hornetseye::AlsaOutput (class)">AlsaOutput</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#new-class_method" title="Hornetseye::AlsaOutput.new (method)">new</a></span></span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>44_100</span><span class='comma'>,</span> <span class='int'>2</span>
+<span class='const'>L</span> <span class='op'>=</span> <span class='int'>44_100</span> <span class='op'>/</span> <span class='int'>400</span>
+<span class='id identifier rubyid_wave'>wave</span> <span class='op'>=</span> <span class='id identifier rubyid_lazy'>lazy</span><span class='lparen'>(</span> <span class='int'>2</span><span class='comma'>,</span> <span class='const'>L</span> <span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_j'>j</span><span class='comma'>,</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="../Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sin'><span class='object_link'><a href="../Math.html#sin-class_method" title="Math.sin (method)">sin</a></span></span><span class='lparen'>(</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>*</span> <span class='int'>2</span> <span class='op'>*</span> <span class='const'><span class='object_link'><a href="../Math.html" title="Math (module)">Math</a></span></span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>/</span> <span class='const'>L</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>0x7FFF</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_sint'>to_sint</span>
+<span class='lparen'>(</span> <span class='int'>3</span> <span class='op'>*</span> <span class='int'>400</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_speaker'>speaker</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='id identifier rubyid_wave'>wave</span> <span class='rbrace'>}</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>frame</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A two-dimensional array of short-integer audio samples.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Node.html" title="Hornetseye::Node (class)">Node</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns the parameter <code>frame</code>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'docs/hornetseye-alsa/lib/hornetseye-alsa/alsaoutput.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_write'>write</span><span class='lparen'>(</span> <span class='id identifier rubyid_frame'>frame</span> <span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_typecode'>typecode</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="../Hornetseye.html#SINT-constant" title="Hornetseye::SINT (constant)">SINT</a></span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Audio data must be of type SINT (but was </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_typecode'>typecode</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span> <span class='op'>!=</span> <span class='int'>2</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Audio frame must have two dimensions (but had </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_dimension'>dimension</span><span class='embexpr_end'>}</span><span class='tstring_content'>)</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span> <span class='op'>!=</span> <span class='id identifier rubyid_channels'>channels</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Audio frame must have </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_channels'>channels</span><span class='embexpr_end'>}</span><span class='tstring_content'> channel(s) but had </span><span class='tstring_end'>&quot;</span></span> <span class='op'>+</span>
+          <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='period'>.</span><span class='id identifier rubyid_first'>first</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_orig_write'>orig_write</span> <span class='const'><span class='object_link'><a href="../Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Sequence.html" title="Hornetseye::Sequence (class)">Sequence</a></span></span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../Hornetseye.html#UBYTE-constant" title="Hornetseye::UBYTE (constant)">UBYTE</a></span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Sequence.html#new-class_method" title="Hornetseye::Sequence.new (method)">new</a></span></span> <span class='int'>2</span> <span class='op'>*</span> <span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='symbol'>:memory</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_frame'>frame</span><span class='period'>.</span><span class='id identifier rubyid_memory'>memory</span> 
+  <span class='id identifier rubyid_frame'>frame</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:59 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>

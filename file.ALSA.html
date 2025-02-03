@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: ALSA
+  
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "ALSA";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: ALSA</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<h1 id="label-Recording+and+playing+audio">Recording and playing audio</h1>
+
+<h2 id="label-Playing+sounds">Playing sounds</h2>
+
+<p>The example opens the first sound device and plays a 400 Hz tone for the duration of 3 seconds. The last command waits for the audio output to finish.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_alsa</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='const'>RATE</span> <span class='op'>=</span> <span class='int'>44_100</span>
+<span class='const'>CHANNELS</span> <span class='op'>=</span> <span class='int'>2</span>
+<span class='const'>LEN</span> <span class='op'>=</span> <span class='int'>110</span> <span class='comment'># Approx. 400 Hz
+</span><span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='const'>AlsaOutput</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>RATE</span><span class='comma'>,</span> <span class='const'>CHANNELS</span>
+<span class='id identifier rubyid_wave'>wave</span> <span class='op'>=</span> <span class='id identifier rubyid_lazy'>lazy</span><span class='lparen'>(</span> <span class='const'>CHANNELS</span><span class='comma'>,</span> <span class='const'>LEN</span> <span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_j'>j</span><span class='comma'>,</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sin'><span class='object_link'><a href="Math.html#sin-class_method" title="Math.sin (method)">sin</a></span></span><span class='lparen'>(</span> <span class='int'>2</span> <span class='op'>*</span> <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='op'>::</span><span class='const'>PI</span> <span class='op'>*</span> <span class='id identifier rubyid_i'>i</span> <span class='op'>/</span> <span class='const'>LEN</span> <span class='rparen'>)</span> <span class='op'>*</span> <span class='int'>0x7FFF</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_to_sint'>to_sint</span>
+<span class='lparen'>(</span> <span class='int'>3</span> <span class='op'>*</span> <span class='const'>RATE</span> <span class='op'>/</span> <span class='const'>LEN</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_times'>times</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='id identifier rubyid_wave'>wave</span> <span class='rbrace'>}</span>
+<span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_drain'>drain</span>
+</code></pre>
+
+<p>You can list available playback devices using the <em>aplay</em> command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_aplay'>aplay</span> <span class='op'>-</span><span class='const'>L</span>
+</code></pre>
+
+<h2 id="label-Recording+sounds">Recording sounds</h2>
+
+<p>It is also possible to record sounds. Note that the microphone of a USB webcam usually is the second sound device (<em>i.e.</em> <strong>‘default:1’</strong>). The example below records 3 seconds of audio and then plays it back.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_alsa</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
+<span class='const'>RATE</span> <span class='op'>=</span> <span class='int'>44_100</span>
+<span class='const'>CHANNELS</span> <span class='op'>=</span> <span class='int'>2</span>
+<span class='id identifier rubyid_input'>input</span> <span class='op'>=</span> <span class='const'>AlsaInput</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>RATE</span><span class='comma'>,</span> <span class='const'>CHANNELS</span>
+<span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='const'>RATE</span> <span class='op'>*</span> <span class='int'>3</span>
+<span class='id identifier rubyid_output'>output</span> <span class='op'>=</span> <span class='const'>AlsaOutput</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>default</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='const'>RATE</span><span class='comma'>,</span> <span class='const'>CHANNELS</span>
+<span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_write'>write</span> <span class='id identifier rubyid_data'>data</span>
+<span class='id identifier rubyid_output'>output</span><span class='period'>.</span><span class='id identifier rubyid_drain'>drain</span>
+</code></pre>
+
+<p>You can list available recording devices using the <em>arecord</em> command:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_arecord'>arecord</span> <span class='op'>-</span><span class='const'>L</span>
+</code></pre>
+
+<h2 id="label-See+Also">See Also</h2>
+<ul><li>
+<p><span class='object_link'><a href="Hornetseye/AlsaInput.html" title="Hornetseye::AlsaInput (class)">Hornetseye::AlsaInput</a></span></p>
+</li><li>
+<p><span class='object_link'><a href="Hornetseye/AlsaOutput.html" title="Hornetseye::AlsaOutput (class)">Hornetseye::AlsaOutput</a></span></p>
+</li></ul>
+
+<h2 id="label-External+Links">External Links</h2>
+<ul><li>
+<p><a href="http://www.alsa-project.org/">ALSA project</a></p>
+</li></ul>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Feb  3 19:23:55 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.4.1).
+</div>
+
+    </div>
+  </body>
+</html>
