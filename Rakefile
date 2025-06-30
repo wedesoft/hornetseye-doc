@@ -12,10 +12,10 @@ DL_FILES = FileList[ 'docs/*.rb.txt', 'docs/*.ui', 'docs/*.pov', 'docs/*.ini' ]
 IMG_FILES = FileList[ 'docs/images/*' ]
 PKG_FILES = [ 'Rakefile', 'README.md', 'COPYING', '.document', '.yardopts' ] +
             MD_FILES + DL_FILES + IMG_FILES
-MODS = %w{malloc multiarray hornetseye-alsa hornetseye-dc1394 hornetseye-ffmpeg
-          hornetseye-frame hornetseye-narray hornetseye-opencv hornetseye-openexr
-          hornetseye-qt4 hornetseye-rmagick hornetseye-v4l2
-          hornetseye-xorg}
+MODS = %w{malloc multiarray hornetseye-alsa hornetseye-dc1394 hornetseye-doc hornetseye-ffmpeg
+          hornetseye-fftw3 hornetseye-frame hornetseye-hypercomplex hornetseye-kinect
+          hornetseye-linalg hornetseye-narray hornetseye-opencv hornetseye-openexr
+          hornetseye-qt4 hornetseye-rmagick hornetseye-v4l2 hornetseye-xorg malloc multiarray}
 
 $SITELIBDIR = RbConfig::CONFIG[ 'sitelibdir' ]
 
