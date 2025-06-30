@@ -1,5 +1,5 @@
-HornetsEye - Computer Vision for the Robotic Age
-================================================
+HornetsEye - Computer Vision for the Robotic Age (DEPRECATED)
+=============================================================
 
 [**HornetsEye**](https://wedesoft.github.io/hornetseye-doc/) is a **real-time computer vision library** for the **Ruby programming language**. HornetsEye is maybe the first free software project providing a **solid platform for implementing real-time computer vision software** in a scripting language. The platform potentially could be used in **industrial automation**, **robotic applications**, and **human computer interfaces**.
 
@@ -20,8 +20,12 @@ Demo Videos
 
 <table>
   <tr>
-    <td><p><span class="center"><object data="http://www.youtube.com/v/5xJa2ytsE7I" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/5xJa2ytsE7I" /></object></span></p></td>
-    <td><p><span class="center"><object data="http://www.youtube.com/v/wNFr7RNWeCs" height="344" type="application/x-shockwave-flash" width="508"><param name="movie" value="http://www.youtube.com/v/wNFr7RNWeCs" /></object></span></p></td>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/5xJa2ytsE7I" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
+    <td><p><span class="center">
+    <iframe title="YouTube video player" width="508" height="344" src="https://www.youtube.com/embed/wNFr7RNWeCs" frameborder="0" allowfullscreen=""></iframe>
+    </span></p></td>
   </tr>
 </table>
 
