@@ -57,14 +57,13 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Applications">Applications</h1>
+      <div id="content"><div id='filecontents'><h1 id="applications">Applications</h1>
 
-<h2 id="label-Video+Thumbnails">Video Thumbnails</h2>
+<h2 id="video-thumbnails">Video Thumbnails</h2>
 
-<h2 id="label-EXR+Viewer">EXR Viewer</h2>
+<h2 id="exr-viewer">EXR Viewer</h2>
 
-<p><img src="images/exr.png"></p>
+<p><img src="images/exr.png" alt="EXR viewer" /></p>
 
 <p>This is small viewer for displaying EXR images. The exposure can be modified with the slider.</p>
 
@@ -123,9 +122,9 @@
 <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span>
 </code></pre>
 
-<h2 id="label-XVideo+Widget">XVideo Widget</h2>
+<h2 id="xvideo-widget">XVideo Widget</h2>
 
-<p><img src="images/xvwidget.jpg"></p>
+<p><img src="images/xvwidget.jpg" alt="XVideo widget" /></p>
 
 <p>The XVideo widget allows to use XVideo acceleration in a Qt4-QtRuby application. The example application shows how to write a small program for playing videos.</p>
 
@@ -242,9 +241,9 @@
 <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span>
 </code></pre>
 
-<h2 id="label-Webcam+Viewer">Webcam Viewer</h2>
+<h2 id="webcam-viewer">Webcam Viewer</h2>
 
-<p><img src="images/webcam.jpg"></p>
+<p><img src="images/webcam.jpg" alt="Webcam viewer" /></p>
 
 <p>This is an example using an XVideo widget to implement a webcam viewer. The viewer also has controls for a few camera features.</p>
 
@@ -366,11 +365,11 @@
 <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span>
 </code></pre>
 
-<h2 id="label-2D+Plot">2D Plot</h2>
+<h2 id="d-plot">2D Plot</h2>
 
-<p><img src="images/plot2d.png"></p>
+<p><img src="images/plot2d.png" alt="2D plot" /></p>
 
-<p>With Gordon James Miller&#39;s <a href="http://rgplot.rubyforge.org/">rgplot</a> package you can use <a href="http://www.gnuplot.info/">Gnuplot</a> from within Ruby. This example shows how you can plot the histogram of an image.</p>
+<p>With Gordon James Miller’s <a href="http://rgplot.rubyforge.org/">rgplot</a> package you can use <a href="http://www.gnuplot.info/">Gnuplot</a> from within Ruby. This example shows how you can plot the histogram of an image.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_rmagick</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gnuplot</span><span class='tstring_end'>&#39;</span></span>
@@ -401,9 +400,9 @@
 <span class='id identifier rubyid_plot'>plot</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_histogram'>histogram</span><span class='lparen'>(</span> <span class='int'>256</span> <span class='rparen'>)</span><span class='comma'>,</span> <span class='symbol'>:title</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Histogram</span><span class='tstring_end'>&#39;</span></span> <span class='rbracket'>]</span>
 </code></pre>
 
-<h2 id="label-3D+Plot">3D Plot</h2>
+<h2 id="d-plot-1">3D Plot</h2>
 
-<p><img src="images/plot3d.png"></p>
+<p><img src="images/plot3d.png" alt="3D plot" /></p>
 
 <p>This example shows how you can use Gnuplot to make a 3D plot of a two-dimensional array.</p>
 
@@ -445,9 +444,9 @@
 <span class='id identifier rubyid_sinc'>sinc</span><span class='period'>.</span><span class='id identifier rubyid_plot'>plot</span>
 </code></pre>
 
-<h2 id="label-Depth+from+Focus">Depth from Focus</h2>
+<h2 id="depth-from-focus">Depth from Focus</h2>
 
-<p><img src="images/stack.png"></p>
+<p><img src="images/stack.png" alt="Depth from focus" /></p>
 
 <p>This is an implementation of depth of focus. The Sobel gradient magnitude of the focus stack is used as a sharpness measure. An image with extended depth of field is created (deep view). Furthermore a height field is generated. With POVRay the height field and the deep view can be used to generate a 3D rendering.</p>
 
@@ -539,9 +538,9 @@ where [options] are:
 <span class='id identifier rubyid_display'>display</span><span class='period'>.</span><span class='id identifier rubyid_event_loop'>event_loop</span>
 </code></pre>
 
-<h2 id="label-Line+Fit">Line Fit</h2>
+<h2 id="line-fit">Line Fit</h2>
 
-<p><img src="images/fit.png"></p>
+<p><img src="images/fit.png" alt="Line fit" /></p>
 
 <p>This program fits a line assuming that the input image is showing a single white line without outliers. The problem of ambiguity with the orientation of the line is overcome by estimating “2*a” instead of the angle “a”.</p>
 
@@ -569,9 +568,9 @@ where [options] are:
 <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_ubytergb'>to_ubytergb</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Hough+Transform">Hough Transform</h2>
+<h2 id="hough-transform">Hough Transform</h2>
 
-<p><img src="images/hough.png"></p>
+<p><img src="images/hough.png" alt="Hough transform" /></p>
 
 <p>The following example detects white lines in a black-and-white image using a Hough transform.</p>
 
@@ -610,9 +609,9 @@ where [options] are:
   <span class='id identifier rubyid_conditional'>conditional</span><span class='lparen'>(</span> <span class='const'>RGB</span><span class='lparen'>(</span> <span class='int'>255</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_img'>img</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-PCA+Recognition">PCA Recognition</h2>
+<h2 id="pca-recognition">PCA Recognition</h2>
 
-<p><img src="images/pca.jpg"></p>
+<p><img src="images/pca.jpg" alt="PCA recognition" /></p>
 
 <p>The example program performs two-dimensional object recognition with three degrees of freedom. This is a customised algorithm which only works on images showing a single object which can be detected using colour-segmentation. In a controlled environment however this algorithm can be very useful as it is easy to implement. This algorithm has become popular recently in the context of touchless interfaces.</p>
 
@@ -721,9 +720,9 @@ where [options] are:
 <span class='id identifier rubyid_app'>app</span><span class='period'>.</span><span class='id identifier rubyid_exec'>exec</span>
 </code></pre>
 
-<h2 id="label-Power+Spectrum">Power Spectrum</h2>
+<h2 id="power-spectrum">Power Spectrum</h2>
 
-<p><img src="images/power.jpg"></p>
+<p><img src="images/power.jpg" alt="Power Spectrum" /></p>
 
 <p>The following example demonstrates using windowing, zero padding, and Fourier transform in order to compute the power spectrum of a signal. The example image shows the power spectrum of a piece of fabric.</p>
 
@@ -754,9 +753,9 @@ where [options] are:
 <span class='lparen'>(</span><span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_spectrum'>spectrum</span> <span class='op'>**</span> <span class='float'>0.1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='lparen'>(</span><span class='int'>255</span> <span class='op'>..</span> <span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='op'>*</span><span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span>
 </code></pre>
 
-<h2 id="label-Phase+Correlation">Phase Correlation</h2>
+<h2 id="phase-correlation">Phase Correlation</h2>
 
-<p><img src="images/phasecorrelation.png"></p>
+<p><img src="images/phasecorrelation.png" alt="Phase Correlation" /></p>
 
 <p>This is an implementation of the phase correlation for aligning images. This implementation also works on images which are of different size. I.e. stitching of overlapping images is possible as well as searching a small template in a large image. Note that you may have to add a windowing function to the implementation to avoid boundary effects.</p>
 
@@ -813,9 +812,9 @@ Example: pc.rb image1.jpg image2.jpg
 <span class='lparen'>(</span> <span class='id identifier rubyid_result1'>result1</span> <span class='op'>+</span> <span class='id identifier rubyid_result2'>result2</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Normalised+Cross-Correlation">Normalised Cross-Correlation</h2>
+<h2 id="normalised-cross-correlation">Normalised Cross-Correlation</h2>
 
-<p><img src="images/ncc.png"></p>
+<p><img src="images/ncc.png" alt="Normalised Cross-Correlation" /></p>
 
 <p>This is an implementation of the normalised cross-correlation for locating a template in an image. The template must be smaller than the image. Note that the implementation could be optimised using integral images.</p>
 
@@ -875,9 +874,9 @@ Example: ncc.rb image.jpg template.jpg
 <span class='lparen'>(</span><span class='id identifier rubyid_result1'>result1</span> <span class='op'>+</span> <span class='id identifier rubyid_result2'>result2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Camshift+Tracking">Camshift Tracking</h2>
+<h2 id="camshift-tracking">Camshift Tracking</h2>
 
-<p><img src="images/camshift.jpg"></p>
+<p><img src="images/camshift.jpg" alt="Camshift" /></p>
 
 <p>This is an implementation of the Camshift algorithm for real-time tracking. The algorithm tracks the object by maximising the similarity of a hue reference histogram and a hue scene histogram.</p>
 
@@ -964,24 +963,21 @@ Example: ncc.rb image.jpg template.jpg
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Lucas-Kanade+Tracker">Lucas-Kanade Tracker</h2>
+<h2 id="lucas-kanade-tracker">Lucas-Kanade Tracker</h2>
 
-<p><img src="images/lktracker.png"></p>
+<p><img src="images/lktracker.png" alt="Lucas-Kanade tracker" /></p>
 
 <p>This is an implementation of the (inverse compositional) Lucas-Kanade algorithm. The Lucas-Kanade algorithm iteratively tries to minimise the difference between the template and a warped image. The technique can be used for image alignment, tracking, optic flow analysis, and motion estimation. Possible improvements are to incorporate illumination changes and a proper threatment of the image boundaries.</p>
 
 <p>The example offers five different models</p>
-<ol><li>
-<p>shift</p>
-</li><li>
-<p>shift and scale</p>
-</li><li>
-<p>shift and rotation</p>
-</li><li>
-<p>affine transform</p>
-</li><li>
-<p>2-d homography</p>
-</li></ol>
+
+<ol>
+  <li>shift</li>
+  <li>shift and scale</li>
+  <li>shift and rotation</li>
+  <li>affine transform</li>
+  <li>2-d homography</li>
+</ol>
 
 <p>A video for testing can be created using PovRay and the files <a href="polygon.ini">polygon.ini</a> and <a href="polygon.pov">polygon.pov</a>.</p>
 
@@ -1163,11 +1159,11 @@ Examples:
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-EAN-13+Barcode+Reader">EAN-13 Barcode Reader</h2>
+<h2 id="ean-13-barcode-reader">EAN-13 Barcode Reader</h2>
 
-<p><img src="images/barcode.png"></p>
+<p><img src="images/barcode.png" alt="EAN-13 Barcode reader" /></p>
 
-<p>The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image. However the application can read barcodes forwards as well as backwards. The detected numbers are displayed using RMagick.</p>
+<p>The example below is a barcode reader for reading EAN-13 (and UPC) barcodes. Reading of the barcode is restricted to a single line of the camera image.  However the application can read barcodes forwards as well as backwards. The detected numbers are displayed using RMagick.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_v4l2</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
@@ -1323,51 +1319,38 @@ Examples:
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/XvWidget.html" title="Hornetseye::XvWidget (class)">Hornetseye::XvWidget</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://www.gnuplot.info/">Gnuplot</a></p>
-</li><li>
-<p><a href="http://rgplot.rubyforge.org/">Ruby Gnuplot</a></p>
-</li><li>
-<p><a href="http://trollop.rubyforge.org/">trollop</a></p>
-</li><li>
-<p><a href="ftp://download.intel.com/technology/itj/q21998/pdf/camshift.pdf">Camshift publication</a></p>
-</li><li>
-<p><a href="http://www.youtube.com/watch?v=LBXgXqtt1F8">Camshift video</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/European_Article_Number">European Article Number</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</a></p>
-</li><li>
-<p><a href="http://www.upcdatabase.com/">UPC database</a></p>
-</li><li>
-<p><a href="http://www.youtube.com/watch?v=Sv28MUMM_EA">EAN-13 reader video</a></p>
-</li><li>
-<p><a href="http://video.google.com/videoplay?docid=8157280827402899141">PCA recognition video</a></p>
-</li><li>
-<p><a href="http://www.camspace.com/">Camspace (play games with your webcam)</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Hough_transform">Hough transform</a></p>
-</li><li>
-<p><a href="http://www.ri.cmu.edu/projects/project_515.html">Lucas-Kanade 20 Years on: A Unifying Framework</a></p>
-</li><li>
-<p><a href="http://digitalcommons.shu.ac.uk/mmvl_papers/2/">A machine vision extension for the Ruby programming language</a></p>
-</li><li>
-<p><a href="http://www.nasa.gov/multimedia/hd/">NASA high definition videos</a></p>
-</li><li>
-<p><a href="http://scribblethink.org/Work/nvisionInterface/nip.html">Fast Normalised Cross-Correlation</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/XvWidget.html" title="Hornetseye::XvWidget (class)">Hornetseye::XvWidget</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://www.gnuplot.info/">Gnuplot</a></li>
+  <li><a href="http://rgplot.rubyforge.org/">Ruby Gnuplot</a></li>
+  <li><a href="http://trollop.rubyforge.org/">trollop</a></li>
+  <li><a href="ftp://download.intel.com/technology/itj/q21998/pdf/camshift.pdf">Camshift publication</a></li>
+  <li><a href="http://www.youtube.com/watch?v=LBXgXqtt1F8">Camshift video</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/European_Article_Number">European Article Number</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Universal_Product_Code">Universal Product Code</a></li>
+  <li><a href="http://www.upcdatabase.com/">UPC database</a></li>
+  <li><a href="http://www.youtube.com/watch?v=Sv28MUMM_EA">EAN-13 reader video</a></li>
+  <li><a href="http://video.google.com/videoplay?docid=8157280827402899141">PCA recognition video</a></li>
+  <li><a href="http://www.camspace.com/">Camspace (play games with your webcam)</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Hough_transform">Hough transform</a></li>
+  <li><a href="http://www.ri.cmu.edu/projects/project_515.html">Lucas-Kanade 20 Years on: A Unifying Framework</a></li>
+  <li><a href="http://digitalcommons.shu.ac.uk/mmvl_papers/2/">A machine vision extension for the Ruby programming language</a></li>
+  <li><a href="http://www.nasa.gov/multimedia/hd/">NASA high definition videos</a></li>
+  <li><a href="http://scribblethink.org/Work/nvisionInterface/nip.html">Fast Normalised Cross-Correlation</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:57 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

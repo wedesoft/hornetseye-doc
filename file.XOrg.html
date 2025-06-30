@@ -57,12 +57,11 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Displaying+Images">Displaying Images</h1>
+      <div id="content"><div id='filecontents'><h1 id="displaying-images">Displaying Images</h1>
 
-<h2 id="label-XImage+display">XImage display</h2>
+<h2 id="ximage-display">XImage display</h2>
 
-<p><img src="images/colour.png"></p>
+<p><img src="images/colour.png" alt="XImage display" /></p>
 
 <p>Display using <span class='object_link'><a href="Hornetseye/XImageOutput.html" title="Hornetseye::XImageOutput (class)">Hornetseye::XImageOutput</a></span> should work any X.Org true colour display. This display mode is used by default.</p>
 
@@ -73,7 +72,7 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-OpenGL+display">OpenGL display</h2>
+<h2 id="opengl-display">OpenGL display</h2>
 
 <p>One can use <span class='object_link'><a href="Hornetseye/OpenGLOutput.html" title="Hornetseye::OpenGLOutput (class)">Hornetseye::OpenGLOutput</a></span> to use OpenGL hardware acceleration (<em>glDrawPixels</em> to be more exact). OpenGL also works on displays other than true colour. However OpenGL is not always supported and it can interfere with compositing window managers.</p>
 
@@ -84,9 +83,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='symbol'>:output</span> <span class='op'>=&gt;</span> <span class='const'>OpenGLOutput</span>
 </code></pre>
 
-<h2 id="label-XVideo+display">XVideo display</h2>
+<h2 id="xvideo-display">XVideo display</h2>
 
-<p><img src="images/xvideo.png"></p>
+<p><img src="images/xvideo.png" alt="XVideo display" /></p>
 
 <p>Hornetseye::XVideoOutput provides hardware accelerated video display. Note that XVideo is not supported by some graphic cards. Usually it is not possible to have more than one window using XVideo display at the same time. XVideo is usually used to display videos.</p>
 
@@ -99,7 +98,7 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Multiple+Windows">Multiple Windows</h2>
+<h2 id="multiple-windows">Multiple Windows</h2>
 
 <p>The simple API shown above is not sufficient for handling multiple windows. If more than one window is required for display, one can use the lower level API to do so. The following example displays multiple windows with the colour channels of a video.</p>
 
@@ -129,31 +128,28 @@
 <span class='id identifier rubyid_window'>window</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_w'>w</span><span class='op'>|</span> <span class='id identifier rubyid_w'>w</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/X11Display.html" title="Hornetseye::X11Display (class)">Hornetseye::X11Display</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/X11Window.html" title="Hornetseye::X11Window (class)">Hornetseye::X11Window</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/XImageOutput.html" title="Hornetseye::XImageOutput (class)">Hornetseye::XImageOutput</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/OpenGLOutput.html" title="Hornetseye::OpenGLOutput (class)">Hornetseye::OpenGLOutput</a></span></p>
-</li><li>
-<p>Hornetseye::XVideoOutput</p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://www.x.org/">X.Org</a></p>
-</li><li>
-<p><a href="http://www.nasa.gov/multimedia/hd/">Nasa High Definition videos</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/X11Display.html" title="Hornetseye::X11Display (class)">Hornetseye::X11Display</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/X11Window.html" title="Hornetseye::X11Window (class)">Hornetseye::X11Window</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/XImageOutput.html" title="Hornetseye::XImageOutput (class)">Hornetseye::XImageOutput</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/OpenGLOutput.html" title="Hornetseye::OpenGLOutput (class)">Hornetseye::OpenGLOutput</a></span></li>
+  <li>Hornetseye::XVideoOutput</li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://www.x.org/">X.Org</a></li>
+  <li><a href="http://www.nasa.gov/multimedia/hd/">Nasa High Definition videos</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

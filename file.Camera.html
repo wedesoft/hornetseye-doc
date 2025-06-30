@@ -57,16 +57,15 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Capturing+frames+from+a+camera">Capturing frames from a camera</h1>
+      <div id="content"><div id='filecontents'><h1 id="capturing-frames-from-a-camera">Capturing frames from a camera</h1>
 
-<h2 id="label-Video+for+Linux+Version+2+-28V4L2-29">Video for Linux Version 2 (V4L2)</h2>
+<h2 id="video-for-linux-version-2-v4l2">Video for Linux Version 2 (V4L2)</h2>
 
-<p><img src="images/v4l2.jpg"></p>
+<p><img src="images/v4l2.jpg" alt="V4L2" /></p>
 
 <p><strong>HornetsEye</strong> allows you to capture images using a V4L2-capable device (for example a USB webcam or a frame grabber).</p>
 
-<h3 id="label-Basic+example">Basic example</h3>
+<h3 id="basic-example">Basic example</h3>
 
 <p>The basic example program opens a camera and displays the frames.</p>
 
@@ -77,7 +76,7 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_camera'>camera</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h3 id="label-Selecting+a+video+mode">Selecting a video mode</h3>
+<h3 id="selecting-a-video-mode">Selecting a video mode</h3>
 
 <p>This is a more sophisticated example. It opens the first V4L2 camera and then it prompts the user to select one of the video modes offered by the camera. Finally the program displays the frames.</p>
 
@@ -91,13 +90,13 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_camera'>camera</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h2 id="label-Firewire+Digital+Camera+-28DC1394-29">Firewire Digital Camera (DC1394)</h2>
+<h2 id="firewire-digital-camera-dc1394">Firewire Digital Camera (DC1394)</h2>
 
-<p><img src="images/dc1394.jpg"></p>
+<p><img src="images/dc1394.jpg" alt="DC1394" /></p>
 
 <p><strong>HornetsEye</strong> also supports capture from DC1394-compatible firewire digital cameras.</p>
 
-<h3 id="label-Basic+Example">Basic Example</h3>
+<h3 id="basic-example-1">Basic Example</h3>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_dc1394</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
@@ -106,7 +105,7 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_camera'>camera</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h3 id="label-Selecting+a+video+mode">Selecting a video mode</h3>
+<h3 id="selecting-a-video-mode-1">Selecting a video mode</h3>
 
 <p>In this example the user is prompted to select a video mode offered by the camera.</p>
 
@@ -120,9 +119,9 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_camera'>camera</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h2 id="label-Microsoft+Kinect+-28libfreenect-29">Microsoft Kinect (libfreenect)</h2>
+<h2 id="microsoft-kinect-libfreenect">Microsoft Kinect (libfreenect)</h2>
 
-<p><img src="images/kinect.jpg"></p>
+<p><img src="images/kinect.jpg" alt="Microsoft Kinect" /></p>
 
 <p>Using the libfreenect bindings one can capture RGB and 11-bit depth images with a Microsoft Kinect sensor.</p>
 
@@ -143,29 +142,27 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p>Hornetseye::V4LInput</p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/V4L2Input.html" title="Hornetseye::V4L2Input (class)">Hornetseye::V4L2Input</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/DC1394Input.html" title="Hornetseye::DC1394Input (class)">Hornetseye::DC1394Input</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://v4l2spec.bytesex.org/">V4L2</a></p>
-</li><li>
-<p><a href="http://damien.douxchamps.net/ieee1394/libdc1394/">libdc1394</a></p>
-</li><li>
-<p><a href="http://damien.douxchamps.net/ieee1394/cameras/">DC1394 camera list</a></p>
-</li></ul>
+<ul>
+  <li>Hornetseye::V4LInput</li>
+  <li><span class='object_link'><a href="Hornetseye/V4L2Input.html" title="Hornetseye::V4L2Input (class)">Hornetseye::V4L2Input</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/DC1394Input.html" title="Hornetseye::DC1394Input (class)">Hornetseye::DC1394Input</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://v4l2spec.bytesex.org/">V4L2</a></li>
+  <li><a href="http://damien.douxchamps.net/ieee1394/libdc1394/">libdc1394</a></li>
+  <li><a href="http://damien.douxchamps.net/ieee1394/cameras/">DC1394 camera list</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

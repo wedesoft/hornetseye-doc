@@ -57,12 +57,11 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Histograms+and+Warps">Histograms and Warps</h1>
+      <div id="content"><div id='filecontents'><h1 id="histograms-and-warps">Histograms and Warps</h1>
 
-<h2 id="label-Histogram+Equalisation">Histogram Equalisation</h2>
+<h2 id="histogram-equalisation">Histogram Equalisation</h2>
 
-<p><img src="images/equalised.jpg"></p>
+<p><img src="images/equalised.jpg" alt="Histogram equalisation" /></p>
 
 <p>Using integral arrays and element-wise lookup (map) one can implement histogram equalisation.</p>
 
@@ -92,9 +91,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_equalise'>equalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Otsu+Thresholding">Otsu Thresholding</h2>
+<h2 id="otsu-thresholding">Otsu Thresholding</h2>
 
-<p><img src="images/otsu.png"></p>
+<p><img src="images/otsu.png" alt="Otsu thresholding" /></p>
 
 <p>The Otsu algorithm is an algorithm for automatic thresholding. The algorithm assumes that the image to be thresholded contains two classes of pixels and then chooses the threshold which minimizes the intra-class variance of the two classes defined by the resulting binary image. Otsu has reformulated this problem so that it can be computed efficiently with histograms.</p>
 
@@ -120,9 +119,9 @@
 <span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_otsu'>otsu</span><span class='period'>.</span><span class='id identifier rubyid_to_ubyte'>to_ubyte</span> <span class='op'>*</span> <span class='int'>255</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Compute+Average">Compute Average</h2>
+<h2 id="compute-average">Compute Average</h2>
 
-<p><img src="images/average.jpg"></p>
+<p><img src="images/average.jpg" alt="Average" /></p>
 
 <p>This example shows how to compute the average of a series of frames. You can use a program like this to reduce noise by averaging a large number of frames.</p>
 
@@ -141,9 +140,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Bounding+Box">Bounding Box</h2>
+<h2 id="bounding-box">Bounding Box</h2>
 
-<p><img src="images/bbox.jpg"></p>
+<p><img src="images/bbox.jpg" alt="Bounding box" /></p>
 
 <p>A mask which specifies pixel locations of interest is created. The mask then is applied to an x-ramp and a y-ramp to find the bounding box. The area outside the bounding box finally is highlighted.</p>
 
@@ -159,9 +158,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Warps">Warps</h2>
+<h2 id="warps">Warps</h2>
 
-<p><img src="images/polar.jpg"></p>
+<p><img src="images/polar.jpg" alt="Image Warp" /></p>
 
 <p>Images can be warped using vector fields. The warp vectors are indicating the location of the source pixel. The example warps an equirectangular projection to an azimuthal projection.</p>
 
@@ -177,11 +176,11 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_warp'>warp</span><span class='lparen'>(</span> <span class='id identifier rubyid_angle'>angle</span><span class='period'>.</span><span class='id identifier rubyid_to_int'>to_int</span><span class='comma'>,</span> <span class='id identifier rubyid_radius'>radius</span><span class='period'>.</span><span class='id identifier rubyid_to_int'>to_int</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Colour+Circle">Colour Circle</h2>
+<h2 id="colour-circle">Colour Circle</h2>
 
-<p><img src="images/ccircle.jpg"></p>
+<p><img src="images/ccircle.jpg" alt="Colour circle" /></p>
 
-<p>You can create images yourself. In this example an image with different colours is generated and the result is mapped to a circle using a vector-field.</p>
+<p>You can create images yourself.  In this example an image with different colours is generated and the result is mapped to a circle using a vector-field.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
@@ -197,9 +196,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_warp'>warp</span><span class='lparen'>(</span> <span class='id identifier rubyid_angle'>angle</span><span class='period'>.</span><span class='id identifier rubyid_to_int'>to_int</span><span class='comma'>,</span> <span class='id identifier rubyid_radius'>radius</span><span class='period'>.</span><span class='id identifier rubyid_to_int'>to_int</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Chequerboard">Chequerboard</h2>
+<h2 id="chequerboard">Chequerboard</h2>
 
-<p><img src="images/chequer.png"></p>
+<p><img src="images/chequer.png" alt="Chequerboard" /></p>
 
 <p>Index arrays can be used to create patterns. The following example shows how one can create a chequerboard pattern using modulo, division without remainder, exclusive-or, and multiplication.</p>
 
@@ -211,9 +210,9 @@
 <span class='id identifier rubyid_checker'>checker</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Histogram+Segmentation">Histogram Segmentation</h2>
+<h2 id="histogram-segmentation">Histogram Segmentation</h2>
 
-<p><img src="images/segmentation.png"></p>
+<p><img src="images/segmentation.png" alt="Histogram segmentation" /></p>
 
 <p>This is an implementation of histogram inversion. Here a ratio-histogram of the target (land) and the background (water) is computed. Histogram inversion is used to highlight the areas of the image which are considered to be land.</p>
 
@@ -233,9 +232,9 @@
 <span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span> <span class='op'>/</span> <span class='id identifier rubyid_div'>div</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_lut'>lut</span><span class='lparen'>(</span> <span class='id identifier rubyid_quot'>quot</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Ordered+Dithering">Ordered Dithering</h2>
+<h2 id="ordered-dithering">Ordered Dithering</h2>
 
-<p><img src="images/dither.png"></p>
+<p><img src="images/dither.png" alt="Ordered dithering" /></p>
 
 <pre class="code ruby"><code class="ruby">+----+----+----+----+----+----+----+----+
 |  0 | 32 |  8 | 40 |  2 | 34 | 10 | 42 |
@@ -300,37 +299,31 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_dither'>dither</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'>Hornetseye#lazy</span></p>
-</li><li>
-<p><span class='object_link'>Hornetseye#finalise</span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#lut-instance_method" title="Hornetseye::Node#lut (method)">Hornetseye::Node#lut</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#histogram-instance_method" title="Hornetseye::Node#histogram (method)">Hornetseye::Node#histogram</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#integral-instance_method" title="Hornetseye::Node#integral (method)">Hornetseye::Node#integral</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#mask-instance_method" title="Hornetseye::Node#mask (method)">Hornetseye::Node#mask</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#warp-instance_method" title="Hornetseye::Node#warp (method)">Hornetseye::Node#warp</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://en.wikipedia.org/wiki/Histogram_Equalization">Histogram equalisation</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Image_warping">Image warping</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Ordered_dithering">Ordered dithering</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'>Hornetseye#lazy</span></li>
+  <li><span class='object_link'>Hornetseye#finalise</span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#lut-instance_method" title="Hornetseye::Node#lut (method)">Hornetseye::Node#lut</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#histogram-instance_method" title="Hornetseye::Node#histogram (method)">Hornetseye::Node#histogram</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#integral-instance_method" title="Hornetseye::Node#integral (method)">Hornetseye::Node#integral</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#mask-instance_method" title="Hornetseye::Node#mask (method)">Hornetseye::Node#mask</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#warp-instance_method" title="Hornetseye::Node#warp (method)">Hornetseye::Node#warp</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Histogram_Equalization">Histogram equalisation</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Image_warping">Image warping</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Ordered_dithering">Ordered dithering</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

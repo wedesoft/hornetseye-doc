@@ -57,14 +57,13 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Reading+and+Writing+Video+Files">Reading and Writing Video Files</h1>
+      <div id="content"><div id='filecontents'><h1 id="reading-and-writing-video-files">Reading and Writing Video Files</h1>
 
-<p><img src="images/sintel.jpg"></p>
+<p><img src="images/sintel.jpg" alt="Read video files" /></p>
 
-<h2 id="label-Read+Video+Data">Read Video Data</h2>
+<h2 id="read-video-data">Read Video Data</h2>
 
-<p>The class <a href="http://www.ffmpeg.org/">Hornetseye::AVInput} allows you to capture frames from videos using the {FFMpeg library</a>. The example program shows how to display a video.</p>
+<p>The class <span class='object_link'><a href="Hornetseye/AVInput.html" title="Hornetseye::AVInput (class)">Hornetseye::AVInput</a></span> allows you to capture frames from videos using the <a href="http://www.ffmpeg.org/">FFMpeg library</a>. The example program shows how to display a video.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_ffmpeg</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_xorg</span><span class='tstring_end'>&#39;</span></span>
@@ -74,7 +73,7 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span><span class='lparen'>(</span><span class='id identifier rubyid_w'>w</span><span class='comma'>,</span> <span class='id identifier rubyid_h'>h</span><span class='comma'>,</span> <span class='symbol'>:frame_rate</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_frame_rate'>frame_rate</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<p><img src="images/ardrone.jpg"></p>
+<p><img src="images/ardrone.jpg" alt="Parrot AR.Drone" /></p>
 
 <p>Using FFMpeg it is also possible to decode H.264 live streams. Here is an example to read and display the video stream from a <a href="http://ardrone2.parrot.com/">Parrot AR.Drone 2.0</a> with a small Ruby program.</p>
 
@@ -85,7 +84,7 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h2 id="label-Read+Audio+Data">Read Audio Data</h2>
+<h2 id="read-audio-data">Read Audio Data</h2>
 
 <p>The following example reads data from an audio file. The data is written to the audio output device. Note that currently one has to catch the exception occurring at the end of the stream.</p>
 
@@ -102,7 +101,7 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Read+Video+and+Audio+Data">Read Video and Audio Data</h2>
+<h2 id="read-video-and-audio-data">Read Video and Audio Data</h2>
 
 <p>It is also possible to retrieve audio frames if the video file offers an audio stream. The audio frames are two-dimensional arrays with the first dimension indicating the number of audio channels (<em>i.e.</em> 1=mono, 2=stereo). The following example plays synchronised video and audio.</p>
 
@@ -126,7 +125,7 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Record+Video+and+Audio">Record Video and Audio</h2>
+<h2 id="record-video-and-audio">Record Video and Audio</h2>
 
 <p>This example is about recording audio and video in real-time. The frame rate needs to be specified ahead of time. It might be necessary to reduce the value if the camera or the computer are too slow.</p>
 
@@ -159,9 +158,9 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Anaglyph+Videos">Anaglyph Videos</h2>
+<h2 id="anaglyph-videos">Anaglyph Videos</h2>
 
-<p><img src="images/anaglyph.jpg"></p>
+<p><img src="images/anaglyph.jpg" alt="Convert 3D to anaglyph video" /></p>
 
 <p>One can download <a href="http://www.youtube.com/3d">3D stereo videos from Youtube</a> and convert them to a red-cyan <a href="http://en.wikipedia.org/wiki/Anaglyph_image">anaglyph</a> video as follows. To download videos from Youtube, one can can use the <a href="https://addons.mozilla.org/firefox/addon/unplug/">Unplug</a> add-on for Firefox.</p>
 
@@ -188,31 +187,28 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-See+also">See also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/AVInput.html" title="Hornetseye::AVInput (class)">Hornetseye::AVInput</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/AVOutput.html" title="Hornetseye::AVOutput (class)">Hornetseye::AVOutput</a></span></p>
-</li></ul>
+<h2 id="see-also">See also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://www.ffmpeg.org/">FFMpeg audio/video codec library</a></p>
-</li><li>
-<p><a href="http://sintel.org/">Sintel, the Durian Open Movie Project</a></p>
-</li><li>
-<p><a href="http://www.youtube.com/3d">Youtube 3D</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Anaglyph_image">Anaglyph images</a></p>
-</li><li>
-<p><a href="https://addons.mozilla.org/firefox/addon/unplug/">Unplug (add-on for Firefox)</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/AVInput.html" title="Hornetseye::AVInput (class)">Hornetseye::AVInput</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/AVOutput.html" title="Hornetseye::AVOutput (class)">Hornetseye::AVOutput</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://www.ffmpeg.org/">FFMpeg audio/video codec library</a></li>
+  <li><a href="http://sintel.org/">Sintel, the Durian Open Movie Project</a></li>
+  <li><a href="http://www.youtube.com/3d">Youtube 3D</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Anaglyph_image">Anaglyph images</a></li>
+  <li><a href="https://addons.mozilla.org/firefox/addon/unplug/">Unplug (add-on for Firefox)</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

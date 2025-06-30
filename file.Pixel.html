@@ -57,12 +57,11 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Element-wise+Operations">Element-wise Operations</h1>
+      <div id="content"><div id='filecontents'><h1 id="element-wise-operations">Element-wise Operations</h1>
 
-<h2 id="label-Invert+Image">Invert Image</h2>
+<h2 id="invert-image">Invert Image</h2>
 
-<p><img src="images/invert.png"></p>
+<p><img src="images/invert.png" alt="Inverse colours" /></p>
 
 <p>Greyscale as well as colour images can be inverted. This example shows how to do this.</p>
 
@@ -73,9 +72,9 @@
 <span class='lparen'>(</span> <span class='int'>255</span> <span class='op'>-</span> <span class='id identifier rubyid_img'>img</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Thresholding">Thresholding</h2>
+<h2 id="thresholding">Thresholding</h2>
 
-<p><img src="images/threshold.png"></p>
+<p><img src="images/threshold.png" alt="Thresholding" /></p>
 
 <p>This example shows how to apply a threshold to an image. Since the result is a boolean image, it needs to be converted using the conditional function before it can be displayed.</p>
 
@@ -87,9 +86,9 @@
 <span class='id identifier rubyid_binary'>binary</span><span class='period'>.</span><span class='id identifier rubyid_conditional'>conditional</span><span class='lparen'>(</span> <span class='int'>255</span><span class='comma'>,</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Gamma+correction">Gamma correction</h2>
+<h2 id="gamma-correction">Gamma correction</h2>
 
-<p><img src="images/gamma.jpg"></p>
+<p><img src="images/gamma.jpg" alt="Gamma correction" /></p>
 
 <p>One can do gamma correction by applying an exponential function to each pixel.</p>
 
@@ -101,9 +100,9 @@
 <span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span> <span class='op'>**</span> <span class='float'>0.03</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Adjusting+Brightness+and+Contrast">Adjusting Brightness and Contrast</h2>
+<h2 id="adjusting-brightness-and-contrast">Adjusting Brightness and Contrast</h2>
 
-<p><img src="images/brightness.png"></p>
+<p><img src="images/brightness.png" alt="Adjusting brightness and contrast" /></p>
 
 <p>Changing the brightness and/or contrast of an image simply means applying a gain and an offset to the image. The values need to be clamped before they can be displayed.</p>
 
@@ -129,9 +128,9 @@
 <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Element-wise+Logarithm">Element-wise Logarithm</h2>
+<h2 id="element-wise-logarithm">Element-wise Logarithm</h2>
 
-<p><img src="images/log.jpg"></p>
+<p><img src="images/log.jpg" alt="Logarithmic image" /></p>
 
 <p>The element-wise logarithm can be used to display images with a large contrast range.</p>
 
@@ -143,9 +142,9 @@
 <span class='const'><span class='object_link'><a href="Math.html" title="Math (module)">Math</a></span></span><span class='period'>.</span><span class='id identifier rubyid_log'><span class='object_link'><a href="Math.html#log-class_method" title="Math.log (method)">log</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_img'>img</span> <span class='op'>+</span> <span class='float'>0.1</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Pseudo+Colours">Pseudo Colours</h2>
+<h2 id="pseudo-colours">Pseudo Colours</h2>
 
-<p><img src="images/pseudo.jpg"></p>
+<p><img src="images/pseudo.jpg" alt="Pseudo colours" /></p>
 
 <p>You can create pseudo-colour images in real-time. The example program loads a single greyscale image and converts it to pseudo colour. Pseudo colour are often used to display IR images.</p>
 
@@ -169,27 +168,26 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_lut'>lut</span><span class='lparen'>(</span> <span class='id identifier rubyid_colours'>colours</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><a href="file.XOrg.html" title="Displaying images">Displaying images</a></p>
-</li><li>
-<p><a href="file.RMagick.html" title="Loading and saving image files">Loading and saving image files</a></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://en.wikipedia.org/wiki/Negative_%28photography%29">Colour negative</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Thresholding_%28image_processing%29">Thresholding</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Palette_%28computing%29">Palette</a></p>
-</li></ul>
+<ul>
+  <li><a href="file.XOrg.html" title="Displaying images">Displaying images</a></li>
+  <li><a href="file.RMagick.html" title="Loading and saving image files">Loading and saving image files</a></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Negative_%28photography%29">Colour negative</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Thresholding_%28image_processing%29">Thresholding</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Palette_%28computing%29">Palette</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

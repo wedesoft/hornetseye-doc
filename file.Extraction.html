@@ -57,12 +57,11 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Feature+Extraction">Feature Extraction</h1>
+      <div id="content"><div id='filecontents'><h1 id="feature-extraction">Feature Extraction</h1>
 
-<h2 id="label-Sobel+Gradient+Magnitude">Sobel Gradient Magnitude</h2>
+<h2 id="sobel-gradient-magnitude">Sobel Gradient Magnitude</h2>
 
-<p><img src="images/sobelmag.png"></p>
+<p><img src="images/sobelmag.png" alt="Sobel gradient magnitude" /></p>
 
 <p>In the following example the sobel gradient magnitude is computed.</p>
 
@@ -78,9 +77,9 @@
 <span class='const'>X11Display</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_input'>input</span><span class='period'>.</span><span class='id identifier rubyid_read_ubyte'>read_ubyte</span><span class='period'>.</span><span class='id identifier rubyid_sobel_norm'>sobel_norm</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span> <span class='int'>255</span> <span class='op'>..</span> <span class='int'>0</span> <span class='rbrace'>}</span>
 </code></pre>
 
-<h2 id="label-Roberts+Cross+Edge+Detector">Roberts Cross Edge Detector</h2>
+<h2 id="roberts-cross-edge-detector">Roberts Cross Edge Detector</h2>
 
-<p><img src="images/roberts.png"></p>
+<p><img src="images/roberts.png" alt="Roberts cross edge detector" /></p>
 
 <p>Roberts cross edge detector consists of two small filters. The image is correlated with both filters. The final edge image is computed by taking the sum of the two correlation results.</p>
 
@@ -98,9 +97,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_roberts'>roberts</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='lparen'>(</span><span class='int'>0xFF</span> <span class='op'>..</span> <span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Difference+of+Gaussian">Difference of Gaussian</h2>
+<h2 id="difference-of-gaussian">Difference of Gaussian</h2>
 
-<p><img src="images/dog.jpg"></p>
+<p><img src="images/dog.jpg" alt="Difference of Gaussian" /></p>
 
 <p>The difference of Gaussian is simply the difference of two Gaussian filters of different size.</p>
 
@@ -112,9 +111,9 @@
 <span class='id identifier rubyid_dog'>dog</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Laplacian+of+Gaussian">Laplacian of Gaussian</h2>
+<h2 id="laplacian-of-gaussian">Laplacian of Gaussian</h2>
 
-<p><img src="images/log.png"></p>
+<p><img src="images/log.png" alt="Laplacian of Gaussian" /></p>
 
 <p>The LoG-filter creates an image with zero-crossings at edge locations. The edges can be detected using either dilation or erosion. Alternatively one could match a set of small 3x3 patterns. The notable property of edge detection using the LoG-filter is that it generates closed edge contours.</p>
 
@@ -127,9 +126,9 @@
 <span class='id identifier rubyid_binary'>binary</span><span class='period'>.</span><span class='id identifier rubyid_not'>not</span><span class='period'>.</span><span class='id identifier rubyid_or'>or</span><span class='lparen'>(</span><span class='id identifier rubyid_binary'>binary</span><span class='period'>.</span><span class='id identifier rubyid_erode'>erode</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_conditional'>conditional</span><span class='lparen'>(</span><span class='int'>0xFF</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Canny+Edge+Detector">Canny Edge Detector</h2>
+<h2 id="canny-edge-detector">Canny Edge Detector</h2>
 
-<p><img src="images/canny.png"></p>
+<p><img src="images/canny.png" alt="Canny edge detector" /></p>
 
 <p>The Canny edge detector uses two thresholds. The gradient norm is used to select edges. The gradient orientation is used to perform non-maxima suppression for edges. Edges are suppressed if the gradient is below the high threshold and the edge is not connected to edges with a gradient norm surpassing the high threshold. The Canny algorithm requires tracing along the edges. Here full connectivity is used instead.</p>
 
@@ -158,9 +157,9 @@
 <span class='kw'>end</span>
 </code></pre>
 
-<h2 id="label-Corner+Strength+by+Yang+et+al.">Corner Strength by Yang et al.</h2>
+<h2 id="corner-strength-by-yang-et-al">Corner Strength by Yang et al.</h2>
 
-<p><img src="images/yang.png"></p>
+<p><img src="images/yang.png" alt="Corner strength by Yang et al." /></p>
 
 <p>The following program computes the corner strength measure by Yang, Burger, Firmin, and Underwood.</p>
 
@@ -182,9 +181,9 @@
 <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='lparen'>(</span><span class='int'>0xFF</span> <span class='op'>..</span> <span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Harris-Stephens+Corner-+and+Edge-Detector">Harris-Stephens Corner- and Edge-Detector</h2>
+<h2 id="harris-stephens-corner--and-edge-detector">Harris-Stephens Corner- and Edge-Detector</h2>
 
-<p><img src="images/harris.png"></p>
+<p><img src="images/harris.png" alt="Harris-Stephens corner- and edge-detector" /></p>
 
 <p>This program implements the Harris-Stephens corner- and edge-detector. In the resulting image corners will appear white while edges will become black.</p>
 
@@ -206,9 +205,9 @@
 <span class='id identifier rubyid_r'>r</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Shi-Tomasi+Corner+Detector">Shi-Tomasi Corner Detector</h2>
+<h2 id="shi-tomasi-corner-detector">Shi-Tomasi Corner Detector</h2>
 
-<p><img src="images/shi.png"></p>
+<p><img src="images/shi.png" alt="Shi-Tomasi corner detector" /></p>
 
 <p>Here is an implementation of the Shi-Tomasi corner-detector.</p>
 
@@ -232,9 +231,9 @@
 <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='lparen'>(</span><span class='int'>0xFF</span> <span class='op'>..</span> <span class='int'>0</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Feature+Locations">Feature Locations</h2>
+<h2 id="feature-locations">Feature Locations</h2>
 
-<p><img src="images/features.png"></p>
+<p><img src="images/features.png" alt="Feature locations" /></p>
 
 <p>Usually computing a feature image is not enough and one needs to determine the locations of the most prominent features. This can be achieved by thresholding the image and then locating the maxima (i.e. performing non-maxima suppression for corners). HornetsEye does not support non-maxima suppression directly. However one can use greylevel dilation followed by masking as shown below.</p>
 
@@ -259,41 +258,33 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_harris'>harris</span><span class='period'>.</span><span class='id identifier rubyid_nms'>nms</span><span class='period'>.</span><span class='id identifier rubyid_dilate'>dilate</span><span class='lparen'>(</span><span class='int'>3</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_conditional'>conditional</span><span class='lparen'>(</span><span class='const'>RGB</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>255</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_img'>img</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#convolve-instance_method" title="Hornetseye::Node#convolve (method)">Hornetseye::Node#convolve</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#sobel-instance_method" title="Hornetseye::Node#sobel (method)">Hornetseye::Node#sobel</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#gauss_blur-instance_method" title="Hornetseye::Node#gauss_blur (method)">Hornetseye::Node#gauss_blur</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#gauss_gradient-instance_method" title="Hornetseye::Node#gauss_gradient (method)">Hornetseye::Node#gauss_gradient</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a></p>
-</li><li>
-<p><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm">Roberts cross edge detector</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Canny_edge_detector">Canny edge detector</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Corner_detection">Corner detection</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Difference_of_Gaussians">Difference of Gaussian</a></p>
-</li><li>
-<p><a href="http://pubs.doc.ic.ac.uk/structure-anisotropic-image/">Corner strength by Yang et al.</a></p>
-</li><li>
-<p><a href="www.bmva.org/bmvc/1988/avc-88-023.pdf">Harris-Stephens corner- and edge detector</a></p>
-</li><li>
-<p><a href="http://www.ces.clemson.edu/~stb/klt/">Kanade-Lucas-Tomasi feature tracker</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#convolve-instance_method" title="Hornetseye::Node#convolve (method)">Hornetseye::Node#convolve</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#sobel-instance_method" title="Hornetseye::Node#sobel (method)">Hornetseye::Node#sobel</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#gauss_blur-instance_method" title="Hornetseye::Node#gauss_blur (method)">Hornetseye::Node#gauss_blur</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#gauss_gradient-instance_method" title="Hornetseye::Node#gauss_gradient (method)">Hornetseye::Node#gauss_gradient</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a></li>
+  <li><a href="http://homepages.inf.ed.ac.uk/rbf/HIPR2/roberts.htm">Roberts cross edge detector</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Canny_edge_detector">Canny edge detector</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Corner_detection">Corner detection</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Difference_of_Gaussians">Difference of Gaussian</a></li>
+  <li><a href="http://pubs.doc.ic.ac.uk/structure-anisotropic-image/">Corner strength by Yang et al.</a></li>
+  <li><a href="www.bmva.org/bmvc/1988/avc-88-023.pdf">Harris-Stephens corner- and edge detector</a></li>
+  <li><a href="http://www.ces.clemson.edu/~stb/klt/">Kanade-Lucas-Tomasi feature tracker</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

@@ -57,16 +57,15 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Loading+and+Saving+Image+Files">Loading and Saving Image Files</h1>
+      <div id="content"><div id='filecontents'><h1 id="loading-and-saving-image-files">Loading and Saving Image Files</h1>
 
 <p><strong>HornetsEye</strong> makes use of <a href="http://rmagick.rubyforge.org/">RMagick</a>. RMagick supports virtually any image file format. For loading and saving high dynamic range images, the <a href="http://www.openexr.com/">OpenEXR</a> library is used.</p>
 
-<h2 id="label-Traditional+Raster+Formats">Traditional Raster Formats</h2>
+<h2 id="traditional-raster-formats">Traditional Raster Formats</h2>
 
-<h3 id="label-Grey+Scale+Image">Grey Scale Image</h3>
+<h3 id="grey-scale-image">Grey Scale Image</h3>
 
-<p><img src="images/grey.png"></p>
+<p><img src="images/grey.png" alt="Grey scale image" /></p>
 
 <p>This example shows how to load, display, and save a grey scale image. If the image is a colour image, it is converted to grey scale on-the-fly.</p>
 
@@ -78,9 +77,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_save_ubyte'>save_ubyte</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/tmp/grey.png</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
-<h3 id="label-Colour+Image">Colour Image</h3>
+<h3 id="colour-image">Colour Image</h3>
 
-<p><img src="images/colour.png"></p>
+<p><img src="images/colour.png" alt="Colour image" /></p>
 
 <p>This example shows how to load, display, and save a colour image. If the image is a grey scale image, the different colour channels will have the same values.</p>
 
@@ -92,9 +91,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_save_ubytergb'>save_ubytergb</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/tmp/colour.png</span><span class='tstring_end'>&#39;</span></span>
 </code></pre>
 
-<h3 id="label-Swapping+Colour+Channels">Swapping Colour Channels</h3>
+<h3 id="swapping-colour-channels">Swapping Colour Channels</h3>
 
-<p><img src="images/swap_rgb.png"></p>
+<p><img src="images/swap_rgb.png" alt="Swapping colour channels" /></p>
 
 <p>The following example shows how one can swap the colour channels of an image using the method <span class='object_link'><a href="Hornetseye/RGB.html#swap_rgb-instance_method" title="Hornetseye::RGB#swap_rgb (method)">Hornetseye::RGB#swap_rgb</a></span>.</p>
 
@@ -105,11 +104,11 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_swap_rgb'>swap_rgb</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-High+Dynamic+Range+Images">High Dynamic Range Images</h2>
+<h2 id="high-dynamic-range-images">High Dynamic Range Images</h2>
 
-<h3 id="label-Grey+Scale+Image">Grey Scale Image</h3>
+<h3 id="grey-scale-image-1">Grey Scale Image</h3>
 
-<p><img src="images/minor.jpg"></p>
+<p><img src="images/minor.jpg" alt="Grey scale high dynamic range imaging" /></p>
 
 <p>The values of a high dynamic range images usually exceed the range of the display. The example below scales the values of the image to an average of 256. The values are clipped before the result is displayed.</p>
 
@@ -122,9 +121,9 @@
 <span class='lparen'>(</span> <span class='int'>256</span> <span class='op'>*</span> <span class='id identifier rubyid_img'>img</span> <span class='op'>/</span> <span class='id identifier rubyid_average'>average</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_minor'>minor</span><span class='lparen'>(</span> <span class='int'>255</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h3 id="label-Colour+Image">Colour Image</h3>
+<h3 id="colour-image-1">Colour Image</h3>
 
-<p><img src="images/hdr.jpg"></p>
+<p><img src="images/hdr.jpg" alt="Colour high dynamic range imaging" /></p>
 
 <p>The following example loads a colour HDR image, reduces the gamma, and then displays the normalised result.</p>
 
@@ -136,41 +135,33 @@
 <span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span> <span class='op'>**</span> <span class='float'>0.1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/MultiArray.html#load_ubyte-class_method" title="Hornetseye::MultiArray.load_ubyte (method)">Hornetseye::MultiArray.load_ubyte</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/MultiArray.html#load_ubytergb-class_method" title="Hornetseye::MultiArray.load_ubytergb (method)">Hornetseye::MultiArray.load_ubytergb</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/MultiArray.html#load_sfloat-class_method" title="Hornetseye::MultiArray.load_sfloat (method)">Hornetseye::MultiArray.load_sfloat</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/MultiArray.html#load_sfloatrgb-class_method" title="Hornetseye::MultiArray.load_sfloatrgb (method)">Hornetseye::MultiArray.load_sfloatrgb</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#save_ubyte-instance_method" title="Hornetseye::Node#save_ubyte (method)">Hornetseye::Node#save_ubyte</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#save_ubytergb-instance_method" title="Hornetseye::Node#save_ubytergb (method)">Hornetseye::Node#save_ubytergb</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#save_sfloat-instance_method" title="Hornetseye::Node#save_sfloat (method)">Hornetseye::Node#save_sfloat</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#save_sfloatrgb-instance_method" title="Hornetseye::Node#save_sfloatrgb (method)">Hornetseye::Node#save_sfloatrgb</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://rmagick.rubyforge.org/">RMagick</a></p>
-</li><li>
-<p><a href="http://www.openexr.com/">OpenEXR</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/High_dynamic_range_imaging">High dynamic range imaging</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Tonemapping">Tonemapping</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/MultiArray.html#load_ubyte-class_method" title="Hornetseye::MultiArray.load_ubyte (method)">Hornetseye::MultiArray.load_ubyte</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/MultiArray.html#load_ubytergb-class_method" title="Hornetseye::MultiArray.load_ubytergb (method)">Hornetseye::MultiArray.load_ubytergb</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/MultiArray.html#load_sfloat-class_method" title="Hornetseye::MultiArray.load_sfloat (method)">Hornetseye::MultiArray.load_sfloat</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/MultiArray.html#load_sfloatrgb-class_method" title="Hornetseye::MultiArray.load_sfloatrgb (method)">Hornetseye::MultiArray.load_sfloatrgb</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#save_ubyte-instance_method" title="Hornetseye::Node#save_ubyte (method)">Hornetseye::Node#save_ubyte</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#save_ubytergb-instance_method" title="Hornetseye::Node#save_ubytergb (method)">Hornetseye::Node#save_ubytergb</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#save_sfloat-instance_method" title="Hornetseye::Node#save_sfloat (method)">Hornetseye::Node#save_sfloat</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#save_sfloatrgb-instance_method" title="Hornetseye::Node#save_sfloatrgb (method)">Hornetseye::Node#save_sfloatrgb</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://rmagick.rubyforge.org/">RMagick</a></li>
+  <li><a href="http://www.openexr.com/">OpenEXR</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/High_dynamic_range_imaging">High dynamic range imaging</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Tonemapping">Tonemapping</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

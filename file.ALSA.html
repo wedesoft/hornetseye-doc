@@ -57,10 +57,9 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Recording+and+playing+audio">Recording and playing audio</h1>
+      <div id="content"><div id='filecontents'><h1 id="recording-and-playing-audio">Recording and playing audio</h1>
 
-<h2 id="label-Playing+sounds">Playing sounds</h2>
+<h2 id="playing-sounds">Playing sounds</h2>
 
 <p>The example opens the first sound device and plays a 400 Hz tone for the duration of 3 seconds. The last command waits for the audio output to finish.</p>
 
@@ -80,9 +79,9 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_aplay'>aplay</span> <span class='op'>-</span><span class='const'>L</span>
 </code></pre>
 
-<h2 id="label-Recording+sounds">Recording sounds</h2>
+<h2 id="recording-sounds">Recording sounds</h2>
 
-<p>It is also possible to record sounds. Note that the microphone of a USB webcam usually is the second sound device (<em>i.e.</em> <strong>&#39;default:1&#39;</strong>). The example below records 3 seconds of audio and then plays it back.</p>
+<p>It is also possible to record sounds. Note that the microphone of a USB webcam usually is the second sound device (<em>i.e.</em> <strong>‘default:1’</strong>). The example below records 3 seconds of audio and then plays it back.</p>
 
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hornetseye_alsa</span><span class='tstring_end'>&#39;</span></span>
 <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="Hornetseye.html" title="Hornetseye (module)">Hornetseye</a></span></span>
@@ -100,23 +99,24 @@
 <pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_arecord'>arecord</span> <span class='op'>-</span><span class='const'>L</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/AlsaInput.html" title="Hornetseye::AlsaInput (class)">Hornetseye::AlsaInput</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/AlsaOutput.html" title="Hornetseye::AlsaOutput (class)">Hornetseye::AlsaOutput</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://www.alsa-project.org/">ALSA project</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/AlsaInput.html" title="Hornetseye::AlsaInput (class)">Hornetseye::AlsaInput</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/AlsaOutput.html" title="Hornetseye::AlsaOutput (class)">Hornetseye::AlsaOutput</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://www.alsa-project.org/">ALSA project</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:57 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

@@ -57,23 +57,22 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Frequently+Asked+Questions">Frequently Asked Questions</h1>
+      <div id="content"><div id='filecontents'><h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
 
-<p><img src="images/hornetseye.png"></p>
+<p><img src="images/hornetseye.png" alt="Hornetseye logo" /></p>
 
-<h2 id="label-Compilation+FAQ">Compilation FAQ</h2>
+<h2 id="compilation-faq">Compilation FAQ</h2>
 
-<h3 id="label-Problems+with+detection+of+OpenGL-2FGL-2FGLU">Problems with detection of OpenGL/GL/GLU</h3>
+<h3 id="problems-with-detection-of-openglglglu">Problems with detection of OpenGL/GL/GLU</h3>
 
 <p>Probably your OpenGL installation is not complete or broken. Try to download and compile a small OpenGL example program. Usually the error-message is conclusive. For example download <a href="http://www.sgi.com/products/software/opengl/examples/glut/examples/source/cube.c">cube.c</a> and try to compile it like this:</p>
 
 <pre class="code ruby"><code class="ruby">gcc -o cube cube.c -lGL -lGLU -lglut
 </code></pre>
 
-<p>Also see <a href="http://ubuntuforums.org/showthread.php?p=2362003#post2362003">ubuntuforums.org/showthread.php?p=2362003#post2362003</a>.</p>
+<p>Also see <a href="http://ubuntuforums.org/showthread.php?p=2362003#post2362003">http://ubuntuforums.org/showthread.php?p=2362003#post2362003</a>.</p>
 
-<h3 id="label-Disable+documentation+for+faster+installation">Disable documentation for faster installation</h3>
+<h3 id="disable-documentation-for-faster-installation">Disable documentation for faster installation</h3>
 
 <p>One can create a file called <em>~/.gemrc</em> with the following content.</p>
 
@@ -82,9 +81,9 @@
 
 <p>This will disable generation of the documentation which reduces the installation time for each Ruby Gem.</p>
 
-<h2 id="label-Execution+FAQ">Execution FAQ</h2>
+<h2 id="execution-faq">Execution FAQ</h2>
 
-<h3 id="label-Tips+on+using+Interactive+Ruby+Bash">Tips on using Interactive Ruby Bash</h3>
+<h3 id="tips-on-using-interactive-ruby-bash">Tips on using Interactive Ruby Bash</h3>
 
 <p>Install Wirble for Ruby and RubyGems. Then create an <em>.irbrc</em> file with the following content</p>
 
@@ -96,9 +95,9 @@
 
 <p>When running <em>irb</em> you will now have command line completion, output highlighting, and command line history.</p>
 
-<p>You can download <em>wirble</em> at <a href="https://github.com/wedesoft/wirble">github.com/wedesoft/wirble</a>.</p>
+<p>You can download <em>wirble</em> at <a href="https://github.com/wedesoft/wirble">https://github.com/wedesoft/wirble</a>.</p>
 
-<h3 id="label-Methods+for+adjusting+margins+not+defined">Methods for adjusting margins not defined</h3>
+<h3 id="methods-for-adjusting-margins-not-defined">Methods for adjusting margins not defined</h3>
 
 <p>The error occurs when loading user interface files generated with rbuic4.</p>
 
@@ -108,22 +107,22 @@
 
 <p>The reason is that rbuic4 generates method calls to methods which are not supported by the version of Qt4-QtRuby. The easiest solution is to remove all calls to setLeftMargin, setRightMargin, setTopMargin, and setBottomMargin in the ui_*.rb files after they have been generated. However the best solution is to compile a newer version of Qt4-QtRuby or to upgrade the distribution.</p>
 
-<h3 id="label-What+is+the+meaning+of+the+HornetsEye+logo-3F">What is the meaning of the HornetsEye logo?</h3>
+<h3 id="what-is-the-meaning-of-the-hornetseye-logo">What is the meaning of the HornetsEye logo?</h3>
 
-<p>The logo was created using GIMP and it shows a honeycomb structure as you would find on an insect&#39;s compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes. Incidentially you will see a similar structure if you don&#39;t correct TEM images for the fiber-optical coupling between the scintillator and the digital camera.</p>
+<p>The logo was created using GIMP and it shows a honeycomb structure as you would find on an insect’s compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes.  Incidentially you will see a similar structure if you don’t correct TEM images for the fiber-optical coupling between the scintillator and the digital camera.</p>
 
-<h3 id="label-Does+HornetsEye+have+security+or+reliability+issues-3F">Does HornetsEye have security or reliability issues?</h3>
+<h3 id="does-hornetseye-have-security-or-reliability-issues">Does HornetsEye have security or reliability issues?</h3>
 
 <p>You should read this if you intend to use HornetsEye in a security critical application.</p>
-<ul><li>
-<p>The GNU C compiler API of HornetsEye allows pointer manipulation and unrestricted memory access. This could be fixed by making use of Ruby&#39;s tainting mechanism.</p>
-</li><li>
-<p>The range checks for the index manipulations in histograms, warps (except clipped warps), maps, and unmasking are optional (opt-out). Omitting this checks allows for high performance.</p>
-</li></ul>
+
+<ul>
+  <li>The GNU C compiler API of HornetsEye allows pointer manipulation and unrestricted memory access. This could be fixed by making use of Ruby’s tainting mechanism.</li>
+  <li>The range checks for the index manipulations in histograms, warps (except clipped warps), maps, and unmasking are optional (opt-out). Omitting this checks allows for high performance.</li>
+</ul>
 
 <p>Furthermore HornetsEye uses native datatypes which are subject to underflow and overflow. Omitting this checks allows for high performance. However this can lead to numerical errors.</p>
 
-<h3 id="label-Problem+with+IRB+completion+and+Qt4-QtRuby">Problem with IRB completion and Qt4-QtRuby</h3>
+<h3 id="problem-with-irb-completion-and-qt4-qtruby">Problem with IRB completion and Qt4-QtRuby</h3>
 
 <p>When using Qt4-QtRuby, IRB completion may abort with the following bug:</p>
 
@@ -139,7 +138,7 @@
   break if classid &gt; 0
 </code></pre>
 
-<h3 id="label-Problem+with+accessing+IIDC-2FDCAM+firewire+camera+-28GNU-2BLinux-29">Problem with accessing IIDC/DCAM firewire camera (GNU+Linux)</h3>
+<h3 id="problem-with-accessing-iidcdcam-firewire-camera-gnulinux">Problem with accessing IIDC/DCAM firewire camera (GNU+Linux)</h3>
 
 <p>If the IIDC/DCAM-compatible firewire camera does not work, this can be for several reasons.</p>
 
@@ -155,13 +154,13 @@
 sudo chmod a+rw /dev/video1394-0
 </code></pre>
 
-<p>If the device name is &#39;/dev/video1394-0&#39; instead of &#39;/dev/video1394/0&#39;, you can create a shortcut for convencience</p>
+<p>If the device name is ‘/dev/video1394-0’ instead of ‘/dev/video1394/0’, you can create a shortcut for convencience</p>
 
 <pre class="code ruby"><code class="ruby">sudo mkdir -p /dev/video1394
 sudo ln -s /dev/video1394-0 /dev/video1394/0
 </code></pre>
 
-<h3 id="label-Problems+with+using+RMagick">Problems with using RMagick</h3>
+<h3 id="problems-with-using-rmagick">Problems with using RMagick</h3>
 
 <p>The following error occurs when using RMagick under (K)ubuntu 10.04</p>
 
@@ -171,61 +170,54 @@ sudo ln -s /dev/video1394-0 /dev/video1394/0
 <p>This is a problem with the RMagick package. See URLs below for bug report and fixes.</p>
 
 <p>Also see</p>
-<ul><li>
-<p><a href="https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122">bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122</a></p>
-</li><li>
-<p><a href="https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17">bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17</a></p>
-</li><li>
-<p><a href="http://rubyforge.org/tracker/index.php?func=detail&aid=23229&group_id=2714&atid=10404">rubyforge.org/tracker/index.php?func=detail&aid=23229&group_id=2714&atid=10404</a></p>
-</li></ul>
 
-<h2 id="label-License+FAQ">License FAQ</h2>
+<ul>
+  <li><a href="https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122">https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122</a></li>
+  <li><a href="https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17">https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17</a></li>
+  <li><a href="http://rubyforge.org/tracker/index.php?func=detail&amp;aid=23229&amp;group_id=2714&amp;atid=10404">http://rubyforge.org/tracker/index.php?func=detail&amp;aid=23229&amp;group_id=2714&amp;atid=10404</a></li>
+</ul>
 
-<h3 id="label-Why+are+you+using+the+GPL+license-3F">Why are you using the GPL license?</h3>
+<h2 id="license-faq">License FAQ</h2>
+
+<h3 id="why-are-you-using-the-gpl-license">Why are you using the GPL license?</h3>
 
 <p>Here are some reasons to use the GPL</p>
-<ul><li>
-<p>Other software developers and companies will only help to grow this project if they see their valuable contributions protected by a free software license.</p>
-</li><li>
-<p>Industrial partners need a reliable promise that vendor lock-in will not become an issue in the future.</p>
-</li><li>
-<p>There should not be an incentive to fork the project merely for economic gain.</p>
-</li><li>
-<p>HornetsEye must be released under GPL because the software builds on top of other software packages released under GPL.</p>
-</li><li>
-<p>All participating users and developers should have the possibility to innovate.</p>
-</li></ul>
+
+<ul>
+  <li>Other software developers and companies will only help to grow this project if they see their valuable contributions protected by a free software license.</li>
+  <li>Industrial partners need a reliable promise that vendor lock-in will not become an issue in the future.</li>
+  <li>There should not be an incentive to fork the project merely for economic gain.</li>
+  <li>HornetsEye must be released under GPL because the software builds on top of other software packages released under GPL.</li>
+  <li>All participating users and developers should have the possibility to innovate.</li>
+</ul>
 
 <p>I.e. if you decide to distribute this software, you have to grant your users the same rights which were given to you.</p>
 
-<h3 id="label-How+can+I+be+competitive+without+proprietary+software-3F">How can I be competitive without proprietary software?</h3>
+<h3 id="how-can-i-be-competitive-without-proprietary-software">How can I be competitive without proprietary software?</h3>
 
-<p>If you develop software, you have a competitive advantage if you don&#39;t have to depend on proprietary software of third parties. You can make use of the large pool of existing software which is developed by people who share. If you develop hardware, you can offer customers unlimited freedom in using your device and doing innovation in the field.</p>
+<p>If you develop software, you have a competitive advantage if you don’t have to depend on proprietary software of third parties. You can make use of the large pool of existing software which is developed by people who share. If you develop hardware, you can offer customers unlimited freedom in using your device and doing innovation in the field.</p>
 
-<p>For a detailed discussion about enabling technologies and business differentiation in the context of free software I recommend to read Ron Goldman&#39;s and Dick Gabriel&#39;s book <a href="http://dreamsongs.com/IHE/IHE.html">Innovation Happens Elsewhere</a>.</p>
+<p>For a detailed discussion about enabling technologies and business differentiation in the context of free software I recommend to read Ron Goldman’s and Dick Gabriel’s book <a href="http://dreamsongs.com/IHE/IHE.html">Innovation Happens Elsewhere</a>.</p>
 
 <p>If you are developing distinguishing software to be used solely within your company (i.e. you are not distributing the software), you can choose to keep your work (source-code as well as binaries) for yourself.</p>
 
-<h3 id="label-Where+can+I+find+more+information+about+free+software+development-3F">Where can I find more information about free software development?</h3>
+<h3 id="where-can-i-find-more-information-about-free-software-development">Where can I find more information about free software development?</h3>
 
 <p>Here is a small collection of links with further information about free software development:</p>
-<ul><li>
-<p><a href="http://www.gnu.org/licenses/gpl.html">The GPL license</a></p>
-</li><li>
-<p><a href="http://www.gnu.org/licenses/gpl-faq.html">GPL frequently asked questions</a></p>
-</li><li>
-<p><a href="http://video.google.com/videoplay?docid=-694927630239078625">Video of open source panel discussion at WSIS</a></p>
-</li><li>
-<p><a href="http://video.google.co.uk/videoplay?docid=6345039926759549406">Video of lecture by Eben Moglen on intellectual property law</a></p>
-</li><li>
-<p>Bruce Perens article <a href="http://perens.com/works/articles/Economic.html">“The Emerging Economic Paradigm of Open Source”</a></p>
-</li></ul>
+
+<ul>
+  <li><a href="http://www.gnu.org/licenses/gpl.html">The GPL license</a></li>
+  <li><a href="http://www.gnu.org/licenses/gpl-faq.html">GPL frequently asked questions</a></li>
+  <li><a href="http://video.google.com/videoplay?docid=-694927630239078625">Video of open source panel discussion at WSIS</a></li>
+  <li><a href="http://video.google.co.uk/videoplay?docid=6345039926759549406">Video of lecture by Eben Moglen on intellectual property law</a></li>
+  <li>Bruce Perens article <a href="http://perens.com/works/articles/Economic.html">“The Emerging Economic Paradigm of Open Source”</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>

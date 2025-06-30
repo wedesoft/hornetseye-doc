@@ -57,14 +57,13 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<h1 id="label-Filters">Filters</h1>
+      <div id="content"><div id='filecontents'><h1 id="filters">Filters</h1>
 
-<h2 id="label-Sobel+Operator">Sobel Operator</h2>
+<h2 id="sobel-operator">Sobel Operator</h2>
 
-<h3 id="label-X-Gradient">X-Gradient</h3>
+<h3 id="x-gradient">X-Gradient</h3>
 
-<p><img src="images/sobelx.png"></p>
+<p><img src="images/sobelx.png" alt="Sobel x-gradient" /></p>
 
 <p>This is an example on how to compute the Sobel x-gradient. A correlation of the input image with the following separable filter is performed.</p>
 
@@ -75,9 +74,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_sobel'>sobel</span><span class='lparen'>(</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h3 id="label-Y-Gradient">Y-Gradient</h3>
+<h3 id="y-gradient">Y-Gradient</h3>
 
-<p><img src="images/sobely.png"></p>
+<p><img src="images/sobely.png" alt="Sobel y-gradient" /></p>
 
 <p>This is an example on how to compute the Sobel y-gradient. A correlation of the input image with the following separable filter is performed.</p>
 
@@ -88,9 +87,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_sobel'>sobel</span><span class='lparen'>(</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Gaussian+Blur">Gaussian Blur</h2>
+<h2 id="gaussian-blur">Gaussian Blur</h2>
 
-<p><img src="images/gaussblur.jpg"></p>
+<p><img src="images/gaussblur.jpg" alt="Gaussian blur" /></p>
 
 <p>This is an example on how to apply a Gauss blur filter. The filter can be applied to colour images as well.</p>
 
@@ -101,9 +100,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_blur'>gauss_blur</span><span class='lparen'>(</span> <span class='float'>3.0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Van+Cittert+Deconvolution">Van Cittert Deconvolution</h2>
+<h2 id="van-cittert-deconvolution">Van Cittert Deconvolution</h2>
 
-<p><img src="images/vancittert.jpg"></p>
+<p><img src="images/vancittert.jpg" alt="Van Cittert deconvolution" /></p>
 
 <p>Van Cittert deconvolution is an iterative algorithm for reversing a convolution with a known point spread function. To demonstrate the algorithm, the result of the Gaussian blur is used. The Van Cittert algorithm then is applied to this image to estimate the original input image. The first iteration of the algorithm uses the blurred image as an estimate.</p>
 
@@ -118,9 +117,9 @@
 <span class='id identifier rubyid_g'>g</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Wiener+Filter">Wiener Filter</h2>
+<h2 id="wiener-filter">Wiener Filter</h2>
 
-<p><img src="images/wiener.jpg"></p>
+<p><img src="images/wiener.jpg" alt="Wiener filter" /></p>
 
 <p>The Wiener filter is the optimal linear filter for denoising and deblurring. The filter requires prior knowledge about the autospectrum of the signal, the point spread function of the blur, and the autospectrum of the noise. In this example white noise is assumed. To demonstrate the algorithm, a Gaussian blur is applied to the input image and the Wiener filter is used to estimate the input signal.</p>
 
@@ -169,11 +168,11 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_wiener'>wiener</span><span class='lparen'>(</span> <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_shape'>shape</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span> <span class='op'>*</span> <span class='float'>0.1</span><span class='comma'>,</span> <span class='const'>NOISE</span><span class='comma'>,</span> <span class='const'>SIGMA</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Gauss+Gradient">Gauss Gradient</h2>
+<h2 id="gauss-gradient">Gauss Gradient</h2>
 
-<h3 id="label-X-Gradient">X-Gradient</h3>
+<h3 id="x-gradient-1">X-Gradient</h3>
 
-<p><img src="images/gaussgradx.jpg"></p>
+<p><img src="images/gaussgradx.jpg" alt="Gauss x-gradient" /></p>
 
 <p>This is an example on how to compute the Gaussian x-gradient.</p>
 
@@ -184,9 +183,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_gradient'>gauss_gradient</span><span class='lparen'>(</span> <span class='float'>3.0</span><span class='comma'>,</span> <span class='int'>0</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h3 id="label-Y-Gradient">Y-Gradient</h3>
+<h3 id="y-gradient-1">Y-Gradient</h3>
 
-<p><img src="images/gaussgrady.jpg"></p>
+<p><img src="images/gaussgrady.jpg" alt="Gauss y-gradient" /></p>
 
 <p>This is an example on how to compute the Gaussian y-gradient.</p>
 
@@ -197,9 +196,9 @@
 <span class='id identifier rubyid_img'>img</span><span class='period'>.</span><span class='id identifier rubyid_gauss_gradient'>gauss_gradient</span><span class='lparen'>(</span> <span class='float'>3.0</span><span class='comma'>,</span> <span class='int'>1</span> <span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_normalise'>normalise</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Custom+Filters">Custom Filters</h2>
+<h2 id="custom-filters">Custom Filters</h2>
 
-<p><img src="images/sharpen.jpg"></p>
+<p><img src="images/sharpen.jpg" alt="Custom filter" /></p>
 
 <pre class="code ruby"><code class="ruby">+------+------+------+
 |  -k  |  -k  |  -k  |
@@ -222,9 +221,9 @@
 <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_clip'>clip</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-Connected+Components+Labeling">Connected Components Labeling</h2>
+<h2 id="connected-components-labeling">Connected Components Labeling</h2>
 
-<p><img src="images/components.png"></p>
+<p><img src="images/components.png" alt="Connected component labeling" /></p>
 
 <p>Connected component analysis assigns the same label to neighbouring pixel which have the same value.</p>
 
@@ -241,29 +240,27 @@
 <span class='id identifier rubyid_components'>components</span><span class='period'>.</span><span class='id identifier rubyid_lut'>lut</span><span class='lparen'>(</span><span class='id identifier rubyid_palette'>palette</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_show'>show</span>
 </code></pre>
 
-<h2 id="label-See+Also">See Also</h2>
-<ul><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#convolve-instance_method" title="Hornetseye::Node#convolve (method)">Hornetseye::Node#convolve</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#sobel-instance_method" title="Hornetseye::Node#sobel (method)">Hornetseye::Node#sobel</a></span></p>
-</li><li>
-<p><span class='object_link'><a href="Hornetseye/Node.html#components-instance_method" title="Hornetseye::Node#components (method)">Hornetseye::Node#components</a></span></p>
-</li></ul>
+<h2 id="see-also">See Also</h2>
 
-<h2 id="label-External+Links">External Links</h2>
-<ul><li>
-<p><a href="http://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Unsharp_masking">Unsharp masking</a></p>
-</li><li>
-<p><a href="http://en.wikipedia.org/wiki/Connected_Component_Labeling">Connected component labeling</a></p>
-</li></ul>
+<ul>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#convolve-instance_method" title="Hornetseye::Node#convolve (method)">Hornetseye::Node#convolve</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#sobel-instance_method" title="Hornetseye::Node#sobel (method)">Hornetseye::Node#sobel</a></span></li>
+  <li><span class='object_link'><a href="Hornetseye/Node.html#components-instance_method" title="Hornetseye::Node#components (method)">Hornetseye::Node#components</a></span></li>
+</ul>
+
+<h2 id="external-links">External Links</h2>
+
+<ul>
+  <li><a href="http://en.wikipedia.org/wiki/Sobel_operator">Sobel operator</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Unsharp_masking">Unsharp masking</a></li>
+  <li><a href="http://en.wikipedia.org/wiki/Connected_Component_Labeling">Connected component labeling</a></li>
+</ul>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jun 30 10:46:56 2025 by
+  Generated on Mon Jun 30 15:58:32 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-2.7.8).
+  0.9.37 (ruby-3.4.1).
 </div>
 
     </div>
