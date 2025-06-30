@@ -6,7 +6,7 @@
 <title>
   File: FAQ
   
-    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED)
+    &mdash; Hornetseye - Ruby-extension for Computer Vision (DEPRECATED, only works with Ruby version up to 2.7.8))
   
 </title>
 
@@ -110,13 +110,13 @@
 
 <h3 id="label-What+is+the+meaning+of+the+HornetsEye+logo-3F">What is the meaning of the HornetsEye logo?</h3>
 
-<p>The logo was created using GIMP and it shows a honeycomb structure as you would find on an insect’s compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes. Incidentially you will see a similar structure if you don’t correct TEM images for the fiber-optical coupling between the scintillator and the digital camera.</p>
+<p>The logo was created using GIMP and it shows a honeycomb structure as you would find on an insect&#39;s compound eye. A hornet is capable of navigating and detecting objects with the limited resolution of its compound eyes. Incidentially you will see a similar structure if you don&#39;t correct TEM images for the fiber-optical coupling between the scintillator and the digital camera.</p>
 
 <h3 id="label-Does+HornetsEye+have+security+or+reliability+issues-3F">Does HornetsEye have security or reliability issues?</h3>
 
 <p>You should read this if you intend to use HornetsEye in a security critical application.</p>
 <ul><li>
-<p>The GNU C compiler API of HornetsEye allows pointer manipulation and unrestricted memory access. This could be fixed by making use of Ruby’s tainting mechanism.</p>
+<p>The GNU C compiler API of HornetsEye allows pointer manipulation and unrestricted memory access. This could be fixed by making use of Ruby&#39;s tainting mechanism.</p>
 </li><li>
 <p>The range checks for the index manipulations in histograms, warps (except clipped warps), maps, and unmasking are optional (opt-out). Omitting this checks allows for high performance.</p>
 </li></ul>
@@ -155,7 +155,7 @@
 sudo chmod a+rw /dev/video1394-0
 </code></pre>
 
-<p>If the device name is ‘/dev/video1394-0’ instead of ‘/dev/video1394/0’, you can create a shortcut for convencience</p>
+<p>If the device name is &#39;/dev/video1394-0&#39; instead of &#39;/dev/video1394/0&#39;, you can create a shortcut for convencience</p>
 
 <pre class="code ruby"><code class="ruby">sudo mkdir -p /dev/video1394
 sudo ln -s /dev/video1394-0 /dev/video1394/0
@@ -176,7 +176,7 @@ sudo ln -s /dev/video1394-0 /dev/video1394/0
 </li><li>
 <p><a href="https://bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17">bugs.launchpad.net/ubuntu/+source/librmagick-ruby/+bug/518122/comments/17</a></p>
 </li><li>
-<p><a href="http://rubyforge.org/tracker/index.php?func=detail&amp;aid=23229&amp;group_id=2714&amp;atid=10404">rubyforge.org/tracker/index.php?func=detail&amp;aid=23229&amp;group_id=2714&amp;atid=10404</a></p>
+<p><a href="http://rubyforge.org/tracker/index.php?func=detail&aid=23229&group_id=2714&atid=10404">rubyforge.org/tracker/index.php?func=detail&aid=23229&group_id=2714&atid=10404</a></p>
 </li></ul>
 
 <h2 id="label-License+FAQ">License FAQ</h2>
@@ -200,9 +200,9 @@ sudo ln -s /dev/video1394-0 /dev/video1394/0
 
 <h3 id="label-How+can+I+be+competitive+without+proprietary+software-3F">How can I be competitive without proprietary software?</h3>
 
-<p>If you develop software, you have a competitive advantage if you don’t have to depend on proprietary software of third parties. You can make use of the large pool of existing software which is developed by people who share. If you develop hardware, you can offer customers unlimited freedom in using your device and doing innovation in the field.</p>
+<p>If you develop software, you have a competitive advantage if you don&#39;t have to depend on proprietary software of third parties. You can make use of the large pool of existing software which is developed by people who share. If you develop hardware, you can offer customers unlimited freedom in using your device and doing innovation in the field.</p>
 
-<p>For a detailed discussion about enabling technologies and business differentiation in the context of free software I recommend to read Ron Goldman’s and Dick Gabriel’s book <a href="http://dreamsongs.com/IHE/IHE.html">Innovation Happens Elsewhere</a>.</p>
+<p>For a detailed discussion about enabling technologies and business differentiation in the context of free software I recommend to read Ron Goldman&#39;s and Dick Gabriel&#39;s book <a href="http://dreamsongs.com/IHE/IHE.html">Innovation Happens Elsewhere</a>.</p>
 
 <p>If you are developing distinguishing software to be used solely within your company (i.e. you are not distributing the software), you can choose to keep your work (source-code as well as binaries) for yourself.</p>
 
@@ -223,9 +223,9 @@ sudo ln -s /dev/video1394-0 /dev/video1394/0
 </div></div>
 
       <div id="footer">
-  Generated on Mon Feb  3 19:23:56 2025 by
+  Generated on Mon Jun 30 10:46:56 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.4.1).
+  0.9.37 (ruby-2.7.8).
 </div>
 
     </div>
